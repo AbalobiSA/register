@@ -6,7 +6,7 @@ import {FisherUsetermsPage} from "../fisher-useterms/fisher-useterms";
 import{FisherService} from "../../providers/FisherService";
 
 //Imported non-page classes
-import{RoleInfoClass} from "../../classes/role_info_class";
+//import{RoleInfoClass} from "../../classes/role_info_class";
 
 
 @IonicPage()
@@ -17,7 +17,7 @@ import{RoleInfoClass} from "../../classes/role_info_class";
 export class FisherRolePage {
 
 
-        role    : RoleInfoClass = new RoleInfoClass ();
+        role   : string ="";// : RoleInfoClass = new RoleInfoClass ();
 
         constructor(public navCtrl: NavController, public navParams: NavParams, public fisherService: FisherService) {
 

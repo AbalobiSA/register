@@ -28,7 +28,7 @@ export class FisherUsetermsPage {
 
 
 
-        toggleAgree(){
+        /*toggleAgree(){
                 this.terms_status.terms_use_agreed = !this.terms_status.terms_use_agreed;
         }
 
@@ -39,7 +39,7 @@ export class FisherUsetermsPage {
 
           toggleAssistant(){
                 this.terms_status.terms_assistant_agreed = !this.terms_status.terms_assistant_agreed
-        }
+        }*/
 
 
         onFisherFinishTerms(){

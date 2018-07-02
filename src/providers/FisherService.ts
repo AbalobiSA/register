@@ -19,7 +19,7 @@ export class FisherService {
   }
 
   //all these functions must return a promise to attempt to update the info
-  fisherUpdateRole(role_info     : RoleInfoClass) {
+  fisherUpdateRole(role_info     : string) {
         this.registree.role = role_info;
         //update the registree in storage;--return a promise
         console.log("Fisher Service successfully updates role");
@@ -61,6 +61,13 @@ export class FisherService {
   fisherSubmitRegistration(){
         console.log("Fisher Service Printing Entered Data !!");
         console.log(this.registree);
+
+        console.log("Fisher Role Data !!");
+        console.log(this.registree.role);
+
+
+        console.log("Fisher Province Data !!");
+        console.log(this.registree.province);
   }
 
 

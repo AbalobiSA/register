@@ -20,7 +20,7 @@
         <ion-item>
                   <ion-label>Please select  your province
                   </ion-label>
-                            <ion-select>
+                            <ion-select [(ngModel)]="community_info.comm_province">
                                       <ion-option>Western Cape</ion-option>
                                       <ion-option>Northern Cape</ion-option>
                                       <ion-option>Eastern Cape</ion-option>
@@ -38,7 +38,7 @@
         <ion-list text-wrap>
                 <ion-item>
                         <ion-label> My community is not on the list</ion-label>
-                        <ion-checkbox></ion-checkbox>
+                        <ion-checkbox [(ngModel)]="community_info.comm_not_listed"></ion-checkbox>
                 </ion-item>
         </ion-list>
 
@@ -48,17 +48,17 @@
         <ion-list >
                 <ion-item>
                       <ion-label> IRP / Exemption</ion-label>
-                      <ion-checkbox></ion-checkbox>
+                      <ion-checkbox [(ngModel)]="community_info.comm_IRP_chosen"></ion-checkbox>
                 </ion-item>
 
                 <ion-item>
                       <ion-label> Commercial</ion-label>
-                      <ion-checkbox></ion-checkbox>
+                      <ion-checkbox [(ngModel)]="community_info.comm_commercial_chosen"></ion-checkbox>
                 </ion-item>
 
                 <ion-item>
                       <ion-label> Recreational</ion-label>
-                      <ion-checkbox></ion-checkbox>
+                      <ion-checkbox [(ngModel)]="community_info.comm_recreational_chosen"></ion-checkbox>
                 </ion-item>
 
         </ion-list>

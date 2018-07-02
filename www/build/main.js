@@ -4,6 +4,70 @@ webpackJsonp([5],{
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FisherCommunityPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fisher_confirm_fisher_confirm__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_FisherService__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__classes_community_info_class__ = __webpack_require__(267);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+//Imported page classes
+
+//Imported services
+
+//Imported non-page classes
+
+var FisherCommunityPage = /** @class */ (function () {
+    function FisherCommunityPage(navCtrl, navParams, fisherService) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.fisherService = fisherService;
+        this.community_info = new __WEBPACK_IMPORTED_MODULE_4__classes_community_info_class__["a" /* CommunityInfoClass */]();
+        this.confirm_personal = new Object();
+    }
+    FisherCommunityPage.prototype.ionViewDidLoad = function () {
+        console.log("ionViewDidLoad FisherCommunityPage");
+        //package the info needed by the confirmation page for propagation ahead to the register page
+        this.confirm_personal = {
+            surname: this.navParams.get('personal_surname'),
+            firstname: this.navParams.get('personal_firstname'),
+            IDnum: this.navParams.get('personal_IDnum'),
+            cellNo: this.navParams.get('personal_cellNo'),
+        };
+    };
+    FisherCommunityPage.prototype.onFisherFinishCommunity = function () {
+        //TODO
+        //introduce promise here
+        this.fisherService.fisherUpdateCommunity(this.community_info);
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__fisher_confirm_fisher_confirm__["a" /* FisherConfirmPage */], this.confirm_personal);
+    };
+    FisherCommunityPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'page-fisher-community',template:/*ion-inline-start:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-community/fisher-community.html"*/'<!--\n  Generated template for the FisherCommunityPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n        <ion-navbar>\n              <ion-title>Abalobi Register</ion-title>\n        </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n\n        <p style="text-align:center"><b>Community / Landing</b></p>\n\n        <ion-item>\n                  <ion-label>Please select  your province\n                  </ion-label>\n                            <ion-select [(ngModel)]="community_info.comm_province">\n                                      <ion-option>Western Cape</ion-option>\n                                      <ion-option>Northern Cape</ion-option>\n                                      <ion-option>Eastern Cape</ion-option>\n                                      <ion-option> North West</ion-option>\n                                      <ion-option>Mpumalanga</ion-option>\n                                      <ion-option>Limpopo</ion-option>\n                                      <ion-option>Gauteng</ion-option>\n                                      <ion-option>Free State</ion-option>\n                                      <ion-option>KwaZulu-Natal</ion-option>\n\n                            </ion-select>\n        </ion-item>\n\n\n        <ion-list text-wrap>\n                <ion-item>\n                        <ion-label> My community is not on the list</ion-label>\n                        <ion-checkbox [(ngModel)]="community_info.comm_not_listed"></ion-checkbox>\n                </ion-item>\n        </ion-list>\n\n        <p style="text-align:center"><b>Do you have a fishing permit ?</b></p>\n\n\n        <ion-list >\n                <ion-item>\n                      <ion-label> IRP / Exemption</ion-label>\n                      <ion-checkbox [(ngModel)]="community_info.comm_IRP_chosen"></ion-checkbox>\n                </ion-item>\n\n                <ion-item>\n                      <ion-label> Commercial</ion-label>\n                      <ion-checkbox [(ngModel)]="community_info.comm_commercial_chosen"></ion-checkbox>\n                </ion-item>\n\n                <ion-item>\n                      <ion-label> Recreational</ion-label>\n                      <ion-checkbox [(ngModel)]="community_info.comm_recreational_chosen"></ion-checkbox>\n                </ion-item>\n\n        </ion-list>\n\n\n  <button ion-button full  (click)="onFisherFinishCommunity()">Next</button>\n</ion-content>\n'/*ion-inline-end:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-community/fisher-community.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_FisherService__["a" /* FisherService */]])
+    ], FisherCommunityPage);
+    return FisherCommunityPage;
+}()); //end class
+
+//# sourceMappingURL=fisher-community.js.map
+
+/***/ }),
+
+/***/ 104:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FisherConfirmPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
@@ -57,16 +121,72 @@ var FisherConfirmPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 104:
+/***/ 105:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FisherCommunityPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FisherRolePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fisher_confirm_fisher_confirm__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fisher_useterms_fisher_useterms__ = __webpack_require__(106);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_FisherService__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__classes_community_info_class__ = __webpack_require__(267);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+//Imported service
+
+//Imported non-page classes
+//import{RoleInfoClass} from "../../classes/role_info_class";
+var FisherRolePage = /** @class */ (function () {
+    function FisherRolePage(navCtrl, navParams, fisherService) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.fisherService = fisherService;
+        this.role = ""; // : RoleInfoClass = new RoleInfoClass ();
+    }
+    FisherRolePage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad FisherRolePage');
+    };
+    FisherRolePage.prototype.nextFromFisherRole = function () {
+        //TODO
+        //create a promise  here
+        //On success
+        this.fisherService.fisherUpdateRole(this.role);
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__fisher_useterms_fisher_useterms__["a" /* FisherUsetermsPage */]);
+    };
+    FisherRolePage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'page-fisher-role',template:/*ion-inline-start:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-role/fisher-role.html"*/'<!--\n  Generated template for the FisherRolePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Abalobi Register</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content title="Abalobi Register-role" id="fisher-role-form">\n\n    <p text-wrap style="text-align:center;padding-left:0.5em;padding-right:0.5em;background-color:#33CEFF;color:#FFFFFF;padding-left:0.5em">\n      <b>Select \'Fisher\' if you are a fisher wanting to record and view your catch data using Abalobi.</b>\n    </p>\n\n\n  <ion-list radio-group [(ngModel)]="role">\n\n          <ion-item>\n              <ion-label>Fisher</ion-label>\n              <ion-radio ></ion-radio>\n          </ion-item>\n\n          <ion-item>\n              <ion-label>Fisher Assistant</ion-label>\n              <ion-radio ></ion-radio>\n          </ion-item>\n  </ion-list>\n\n  <button ion-button full  (click)="nextFromFisherRole()">Next</button>\n\n</ion-content>\n'/*ion-inline-end:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-role/fisher-role.html"*/,
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__providers_FisherService__["a" /* FisherService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_FisherService__["a" /* FisherService */]) === "function" && _c || Object])
+    ], FisherRolePage);
+    return FisherRolePage;
+    var _a, _b, _c;
+}());
+
+//# sourceMappingURL=fisher-role.js.map
+
+/***/ }),
+
+/***/ 106:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FisherUsetermsPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fisher_personal_fisher_personal__ = __webpack_require__(107);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_FisherService__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__classes_fisher_useterms_class__ = __webpack_require__(268);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -84,51 +204,56 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 //Imported non-page classes
 
-var FisherCommunityPage = /** @class */ (function () {
-    function FisherCommunityPage(navCtrl, navParams, fisherService) {
+var FisherUsetermsPage = /** @class */ (function () {
+    function FisherUsetermsPage(navCtrl, navParams, fisherService) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.fisherService = fisherService;
-        this.community_info = new __WEBPACK_IMPORTED_MODULE_4__classes_community_info_class__["a" /* CommunityInfoClass */]();
-        this.confirm_personal = new Object();
+        this.terms_status = new __WEBPACK_IMPORTED_MODULE_4__classes_fisher_useterms_class__["a" /* FisherUsetermsClass */]();
     }
-    FisherCommunityPage.prototype.ionViewDidLoad = function () {
-        console.log("ionViewDidLoad FisherCommunityPage");
-        //package the info needed by the confirmation page for propagation ahead to the register page
-        this.confirm_personal = {
-            surname: this.navParams.get('personal_surname'),
-            firstname: this.navParams.get('personal_firstname'),
-            IDnum: this.navParams.get('personal_IDnum'),
-            cellNo: this.navParams.get('personal_cellNo'),
-        };
+    FisherUsetermsPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad FisherUsetermsPage');
     };
-    FisherCommunityPage.prototype.onFisherFinishCommunity = function () {
-        //TODO
-        //introduce promise here
-        this.fisherService.fisherUpdateCommunity(this.community_info);
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__fisher_confirm_fisher_confirm__["a" /* FisherConfirmPage */], this.confirm_personal);
-    };
-    FisherCommunityPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-fisher-community',template:/*ion-inline-start:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-community/fisher-community.html"*/'<!--\n  Generated template for the FisherCommunityPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n        <ion-navbar>\n              <ion-title>Abalobi Register</ion-title>\n        </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n\n        <p style="text-align:center"><b>Community / Landing</b></p>\n\n        <ion-item>\n                  <ion-label>Please select  your province\n                  </ion-label>\n                            <ion-select>\n                                      <ion-option>Western Cape</ion-option>\n                                      <ion-option>Northern Cape</ion-option>\n                                      <ion-option>Eastern Cape</ion-option>\n                                      <ion-option> North West</ion-option>\n                                      <ion-option>Mpumalanga</ion-option>\n                                      <ion-option>Limpopo</ion-option>\n                                      <ion-option>Gauteng</ion-option>\n                                      <ion-option>Free State</ion-option>\n                                      <ion-option>KwaZulu-Natal</ion-option>\n\n                            </ion-select>\n        </ion-item>\n\n\n        <ion-list text-wrap>\n                <ion-item>\n                        <ion-label> My community is not on the list</ion-label>\n                        <ion-checkbox></ion-checkbox>\n                </ion-item>\n        </ion-list>\n\n        <p style="text-align:center"><b>Do you have a fishing permit ?</b></p>\n\n\n        <ion-list >\n                <ion-item>\n                      <ion-label> IRP / Exemption</ion-label>\n                      <ion-checkbox></ion-checkbox>\n                </ion-item>\n\n                <ion-item>\n                      <ion-label> Commercial</ion-label>\n                      <ion-checkbox></ion-checkbox>\n                </ion-item>\n\n                <ion-item>\n                      <ion-label> Recreational</ion-label>\n                      <ion-checkbox></ion-checkbox>\n                </ion-item>\n\n        </ion-list>\n\n\n  <button ion-button full  (click)="onFisherFinishCommunity()">Next</button>\n</ion-content>\n'/*ion-inline-end:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-community/fisher-community.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_FisherService__["a" /* FisherService */]])
-    ], FisherCommunityPage);
-    return FisherCommunityPage;
-}()); //end class
+    /*toggleAgree(){
+            this.terms_status.terms_use_agreed = !this.terms_status.terms_use_agreed;
+    }
 
-//# sourceMappingURL=fisher-community.js.map
+
+    toggleDAFF(){
+            this.terms_status.terms_DAFF_agreed = !this.terms_status.terms_DAFF_agreed;
+    }
+
+      toggleAssistant(){
+            this.terms_status.terms_assistant_agreed = !this.terms_status.terms_assistant_agreed
+    }*/
+    FisherUsetermsPage.prototype.onFisherFinishTerms = function () {
+        //TODO
+        //promise to update terms
+        this.fisherService.fisherUpdateTerms(this.terms_status);
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__fisher_personal_fisher_personal__["a" /* FisherPersonalPage */]);
+    };
+    FisherUsetermsPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'page-fisher-useterms',template:/*ion-inline-start:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-useterms/fisher-useterms.html"*/'<!--\n  Generated template for the FisherUsetermsPage page.\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n\n<ion-header>\n        <ion-navbar>\n            <ion-title>Terms of Use</ion-title>\n        </ion-navbar>\n</ion-header>\n\n<ion-content title="Terms of Use" id="fisher-terms-form">\n\n    <p text-wrap style="text-align:center;padding-left:0.5em;padding-right:0.5em"><!--style="padding-left:0.5em;padding-right:0.5em;text-align: center"-->\n      <b>In order to maintain the Abalobi system it is possible for the core Abalobi team to access all data, however all data submitted will be treated with the utmost privacy. No individual fisher data will be shared with 3rd parties without express consent\n        of the fisher, however aggregated catch data for all fishers together may be published. (e.g. Total kg Snoek catch recorded in South Africa in Nov 2016.) If you allocate some of your catch to the co-op, the co-op will be able to receive that information.\n        You will always be able to access your own data on the Abalobi system.\n      </b>\n    </p>\n\n    <ion-list text-wrap id="terms-agree-checkbox">\n            <ion-item>\n                <ion-label> * I Agree</ion-label>\n                <ion-checkbox [(ngModel)]="terms_status.terms_use_agreed"></ion-checkbox>\n            </ion-item>\n    </ion-list>\n\n\n  <p text-wrap style="text-align:center;padding-left:0.5em;padding-right:0.5em">\n      <b> I further consent to share my data with the following parties (tick where applicable):</b>\n    </p>\n\n    <ion-list text-wrap id="termsOfUse-list2">\n            <ion-item>\n                  <ion-label> Abalobi Local Fisher Assistant</ion-label>\n                  <ion-checkbox [(ngModel)]="terms_status.terms_assistant_agreed"></ion-checkbox>\n            </ion-item>\n\n            <ion-item>\n                  <ion-label > DAFF (Department of Agriculture, Forestry and Fisheries)</ion-label>\n                  <ion-checkbox [(ngModel)]="terms_status.terms_DAFF_agreed"></ion-checkbox>\n            </ion-item>\n    </ion-list>\n\n    <button ion-button full  (click)="onFisherFinishTerms()">Next</button>\n\n</ion-content>\n'/*ion-inline-end:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-useterms/fisher-useterms.html"*/,
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__providers_FisherService__["a" /* FisherService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_FisherService__["a" /* FisherService */]) === "function" && _c || Object])
+    ], FisherUsetermsPage);
+    return FisherUsetermsPage;
+    var _a, _b, _c;
+}());
+
+//# sourceMappingURL=fisher-useterms.js.map
 
 /***/ }),
 
-/***/ 105:
+/***/ 107:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FisherPersonalPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fisher_community_fisher_community__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fisher_community_fisher_community__ = __webpack_require__(103);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_FisherService__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__classes_personal_info_class__ = __webpack_require__(166);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -177,127 +302,6 @@ var FisherPersonalPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 106:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FisherRolePage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fisher_useterms_fisher_useterms__ = __webpack_require__(107);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_FisherService__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__classes_role_info_class__ = __webpack_require__(269);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-//Imported service
-
-//Imported non-page classes
-
-var FisherRolePage = /** @class */ (function () {
-    function FisherRolePage(navCtrl, navParams, fisherService) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.fisherService = fisherService;
-        this.role = new __WEBPACK_IMPORTED_MODULE_4__classes_role_info_class__["a" /* RoleInfoClass */]();
-    }
-    FisherRolePage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad FisherRolePage');
-    };
-    FisherRolePage.prototype.nextFromFisherRole = function () {
-        //TODO
-        //create a promise  here
-        //On success
-        this.fisherService.fisherUpdateRole(this.role);
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__fisher_useterms_fisher_useterms__["a" /* FisherUsetermsPage */]);
-    };
-    FisherRolePage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-fisher-role',template:/*ion-inline-start:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-role/fisher-role.html"*/'<!--\n  Generated template for the FisherRolePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Abalobi Register</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content title="Abalobi Register-role" id="fisher-role-form">\n\n    <p text-wrap style="text-align:center;padding-left:0.5em;padding-right:0.5em;background-color:#33CEFF;color:#FFFFFF;padding-left:0.5em">\n      <b>Select \'Fisher\' if you are a fisher wanting to record and view your catch data using Abalobi.</b>\n    </p>\n\n\n  <ion-list radio-group>\n\n          <ion-item>\n              <ion-label>Fisher</ion-label>\n              <ion-radio ></ion-radio>\n          </ion-item>\n\n          <ion-item>\n              <ion-label>Fisher Assistant</ion-label>\n              <ion-radio ></ion-radio>\n          </ion-item>\n  </ion-list>\n\n  <button ion-button full  (click)="nextFromFisherRole()">Next</button>\n\n</ion-content>\n'/*ion-inline-end:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-role/fisher-role.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_FisherService__["a" /* FisherService */]])
-    ], FisherRolePage);
-    return FisherRolePage;
-}());
-
-//# sourceMappingURL=fisher-role.js.map
-
-/***/ }),
-
-/***/ 107:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FisherUsetermsPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fisher_personal_fisher_personal__ = __webpack_require__(105);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_FisherService__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__classes_fisher_useterms_class__ = __webpack_require__(268);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-//Imported page classes
-
-//Imported services
-
-//Imported non-page classes
-
-var FisherUsetermsPage = /** @class */ (function () {
-    function FisherUsetermsPage(navCtrl, navParams, fisherService) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.fisherService = fisherService;
-        this.terms_status = new __WEBPACK_IMPORTED_MODULE_4__classes_fisher_useterms_class__["a" /* FisherUsetermsClass */]();
-    }
-    FisherUsetermsPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad FisherUsetermsPage');
-    };
-    FisherUsetermsPage.prototype.toggleAgree = function () {
-        this.terms_status.terms_use_agreed = !this.terms_status.terms_use_agreed;
-    };
-    FisherUsetermsPage.prototype.toggleDAFF = function () {
-        this.terms_status.terms_DAFF_agreed = !this.terms_status.terms_DAFF_agreed;
-    };
-    FisherUsetermsPage.prototype.toggleAssistant = function () {
-        this.terms_status.terms_assistant_agreed = !this.terms_status.terms_assistant_agreed;
-    };
-    FisherUsetermsPage.prototype.onFisherFinishTerms = function () {
-        //TODO
-        //promise to update terms
-        this.fisherService.fisherUpdateTerms(this.terms_status);
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__fisher_personal_fisher_personal__["a" /* FisherPersonalPage */]);
-    };
-    FisherUsetermsPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-fisher-useterms',template:/*ion-inline-start:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-useterms/fisher-useterms.html"*/'<!--\n  Generated template for the FisherUsetermsPage page.\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n\n<ion-header>\n        <ion-navbar>\n            <ion-title>Terms of Use</ion-title>\n        </ion-navbar>\n</ion-header>\n\n<ion-content title="Terms of Use" id="fisher-terms-form">\n\n    <p text-wrap style="text-align:center;padding-left:0.5em;padding-right:0.5em"><!--style="padding-left:0.5em;padding-right:0.5em;text-align: center"-->\n      <b>In order to maintain the Abalobi system it is possible for the core Abalobi team to access all data, however all data submitted will be treated with the utmost privacy. No individual fisher data will be shared with 3rd parties without express consent\n        of the fisher, however aggregated catch data for all fishers together may be published. (e.g. Total kg Snoek catch recorded in South Africa in Nov 2016.) If you allocate some of your catch to the co-op, the co-op will be able to receive that information.\n        You will always be able to access your own data on the Abalobi system.\n      </b>\n    </p>\n\n    <ion-list text-wrap id="terms-agree-checkbox">\n            <ion-item>\n                <ion-label> * I Agree</ion-label>\n                <ion-checkbox [(ngModel)]="terms_status.terms_use_agreed"></ion-checkbox>\n            </ion-item>\n    </ion-list>\n\n\n  <p text-wrap style="text-align:center;padding-left:0.5em;padding-right:0.5em">\n      <b> I further consent to share my data with the following parties (tick where applicable):</b>\n    </p>\n\n    <ion-list text-wrap id="termsOfUse-list2">\n            <ion-item>\n                  <ion-label> Abalobi Local Fisher Assistant</ion-label>\n                  <ion-checkbox [(ngModel)]="terms_status.terms_assistant_agreed"></ion-checkbox>\n            </ion-item>\n\n            <ion-item>\n                  <ion-label > DAFF (Department of Agriculture, Forestry and Fisheries)</ion-label>\n                  <ion-checkbox [(ngModel)]="terms_status.terms_DAFF_agreed"></ion-checkbox>\n            </ion-item>\n    </ion-list>\n\n    <button ion-button full  (click)="onFisherFinishTerms()">Next</button>\n\n</ion-content>\n'/*ion-inline-end:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-useterms/fisher-useterms.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_FisherService__["a" /* FisherService */]])
-    ], FisherUsetermsPage);
-    return FisherUsetermsPage;
-}());
-
-//# sourceMappingURL=fisher-useterms.js.map
-
-/***/ }),
-
 /***/ 120:
 /***/ (function(module, exports) {
 
@@ -320,19 +324,19 @@ webpackEmptyAsyncContext.id = 120;
 
 var map = {
 	"../pages/fisher-community/fisher-community.module": [
-		297,
+		296,
 		4
 	],
 	"../pages/fisher-confirm/fisher-confirm.module": [
-		296,
+		297,
 		3
 	],
 	"../pages/fisher-personal/fisher-personal.module": [
-		298,
+		299,
 		2
 	],
 	"../pages/fisher-role/fisher-role.module": [
-		299,
+		298,
 		1
 	],
 	"../pages/fisher-useterms/fisher-useterms.module": [
@@ -374,6 +378,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var Registree = /** @class */ (function () {
     function Registree() {
+        //Role details
+        this.role = ""; //RoleInfoClass;
         //Personal details
         this.surname = "";
         this.firstname = "";
@@ -427,7 +433,7 @@ var PersonalInfoClass = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__marketplace_home_marketplace_home__ = __webpack_require__(211);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__fisher_role_fisher_role__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__fisher_role_fisher_role__ = __webpack_require__(105);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -801,11 +807,11 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_status_bar__ = __webpack_require__(209);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_component__ = __webpack_require__(295);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_home_home__ = __webpack_require__(210);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_fisher_community_fisher_community__ = __webpack_require__(104);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_fisher_confirm_fisher_confirm__ = __webpack_require__(103);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_fisher_personal_fisher_personal__ = __webpack_require__(105);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_fisher_role_fisher_role__ = __webpack_require__(106);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_fisher_useterms_fisher_useterms__ = __webpack_require__(107);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_fisher_community_fisher_community__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_fisher_confirm_fisher_confirm__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_fisher_personal_fisher_personal__ = __webpack_require__(107);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_fisher_role_fisher_role__ = __webpack_require__(105);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_fisher_useterms_fisher_useterms__ = __webpack_require__(106);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_marketplace_home_marketplace_home__ = __webpack_require__(211);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_after_register_after_register__ = __webpack_require__(213);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__providers_MarketplaceService__ = __webpack_require__(212);
@@ -862,10 +868,10 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["c" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* MyApp */], {}, {
                     links: [
-                        { loadChildren: '../pages/fisher-confirm/fisher-confirm.module#FisherConfirmPageModule', name: 'FisherConfirmPage', segment: 'fisher-confirm', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/fisher-community/fisher-community.module#FisherCommunityPageModule', name: 'FisherCommunityPage', segment: 'fisher-community', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/fisher-personal/fisher-personal.module#FisherPersonalPageModule', name: 'FisherPersonalPage', segment: 'fisher-personal', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/fisher-confirm/fisher-confirm.module#FisherConfirmPageModule', name: 'FisherConfirmPage', segment: 'fisher-confirm', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/fisher-role/fisher-role.module#FisherRolePageModule', name: 'FisherRolePage', segment: 'fisher-role', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/fisher-personal/fisher-personal.module#FisherPersonalPageModule', name: 'FisherPersonalPage', segment: 'fisher-personal', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/fisher-useterms/fisher-useterms.module#FisherUsetermsPageModule', name: 'FisherUsetermsPage', segment: 'fisher-useterms', priority: 'low', defaultHistory: [] }
                     ]
                 }),
@@ -906,9 +912,9 @@ var AppModule = /** @class */ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CommunityInfoClass; });
+//import {ProvinceClass} from "./province_class";
 var CommunityInfoClass = /** @class */ (function () {
     function CommunityInfoClass() {
-        this.comm_province = "";
     }
     return CommunityInfoClass;
 }());
@@ -929,21 +935,6 @@ var FisherUsetermsClass = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=fisher-useterms_class.js.map
-
-/***/ }),
-
-/***/ 269:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RoleInfoClass; });
-var RoleInfoClass = /** @class */ (function () {
-    function RoleInfoClass() {
-    }
-    return RoleInfoClass;
-}());
-
-//# sourceMappingURL=role_info_class.js.map
 
 /***/ }),
 
@@ -1057,12 +1048,17 @@ var FisherService = /** @class */ (function () {
     FisherService.prototype.fisherSubmitRegistration = function () {
         console.log("Fisher Service Printing Entered Data !!");
         console.log(this.registree);
+        console.log("Fisher Role Data !!");
+        console.log(this.registree.role);
+        console.log("Fisher Province Data !!");
+        console.log(this.registree.province);
     };
     FisherService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2__classes_registree_class__["a" /* Registree */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__classes_registree_class__["a" /* Registree */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__classes_registree_class__["a" /* Registree */]) === "function" && _b || Object])
     ], FisherService);
     return FisherService;
+    var _a, _b;
 }()); //end class
 
 //# sourceMappingURL=FisherService.js.map
