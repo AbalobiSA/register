@@ -18,6 +18,7 @@ function isInThisProvince(comms: CommunityClass, provinceFull : string){
     return  this.province_abbrev == getProvinceAbbrev(provinceFull);
 }
 
+//TODO- provinces would have to be added as they arise
 function getProvinceAbbrev(province: string): string {
 
     switch(province){
@@ -81,6 +82,7 @@ export class FisherCommunityPage {
                 ],
         }
 
+      }
 
         constructor (public navCtrl: NavController, public navParams: NavParams, public fisherService : FisherService, public formBuilder: FormBuilder) {
                 this.communityForm = this.formBuilder.group({
@@ -135,6 +137,7 @@ export class FisherCommunityPage {
 
         ionViewDidLoad() {
                 console.log("ionViewDidLoad FisherCommunityPage") ;
+
                 //package the info needed by the confirmation page for propagation ahead to the register page
                 this.confirm_personal = {
                         surname     : <string> this.navParams.get('personal_surname'),
@@ -184,7 +187,8 @@ export class FisherCommunityPage {
 ];
 
 
-    //Can be implemented more elegantly with filter() function, just havent figure out how yet
+    //TODO - improve this implementation to use the fiter() function
+    //TODO - there may be need to sort the list as well, for now the list happens to be sorted already.
      filterComms(comms: CommunityClass[], provinceFull :string): CommunityClass [] {
         let filtered :  CommunityClass []= [];
         for(let i =0;i< comms.length;i++){

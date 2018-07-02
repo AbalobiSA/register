@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
 
 //Imported services
 import{FisherService} from "../../providers/FisherService";
@@ -24,7 +24,7 @@ import {FisherRegisterFailurePage} from "../fisher-register-failure/fisher-regis
     fisher: Fisher;
 
 
-    constructor( public navParams: NavParams, public fisherService: FisherService,public navController: NavController) {
+    constructor( public loadingCtrl: LoadingController, public navParams: NavParams, public fisherService: FisherService,public navController: NavController) {
     }
 
     ionViewDidLoad() {
@@ -37,14 +37,26 @@ import {FisherRegisterFailurePage} from "../fisher-register-failure/fisher-regis
 
     onFisherSubmit() {
 
-        //this.navController.push(FisherRegisterSuccessPage);
+        //TODO - consider improving such that the pages persists the data in storage so user can come back and edit
+        // TODO - currently, if registration fails, user has to start all over again
+
+        //TODO - The loading controller works perfect but the the spinner is not showing
+        let reg = this.loadingCtrl.create({
+                spinner             : 'Show iOS',
+                content             : 'Registration in progress..',
+                dismissOnPageChange : true,
+                showBackdrop        : true
+
+        });
+
+        reg.present();
 
         this.fisher = this.fisherService.fisherBuild();
 
         this.fisherService.checkIfFisherAlreadyExists(this.fisher.id)//first promise check if the ID number has already been taken
            .then(()=>{//ID is unique
                //Go ahead and attempt to register unique fisher
-               //alert('ID number is unique');//<---------------------------show progress indicator here
+               //alert('ID number is unique');
                this.fisherService.registerFisher(this.fisher)//attempts to register user
                    .then (()=> {
 
@@ -62,10 +74,5 @@ import {FisherRegisterFailurePage} from "../fisher-register-failure/fisher-regis
                 this.navController.push(FisherNotUniquePage);
             })
     }//end method onFisherSubmit
-
-
-
-
-
 
 }//end class

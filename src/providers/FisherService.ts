@@ -3,6 +3,7 @@ import {HttpClient,HttpParams} from "@angular/common/http";
 
 //Imported non-page classes
 import {Registree}              from "../classes/registree_class";
+import {RoleInfoClass}          from "../classes/role_info_class";
 import{FisherUsetermsClass}     from "../classes/fisher-useterms_class";
 import {PersonalInfoClass}      from "../classes/personal_info_class";
 import {CommunityInfoClass}     from "../classes/community_info_class";
@@ -23,12 +24,16 @@ export class FisherService {
 
   fisherUpdateRole(role_info     : string) {
         this.registree.role = role_info;
+        //update the registree in storage;--return a promise
+        console.log("Fisher Service successfully updates role");
   }
 
   fisherUpdateTerms(terms_status  : FisherUsetermsClass){
         this.registree.terms_agreed       = terms_status.terms_use_agreed;
         this.registree.assistant_agreed   = terms_status.terms_assistant_agreed;
         this.registree.DAFF_agreed        = terms_status.terms_DAFF_agreed;
+        //update the registree in storage;
+        console.log("Fisher Service successfully updates terms of use");
   }
 
   fisherUpdatePersonal(personal_info : PersonalInfoClass){
@@ -40,6 +45,8 @@ export class FisherService {
         this.registree.IDnum      = personal_info.personal_IDnum;
         this.registree.cellNo     = personal_info.personal_cellNo;
         this.registree.password   = personal_info.personal_password1;//only use one copy of the 2 identical passwords
+        //update the registree in storage;
+        console.log("Fisher Service successfully updates personal info");
 
   }
 
@@ -61,8 +68,8 @@ export class FisherService {
    fisherBuild() : Fisher{
         let fisher = new Fisher();
         this.parseFisher(fisher);
-        console.log("Service says 'This fisher has been created'");
-        console.log(fisher);
+        //console.log("Service says 'This fisher has been created'");
+        //console.log(fisher);
         return fisher;
     }//end SubmitRegistration
 
