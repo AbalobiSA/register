@@ -22,6 +22,7 @@ export class Registree{
 
         //Community details
         province              :string="";
+        community             :string="";
         comm_not_listed       :boolean=false;
         IRP_selected          :boolean=false;
         commercial_selected   :boolean=false;

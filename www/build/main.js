@@ -4,68 +4,13 @@ webpackJsonp([5],{
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FisherPersonalPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fisher_community_fisher_community__ = __webpack_require__(104);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_FisherService__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__classes_personal_info_class__ = __webpack_require__(166);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-//Imported page classes
-
-//Imported services
-
-//Imported non-page classes
-
-var FisherPersonalPage = /** @class */ (function () {
-    function FisherPersonalPage(navCtrl, navParams, fisherService) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.fisherService = fisherService;
-        this.personal_info = new __WEBPACK_IMPORTED_MODULE_4__classes_personal_info_class__["a" /* PersonalInfoClass */]();
-    }
-    FisherPersonalPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad FisherPersonalPage');
-    };
-    FisherPersonalPage.prototype.onFisherFinishPersonal = function () {
-        //TODO
-        //introduce promise here
-        this.fisherService.fisherUpdatePersonal(this.personal_info);
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__fisher_community_fisher_community__["a" /* FisherCommunityPage */], this.personal_info);
-    };
-    FisherPersonalPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-fisher-personal',template:/*ion-inline-start:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-personal/fisher-personal.html"*/'<!--\n  Generated template for the FisherPersonalPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <ion-title>Abalobi Register</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n\n\n<!--ion-input-- [(ngModel)]="surname" name="surname" type="text" placeholder="e.g. Smith"></ion-input-->\n\n<ion-content title="fisher-personal-form" id="page5">\n\n\n  <form >\n          <ion-item>\n                  <ion-label stacked>* Surname</ion-label>\n                  <ion-input [(ngModel)]="personal_info.personal_surname" type="text" name= "surname" placeholder="Enter your surname here"></ion-input>\n          </ion-item>\n\n\n          <ion-item>\n                  <ion-label stacked>* First Name</ion-label>\n                  <ion-input [(ngModel)]="personal_info.personal_firstname" type="text" name="first_name" placeholder="Enter your name here"></ion-input>\n          </ion-item>\n\n\n          <ion-item>\n                  <ion-label stacked>* Nickname</ion-label>\n                  <ion-input [(ngModel)]="personal_info.personal_nickname" type="text" name ="nickname" placeholder="What do people usually call you?"></ion-input>\n          </ion-item>\n\n\n          <ion-item>\n                  <ion-label stacked>* Gender (Required)\n                  </ion-label>\n                        <ion-select [(ngModel)]="personal_info.personal_gender" [ngModelOptions]="{standalone:true}">\n                                  <ion-option>Male</ion-option>\n                                  <ion-option>Female</ion-option>\n                        </ion-select>\n          </ion-item>\n\n\n          <ion-item>\n                      <ion-label stacked>* ID Number</ion-label>\n                      <ion-input [(ngModel)]="personal_info.personal_IDnum" type="text" name="id_num" placeholder="Enter your ID Number here"></ion-input>\n          </ion-item>\n\n\n          <ion-item>\n                      <ion-label stacked>* Personal Cellphone Number</ion-label>\n                      <ion-input [(ngModel)]="personal_info.personal_cellNo" type="tel" name="cellNo" placeholder="Enter your cell number here"></ion-input>\n          </ion-item>\n\n\n          <ion-item>\n                      <ion-label stacked>* Password</ion-label>\n                      <ion-input [(ngModel)]="personal_info.personal_password1" type="password" name="password1" placeholder="Please choose a password"></ion-input>\n          </ion-item>\n\n\n          <ion-item>\n                      <ion-label stacked>* Re-type password</ion-label>\n                      <ion-input [(ngModel)]="personal_info.personal_password2" type="password" name="password2" placeholder="Please re-type password"></ion-input>\n          </ion-item>\n\n  </form>\n\n\n\n  <button ion-button full  (click)="onFisherFinishPersonal()">Next</button>\n</ion-content>\n'/*ion-inline-end:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-personal/fisher-personal.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_FisherService__["a" /* FisherService */]])
-    ], FisherPersonalPage);
-    return FisherPersonalPage;
-}()); //end class
-
-//# sourceMappingURL=fisher-personal.js.map
-
-/***/ }),
-
-/***/ 104:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FisherCommunityPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fisher_confirm_fisher_confirm__ = __webpack_require__(105);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fisher_confirm_fisher_confirm__ = __webpack_require__(104);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_FisherService__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__classes_community_info_class__ = __webpack_require__(267);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__classes_community_class__ = __webpack_require__(317);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -82,14 +27,61 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 //Imported services
 
 //Imported non-page classes
+
 
 var FisherCommunityPage = /** @class */ (function () {
     function FisherCommunityPage(navCtrl, navParams, fisherService) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.fisherService = fisherService;
+        this.all_comms = [];
         this.community_info = new __WEBPACK_IMPORTED_MODULE_4__classes_community_info_class__["a" /* CommunityInfoClass */]();
         this.confirm_personal = new Object();
+        //TODO -- improve this to read these communities from a csv file/from an API call
+        this.list_of_communities = [
+            "name_eng__c,province_abbreviation__c,unique_ext_id__c",
+            "Ocean View,WC,ocean_view",
+            "Lamberts Bay,WC,lambertsbaai",
+            "Struis Bay,WC,struisbaai",
+            "Kleinmond,WC,kleinmond",
+            "Port Nolloth,NC,portnolloth",
+            "Hondeklip Bay,NC,hondeklipbaai",
+            "Saint Helena,WC,sainthelena",
+            "Doring Bay,WC,doringbaai",
+            "Olifants,WC,olifants",
+            "Elands Bay,WC,elandsbaai",
+            "Demo Community,WC,democommunity",
+            "Muizenberg,WC,muizenberg",
+            "Bellville,WC,bellville",
+            "Hermanus,WC,hermanus",
+            "Kalk Bay,WC,kalk_bay",
+            "Grassy Park,WC,grassy_park",
+            "Strand,WC,strand",
+            "Strandfontein (False Bay),WC,strandfontein_falsebay",
+            "Hout Bay,WC,hout_bay",
+            "Simon's Town,WC,simonstown",
+            "Gordon's Bay,WC,gordons_bay",
+            "Arniston,WC,arniston",
+            "St Helena Island,SHI,sainthelenaisland",
+            "Langebaan,WC,langebaan",
+            "Paternoster,WC,paternoster",
+            "Bettys Bay,WC,bettysbay",
+            "Pringle Bay,WC,pringlebay",
+            "Cape Town,WC,capetown",
+            "Coffee Bay,KZN,coffeebay"
+        ];
+        //construct the list of all communities upon and instantiate once
+        for (var i = 1; i < this.list_of_communities.length; i++) {
+            var line = (this.list_of_communities[i]).split(",");
+            console.log("English name is");
+            console.log(line[0]);
+            console.log("Province abb is");
+            console.log(line[1]);
+            console.log("Community unique code is");
+            console.log(line[2]);
+            this.all_comms.push(new __WEBPACK_IMPORTED_MODULE_5__classes_community_class__["a" /* CommunityClass */](line[0], line[1], line[2]));
+            console.log("FisherCommunityPage !!!!!!!!!!!!!!!!!!!!!!!");
+        }
     }
     FisherCommunityPage.prototype.ionViewDidLoad = function () {
         console.log("ionViewDidLoad FisherCommunityPage");
@@ -109,18 +101,19 @@ var FisherCommunityPage = /** @class */ (function () {
     };
     FisherCommunityPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-fisher-community',template:/*ion-inline-start:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-community/fisher-community.html"*/'<!--\n  Generated template for the FisherCommunityPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n        <ion-navbar>\n              <ion-title>Abalobi Register</ion-title>\n        </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n\n        <p style="text-align:center"><b>Community / Landing</b></p>\n\n        <ion-item>\n                  <ion-label>Please select  your province\n                  </ion-label>\n                            <ion-select [(ngModel)]="community_info.comm_province">\n                                      <ion-option>Western Cape</ion-option>\n                                      <ion-option>Northern Cape</ion-option>\n                                      <ion-option>Eastern Cape</ion-option>\n                                      <ion-option> North West</ion-option>\n                                      <ion-option>Mpumalanga</ion-option>\n                                      <ion-option>Limpopo</ion-option>\n                                      <ion-option>Gauteng</ion-option>\n                                      <ion-option>Free State</ion-option>\n                                      <ion-option>KwaZulu-Natal</ion-option>\n\n                            </ion-select>\n        </ion-item>\n\n\n        <ion-list text-wrap>\n                <ion-item>\n                        <ion-label> My community is not on the list</ion-label>\n                        <ion-checkbox [(ngModel)]="community_info.comm_not_listed"></ion-checkbox>\n                </ion-item>\n        </ion-list>\n\n        <p style="text-align:center"><b>Do you have a fishing permit ?</b></p>\n\n\n        <ion-list >\n                <ion-item>\n                      <ion-label> IRP / Exemption</ion-label>\n                      <ion-checkbox [(ngModel)]="community_info.comm_IRP_chosen"></ion-checkbox>\n                </ion-item>\n\n                <ion-item>\n                      <ion-label> Commercial</ion-label>\n                      <ion-checkbox [(ngModel)]="community_info.comm_commercial_chosen"></ion-checkbox>\n                </ion-item>\n\n                <ion-item>\n                      <ion-label> Recreational</ion-label>\n                      <ion-checkbox [(ngModel)]="community_info.comm_recreational_chosen"></ion-checkbox>\n                </ion-item>\n\n                <ion-item>\n                        <ion-label> Other</ion-label>\n                        <ion-checkbox [(ngModel)]="community_info.comm_other_chosen"></ion-checkbox>\n                </ion-item>\n\n        </ion-list>\n\n\n        <button ion-button full  (click)="onFisherFinishCommunity()">Next</button>\n</ion-content>\n'/*ion-inline-end:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-community/fisher-community.html"*/,
+            selector: 'page-fisher-community',template:/*ion-inline-start:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-community/fisher-community.html"*/'<!--\n  Generated template for the FisherCommunityPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n        <ion-navbar>\n              <ion-title>Abalobi Register</ion-title>\n        </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n\n        <p style="text-align:center"><b>Community / Landing</b></p>\n\n        <ion-item>\n                  <ion-label text-wrap>Please select  your province\n                  </ion-label>\n                            <ion-select text-wrap [(ngModel)]="community_info.comm_province">\n                                      <ion-option>Western Cape</ion-option>\n                                      <ion-option>Northern Cape</ion-option>\n                                      <ion-option>Eastern Cape</ion-option>\n                                      <ion-option> North West</ion-option>\n                                      <ion-option>Mpumalanga</ion-option>\n                                      <ion-option>Limpopo</ion-option>\n                                      <ion-option>Gauteng</ion-option>\n                                      <ion-option>Free State</ion-option>\n                                      <ion-option>KwaZulu-Natal</ion-option>\n\n                            </ion-select>\n        </ion-item>\n\n\n        <ion-item>\n                <ion-label >Please select  your community\n                </ion-label>\n                            <ion-select [(ngModel)]="community_info.comm_community">\n                                    <ion-option *ngFor="let c of all_comms">{{c.name_eng}}</ion-option>\n                            </ion-select>\n        </ion-item>\n\n\n        <ion-list text-wrap>\n                <ion-item>\n                        <ion-label text-wrap > My community is not on the list</ion-label>\n                        <ion-checkbox [(ngModel)]="community_info.comm_not_listed"></ion-checkbox>\n                </ion-item>\n        </ion-list>\n\n        <p style="text-align:center"><b>Do you have a fishing permit ?</b></p>\n\n\n        <ion-list >\n                <ion-item>\n                      <ion-label> IRP / Exemption</ion-label>\n                      <ion-checkbox [(ngModel)]="community_info.comm_IRP_chosen"></ion-checkbox>\n                </ion-item>\n\n                <ion-item>\n                      <ion-label> Commercial</ion-label>\n                      <ion-checkbox [(ngModel)]="community_info.comm_commercial_chosen"></ion-checkbox>\n                </ion-item>\n\n                <ion-item>\n                      <ion-label> Recreational</ion-label>\n                      <ion-checkbox [(ngModel)]="community_info.comm_recreational_chosen"></ion-checkbox>\n                </ion-item>\n\n                <ion-item>\n                        <ion-label> Other</ion-label>\n                        <ion-checkbox [(ngModel)]="community_info.comm_other_chosen"></ion-checkbox>\n                </ion-item>\n\n        </ion-list>\n\n\n        <button ion-button full  (click)="onFisherFinishCommunity()">Next</button>\n</ion-content>\n'/*ion-inline-end:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-community/fisher-community.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_FisherService__["a" /* FisherService */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__providers_FisherService__["a" /* FisherService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_FisherService__["a" /* FisherService */]) === "function" && _c || Object])
     ], FisherCommunityPage);
     return FisherCommunityPage;
+    var _a, _b, _c;
 }()); //end class
 
 //# sourceMappingURL=fisher-community.js.map
 
 /***/ }),
 
-/***/ 105:
+/***/ 104:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -174,6 +167,62 @@ var FisherConfirmPage = /** @class */ (function () {
 }()); //end class
 
 //# sourceMappingURL=fisher-confirm.js.map
+
+/***/ }),
+
+/***/ 105:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FisherPersonalPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fisher_community_fisher_community__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_FisherService__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__classes_personal_info_class__ = __webpack_require__(166);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+//Imported page classes
+
+//Imported services
+
+//Imported non-page classes
+
+var FisherPersonalPage = /** @class */ (function () {
+    function FisherPersonalPage(navCtrl, navParams, fisherService) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.fisherService = fisherService;
+        this.personal_info = new __WEBPACK_IMPORTED_MODULE_4__classes_personal_info_class__["a" /* PersonalInfoClass */]();
+    }
+    FisherPersonalPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad FisherPersonalPage');
+    };
+    FisherPersonalPage.prototype.onFisherFinishPersonal = function () {
+        //TODO
+        //introduce promise here
+        this.fisherService.fisherUpdatePersonal(this.personal_info);
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__fisher_community_fisher_community__["a" /* FisherCommunityPage */], this.personal_info);
+    };
+    FisherPersonalPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'page-fisher-personal',template:/*ion-inline-start:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-personal/fisher-personal.html"*/'<!--\n  Generated template for the FisherPersonalPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <ion-title>Abalobi Register</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n\n\n<!--ion-input-- [(ngModel)]="surname" name="surname" type="text" placeholder="e.g. Smith"></ion-input-->\n\n<ion-content title="fisher-personal-form" id="page5">\n\n\n  <form >\n          <ion-item>\n                  <ion-label stacked>* Surname</ion-label>\n                  <ion-input [(ngModel)]="personal_info.personal_surname" type="text" name= "surname" placeholder="Enter your surname here"></ion-input>\n          </ion-item>\n\n\n          <ion-item>\n                  <ion-label stacked>* First Name</ion-label>\n                  <ion-input [(ngModel)]="personal_info.personal_firstname" type="text" name="first_name" placeholder="Enter your name here"></ion-input>\n          </ion-item>\n\n\n          <ion-item>\n                  <ion-label stacked>* Nickname</ion-label>\n                  <ion-input [(ngModel)]="personal_info.personal_nickname" type="text" name ="nickname" placeholder="What do people usually call you?"></ion-input>\n          </ion-item>\n\n\n          <ion-item>\n                  <ion-label stacked>* Gender (Required)\n                  </ion-label>\n                        <ion-select [(ngModel)]="personal_info.personal_gender" [ngModelOptions]="{standalone:true}">\n                                  <ion-option>Male</ion-option>\n                                  <ion-option>Female</ion-option>\n                        </ion-select>\n          </ion-item>\n\n\n          <ion-item>\n                      <ion-label stacked>* ID Number</ion-label>\n                      <ion-input [(ngModel)]="personal_info.personal_IDnum" type="text" name="id_num" placeholder="Enter your ID Number here"></ion-input>\n          </ion-item>\n\n\n          <ion-item>\n                      <ion-label stacked>* Personal Cellphone Number</ion-label>\n                      <ion-input [(ngModel)]="personal_info.personal_cellNo" type="tel" name="cellNo" placeholder="Enter your cell number here"></ion-input>\n          </ion-item>\n\n\n          <ion-item>\n                      <ion-label stacked>* Password</ion-label>\n                      <ion-input [(ngModel)]="personal_info.personal_password1" type="password" name="password1" placeholder="Please choose a password"></ion-input>\n          </ion-item>\n\n\n          <ion-item>\n                      <ion-label stacked>* Re-type password</ion-label>\n                      <ion-input [(ngModel)]="personal_info.personal_password2" type="password" name="password2" placeholder="Please re-type password"></ion-input>\n          </ion-item>\n\n  </form>\n\n\n\n  <button ion-button full  (click)="onFisherFinishPersonal()">Next</button>\n</ion-content>\n'/*ion-inline-end:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-personal/fisher-personal.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_FisherService__["a" /* FisherService */]])
+    ], FisherPersonalPage);
+    return FisherPersonalPage;
+}()); //end class
+
+//# sourceMappingURL=fisher-personal.js.map
 
 /***/ }),
 
@@ -239,7 +288,7 @@ var FisherRolePage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FisherUsetermsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fisher_personal_fisher_personal__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fisher_personal_fisher_personal__ = __webpack_require__(105);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_FisherService__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__classes_fisher_useterms_class__ = __webpack_require__(268);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -322,19 +371,19 @@ webpackEmptyAsyncContext.id = 120;
 
 var map = {
 	"../pages/fisher-community/fisher-community.module": [
-		296,
+		295,
 		4
 	],
 	"../pages/fisher-confirm/fisher-confirm.module": [
-		298,
+		296,
 		3
 	],
 	"../pages/fisher-personal/fisher-personal.module": [
-		295,
+		297,
 		2
 	],
 	"../pages/fisher-role/fisher-role.module": [
-		297,
+		298,
 		1
 	],
 	"../pages/fisher-useterms/fisher-useterms.module": [
@@ -377,7 +426,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var Registree = /** @class */ (function () {
     function Registree() {
         //Role details
-        this.role = ""; //RoleInfoClass;
+        this.role = "";
+        //Terms of use details
+        this.terms_agreed = false;
+        this.assistant_agreed = false;
+        this.DAFF_agreed = false;
         //Personal details
         this.surname = "";
         this.firstname = "";
@@ -388,6 +441,11 @@ var Registree = /** @class */ (function () {
         this.password = "";
         //Community details
         this.province = "";
+        this.comm_not_listed = false;
+        this.IRP_selected = false;
+        this.commercial_selected = false;
+        this.recreational_selected = false;
+        this.other_seleted = false;
     }
     Registree = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
@@ -805,9 +863,9 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_status_bar__ = __webpack_require__(209);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_component__ = __webpack_require__(294);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_home_home__ = __webpack_require__(210);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_fisher_community_fisher_community__ = __webpack_require__(104);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_fisher_confirm_fisher_confirm__ = __webpack_require__(105);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_fisher_personal_fisher_personal__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_fisher_community_fisher_community__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_fisher_confirm_fisher_confirm__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_fisher_personal_fisher_personal__ = __webpack_require__(105);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_fisher_role_fisher_role__ = __webpack_require__(106);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_fisher_useterms_fisher_useterms__ = __webpack_require__(107);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_marketplace_home_marketplace_home__ = __webpack_require__(211);
@@ -866,10 +924,10 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["c" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* MyApp */], {}, {
                     links: [
-                        { loadChildren: '../pages/fisher-personal/fisher-personal.module#FisherPersonalPageModule', name: 'FisherPersonalPage', segment: 'fisher-personal', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/fisher-community/fisher-community.module#FisherCommunityPageModule', name: 'FisherCommunityPage', segment: 'fisher-community', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/fisher-role/fisher-role.module#FisherRolePageModule', name: 'FisherRolePage', segment: 'fisher-role', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/fisher-confirm/fisher-confirm.module#FisherConfirmPageModule', name: 'FisherConfirmPage', segment: 'fisher-confirm', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/fisher-personal/fisher-personal.module#FisherPersonalPageModule', name: 'FisherPersonalPage', segment: 'fisher-personal', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/fisher-role/fisher-role.module#FisherRolePageModule', name: 'FisherRolePage', segment: 'fisher-role', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/fisher-useterms/fisher-useterms.module#FisherUsetermsPageModule', name: 'FisherUsetermsPage', segment: 'fisher-useterms', priority: 'low', defaultHistory: [] }
                     ]
                 }),
@@ -910,7 +968,6 @@ var AppModule = /** @class */ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CommunityInfoClass; });
-//import {ProvinceClass} from "./province_class";
 var CommunityInfoClass = /** @class */ (function () {
     function CommunityInfoClass() {
         this.comm_province = "";
@@ -918,6 +975,7 @@ var CommunityInfoClass = /** @class */ (function () {
         this.comm_IRP_chosen = false;
         this.comm_commercial_chosen = false;
         this.comm_recreational_chosen = false;
+        this.comm_other_chosen = false;
     }
     return CommunityInfoClass;
 }());
@@ -990,6 +1048,24 @@ var MyApp = /** @class */ (function () {
 
 /***/ }),
 
+/***/ 317:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CommunityClass; });
+var CommunityClass = /** @class */ (function () {
+    function CommunityClass(inputName, inputProv, inputID) {
+        this.name_eng = inputID;
+        this.province_abbrev = inputProv;
+        this.unique_ext_id = inputID;
+    } //end constructor
+    return CommunityClass;
+}()); //end class
+
+//# sourceMappingURL=community_class.js.map
+
+/***/ }),
+
 /***/ 35:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1022,24 +1098,25 @@ var FisherService = /** @class */ (function () {
     FisherService.prototype.fisherUpdateRole = function (role_info) {
         this.registree.role = role_info;
         //update the registree in storage;--return a promise
-        console.log("Fisher Service successfully updates role");
+        //console.log("Fisher Service successfully updates role");
     };
     FisherService.prototype.fisherUpdateTerms = function (terms_status) {
         this.registree.terms_agreed = terms_status.terms_use_agreed;
         this.registree.assistant_agreed = terms_status.terms_assistant_agreed;
         this.registree.DAFF_agreed = terms_status.terms_DAFF_agreed;
         //update the registree in storage;
-        console.log("Fisher Service successfully updates terms of use");
+        //console.log("Fisher Service successfully updates terms of use");
     };
     FisherService.prototype.fisherUpdatePersonal = function (personal_info) {
         this.registree.surname = personal_info.personal_surname;
         this.registree.firstname = personal_info.personal_firstname;
         this.registree.nickname = personal_info.personal_nickname;
         this.registree.gender = personal_info.personal_gender;
+        this.registree.IDnum = personal_info.personal_IDnum;
         this.registree.cellNo = personal_info.personal_cellNo;
         this.registree.password = personal_info.personal_password1; //only use one copy of the 2 identical passwords
         //update the registree in storage;
-        console.log("Fisher Service successfully updates personal info");
+        //console.log("Fisher Service successfully updates personal info");
     };
     FisherService.prototype.fisherUpdateCommunity = function (community_info) {
         this.registree.province = community_info.comm_province;
@@ -1047,8 +1124,9 @@ var FisherService = /** @class */ (function () {
         this.registree.IRP_selected = community_info.comm_IRP_chosen;
         this.registree.commercial_selected = community_info.comm_commercial_chosen;
         this.registree.recreational_selected = community_info.comm_recreational_chosen;
+        this.registree.other_seleted = community_info.comm_other_chosen;
         //update the registree in storage;
-        console.log("Fisher Service successfully updates community info");
+        //console.log("Fisher Service successfully updates community info");
     };
     //Submit the registree for registration, check if the registration doesn't exist already
     FisherService.prototype.fisherSubmitRegistration = function () {

@@ -49,6 +49,7 @@ export class FisherService {
 
   fisherUpdateCommunity(community_info: CommunityInfoClass){
         this.registree.province                 = community_info.comm_province;
+        this.registree.community                = community_info.comm_community;
         this.registree.comm_not_listed          = community_info.comm_not_listed;
         this.registree.IRP_selected             = community_info.comm_IRP_chosen;
         this.registree.commercial_selected      = community_info.comm_commercial_chosen;
