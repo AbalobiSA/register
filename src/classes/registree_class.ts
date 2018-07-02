@@ -1,35 +1,37 @@
 import{Injectable} from "@angular/core";
-import {RoleInfoClass} from "./role_info_class";
 
 @Injectable()
 export class Registree{
 
-  //Role details
-  role       :  RoleInfoClass;
+        //Role details
+        role       :  string="";
 
-  //Terms of use details
-  terms_agreed      : boolean;
-  assistant_agreed  : boolean;
-  DAFF_agreed       : boolean;
+        //Terms of use details
+        terms_agreed      : boolean=false;
+        assistant_agreed  : boolean=false;
+        DAFF_agreed       : boolean=false;
 
-  //Personal details
-  surname    : string = "";
-  firstname  : string = "";
-  nickname   : string = "";
-  gender     : string = "";
-  IDnum      : string = "";
-  cellNo     : string = "";
-  password   : string = "";
+        //Personal details
+        surname    : string = "";
+        firstname  : string = "";
+        nickname   : string = "";
+        gender     : string = "";
+        IDnum      : string = "";
+        cellNo     : string = "";
+        password   : string = "";
 
-  //Community details
-  province              :string = "";
-  comm_not_listed       :boolean;
-  IRP_selected          :boolean//type of permits
-  commercial_selected   :boolean;
-  recreational_selected :boolean;
+        //Community details
+        province              :string="";
+        community             :string="";
+        custom_community      :string="";
+        comm_not_listed       :boolean=false;
+        IRP_selected          :boolean=false;
+        commercial_selected   :boolean=false;
+        recreational_selected :boolean=false;
+        other_seleted         :boolean=false;
 
-  constructor(){
+        constructor(){
 
-  }
+         }
 
 }//end class registree

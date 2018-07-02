@@ -12,57 +12,95 @@
 
 </ion-header>
 
-<ion-content>
+<ion-content padding>
+        <form [formGroup] = "communityForm">
 
 
-        <p style="text-align:center"><b>Community / Landing</b></p>
-
-        <ion-item>
-                  <ion-label>Please select  your province
-                  </ion-label>
-                            <ion-select>
-                                      <ion-option>Western Cape</ion-option>
-                                      <ion-option>Northern Cape</ion-option>
-                                      <ion-option>Eastern Cape</ion-option>
-                                      <ion-option> North West</ion-option>
-                                      <ion-option>Mpumalanga</ion-option>
-                                      <ion-option>Limpopo</ion-option>
-                                      <ion-option>Gauteng</ion-option>
-                                      <ion-option>Free State</ion-option>
-                                      <ion-option>KwaZulu-Natal</ion-option>
-
-                            </ion-select>
-        </ion-item>
-
-
-        <ion-list text-wrap>
-                <ion-item>
-                        <ion-label> My community is not on the list</ion-label>
-                        <ion-checkbox></ion-checkbox>
-                </ion-item>
-        </ion-list>
-
-        <p style="text-align:center"><b>Do you have a fishing permit ?</b></p>
-
-
-        <ion-list >
-                <ion-item>
-                      <ion-label> IRP / Exemption</ion-label>
-                      <ion-checkbox></ion-checkbox>
-                </ion-item>
+                <p style="text-align:center"><b>Community / Landing</b></p>
 
                 <ion-item>
-                      <ion-label> Commercial</ion-label>
-                      <ion-checkbox></ion-checkbox>
+                        <ion-label text-wrap>Please select  your province
+                        </ion-label>
+                                <ion-select text-wrap formControlName="province" (ionChange)=" provinceChanged()">
+                                        <ion-option value="Western Cape">Western Cape</ion-option>
+                                        <ion-option value="Northern Cape">Northern Cape</ion-option>
+                                        <ion-option value="Eastern Cape">Eastern Cape</ion-option>
+                                        <ion-option value="North West"> North West</ion-option>
+                                        <ion-option value="Mpumalanga">Mpumalanga</ion-option>
+                                        <ion-option value="Limpopo">Limpopo</ion-option>
+                                        <ion-option value="Gauteng">Gauteng</ion-option>
+                                        <ion-option value="Free State">Free State</ion-option>
+                                        <ion-option value="KwaZulu-Natal">KwaZulu-Natal</ion-option>
+                                </ion-select>
                 </ion-item>
 
-                <ion-item>
-                      <ion-label> Recreational</ion-label>
-                      <ion-checkbox></ion-checkbox>
+                <div class="validation-errors">
+                        <ng-container *ngFor="let validation of validation_messages.province" >
+                                <div style="color:red" text-wrap align="center" class="error-message" *ngIf="communityForm.get('province').hasError(validation.type) && (communityForm.get('province').dirty || communityForm.get('province').touched)">
+                                        {{ validation.message }}
+                                </div>
+                        </ng-container>
+                </div>
+
+
+                <ion-item >
+                            <ion-label text-wrap>Please select  your community
+                            </ion-label>
+                                        <ion-select text-wrap formControlName="community" (ionChange)=" communityChanged()">
+                                                <ion-option  text-wrap *ngFor="let c of filterComms(all_comms, communityForm.get('province').value)">{{c.name_Eng}}</ion-option>
+                                                <ion-option  text-wrap value="Other">Other</ion-option>
+                                        </ion-select>
                 </ion-item>
 
-        </ion-list>
+
+                <div class="validation-errors">
+                        <ng-container *ngFor="let validation of validation_messages.community" >
+                                 <div style="color:red" text-wrap align="center" class="error-message" *ngIf="communityForm.get('community').hasError(validation.type) && (communityForm.get('community').dirty || communityForm.get('community').touched)">
+                                        {{ validation.message }}
+                                 </div>
+                        </ng-container>
+                </div>
 
 
-  <button ion-button full  (click)="onFisherFinishCommunity()">Next</button>
+
+                <ion-item [hidden]="hideCustomComm">
+                        <ion-label text-wrap stacked>Please enter your community</ion-label>
+                        <ion-input  type="text" formControlName="custom" placeholder="Enter your community here" (ionChange)="customCommunityEntered()"></ion-input>
+                </ion-item>
+
+                <span style="color:red" text-wrap align="center" class="validation-errors" *ngIf="communityForm.hasError('missingCustomComm')">Custom community required.</span>
+
+
+
+
+
+                <p style="text-align:center"><b>Do you have a fishing permit ?</b></p>
+
+
+                <ion-list >
+                        <ion-item>
+                                <ion-label> IRP / Exemption</ion-label>
+                                <ion-checkbox [(ngModel)]="community_info.comm_IRP_chosen" [ngModelOptions]="{standalone: true}"></ion-checkbox>
+                        </ion-item>
+
+                        <ion-item>
+                                <ion-label> Commercial</ion-label>
+                                <ion-checkbox [(ngModel)]="community_info.comm_commercial_chosen" [ngModelOptions]="{standalone: true}"></ion-checkbox>
+                        </ion-item>
+
+                        <ion-item>
+                                <ion-label> Recreational</ion-label>
+                                <ion-checkbox [(ngModel)]="community_info.comm_recreational_chosen" [ngModelOptions]="{standalone: true}"></ion-checkbox>
+                        </ion-item>
+
+                        <ion-item>
+                                <ion-label> Other</ion-label>
+                                <ion-checkbox [(ngModel)]="community_info.comm_other_chosen" [ngModelOptions]="{standalone: true}"></ion-checkbox>
+                        </ion-item>
+
+                </ion-list>
+
+                <button ion-button full  [disabled]="!communityForm.valid" (click)="onFisherFinishCommunity()">Next</button>
+        </form>
+
 </ion-content>

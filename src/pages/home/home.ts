@@ -9,19 +9,16 @@ import {FisherRolePage} from "../fisher-role/fisher-role";
 })
 export class HomePage {
 
+    constructor( public navCtrl: NavController, public loadingCtrl: LoadingController) {
 
-  constructor(public loadingCtrl: LoadingController, public navCtrl: NavController) {
+    }
 
-  }
+    onSelectFisherRegistration(){
+        this.navCtrl.push(FisherRolePage);
+    }
 
-onSelectFisherRegistration(){
-    this.navCtrl.push(FisherRolePage);
-}
-
-  onSelectMarketplaceRegistration(){
-    this.navCtrl.push(MarketplaceHome);
-
-  }
-
+    onSelectMarketplaceRegistration(){
+        this.navCtrl.push(MarketplaceHome);
+    }
 
 }//end class homepage

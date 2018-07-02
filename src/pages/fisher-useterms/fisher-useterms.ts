@@ -9,6 +9,7 @@ import{FisherService} from "../../providers/FisherService";
 
 //Imported non-page classes
 import {FisherUsetermsClass} from "../../classes/fisher-useterms_class";
+import {FormBuilder, Validators} from "@angular/forms";
 
 @IonicPage()
 @Component({
@@ -18,35 +19,30 @@ import {FisherUsetermsClass} from "../../classes/fisher-useterms_class";
 export class FisherUsetermsPage {
 
         terms_status    : FisherUsetermsClass = new FisherUsetermsClass ();
+        termsForm:any;
+        validation_messages = {
+            'agree': [
+                {type: 'required', message: 'Check "*I Agree" to accept the terms above.'},
+            ],
+        }
 
-        constructor(public navCtrl: NavController, public navParams: NavParams , public fisherService : FisherService) {
+
+        constructor (public navCtrl: NavController, public navParams: NavParams, public fisherService : FisherService, public formBuilder: FormBuilder) {
+                this.termsForm = this.formBuilder.group({
+                        'agree': ['', Validators.requiredTrue],
+                })
+                this.termsForm.reset('agree');//reset the checkbox upon creation
         }
 
         ionViewDidLoad() {
-              console.log('ionViewDidLoad FisherUsetermsPage');
         }
-
-
-
-        toggleAgree(){
-                this.terms_status.terms_use_agreed = !this.terms_status.terms_use_agreed;
-        }
-
-
-        toggleDAFF(){
-                this.terms_status.terms_DAFF_agreed = !this.terms_status.terms_DAFF_agreed;
-        }
-
-          toggleAssistant(){
-                this.terms_status.terms_assistant_agreed = !this.terms_status.terms_assistant_agreed
-        }
-
 
         onFisherFinishTerms(){
-              //TODO
-              //promise to update terms
-              this.fisherService.fisherUpdateTerms(this.terms_status)
-              this.navCtrl.push(FisherPersonalPage);
+                this.fisherService.fisherUpdateTerms(this.terms_status)
+                this.navCtrl.push(FisherPersonalPage);
         }
 
-}
+        termsChanged(){
+                this.terms_status.terms_use_agreed = this.termsForm.get('agree').value;
+        }
+}//end class

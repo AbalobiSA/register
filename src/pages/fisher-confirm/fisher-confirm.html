@@ -13,13 +13,13 @@
 </ion-header>
 
 
-<ion-content title="Abalobi Register-confirm" id="fisher-register-confirm">
+<ion-content padding title="Abalobi Register-confirm" id="fisher-register-confirm">
 
           <p text-wrap style="text-align:center;padding-left:0.5em;padding-right:0.5em">
                     If everything is correct please press the Register button below. Otherwise please go back and correct the info.
           </p>
 
-          <form >
+          <form text-wrap>
                     <ion-item>
                           <ion-label>Name: {{confirm_info.personal_firstname}}</ion-label>
                           <ion-input placeholder=""></ion-input>
@@ -42,8 +42,10 @@
                           <ion-label>Cell Number:{{confirm_info.personal_cellNo}} </ion-label>
                           <ion-input placeholder=""></ion-input>
                     </ion-item>
+
+              <button text-wrap="true" ion-button full  (click)="onFisherSubmit()">Register</button>
           </form>
 
 
-    <button ion-button full  (click)="onFisherSubmit()">Register</button>
+
 </ion-content>
