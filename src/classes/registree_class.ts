@@ -1,11 +1,12 @@
 import{Injectable} from "@angular/core";
 import {RoleInfoClass} from "./role_info_class";
+import {ProvinceClass} from "./province_class";
 
 @Injectable()
 export class Registree{
 
   //Role details
-  role       :  RoleInfoClass;
+  role       :  string="";//RoleInfoClass;
 
   //Terms of use details
   terms_agreed      : boolean;
@@ -22,7 +23,7 @@ export class Registree{
   password   : string = "";
 
   //Community details
-  province              :string = "";
+  province              :string="";
   comm_not_listed       :boolean;
   IRP_selected          :boolean//type of permits
   commercial_selected   :boolean;
