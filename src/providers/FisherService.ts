@@ -3,7 +3,6 @@ import {HttpClient} from "@angular/common/http";
 
 //Imported non-page classes
 import {Registree}              from "../classes/registree_class";
-import {RoleInfoClass}          from "../classes/role_info_class";
 import{FisherUsetermsClass}     from "../classes/fisher-useterms_class";
 import {PersonalInfoClass}      from "../classes/personal_info_class";
 import {CommunityInfoClass}     from "../classes/community_info_class";
@@ -38,6 +37,7 @@ export class FisherService {
         this.registree.firstname  = personal_info.personal_firstname;
         this.registree.nickname   = personal_info.personal_nickname;
         this.registree.gender     = personal_info.personal_gender;
+        this.registree.IDnum      = personal_info.personal_IDnum;
         this.registree.cellNo     = personal_info.personal_cellNo;
         this.registree.password   = personal_info.personal_password1;//only use one copy of the 2 identical passwords
         //update the registree in storage;
@@ -62,12 +62,6 @@ export class FisherService {
         console.log("Fisher Service Printing Entered Data !!");
         console.log(this.registree);
 
-        console.log("Fisher Role Data !!");
-        console.log(this.registree.role);
-
-
-        console.log("Fisher Province Data !!");
-        console.log(this.registree.province);
   }
 
 

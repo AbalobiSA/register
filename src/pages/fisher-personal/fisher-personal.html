@@ -40,7 +40,7 @@
           <ion-item>
                   <ion-label stacked>* Gender (Required)
                   </ion-label>
-                        <ion-select>
+                        <ion-select [(ngModel)]="personal_info.personal_gender" [ngModelOptions]="{standalone:true}">
                                   <ion-option>Male</ion-option>
                                   <ion-option>Female</ion-option>
                         </ion-select>
