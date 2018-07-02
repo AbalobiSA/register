@@ -21,7 +21,7 @@ export class FisherService {
   fisherUpdateRole(role_info     : string) {
         this.registree.role = role_info;
         //update the registree in storage;--return a promise
-        console.log("Fisher Service successfully updates role");
+        //console.log("Fisher Service successfully updates role");
   }
 
   fisherUpdateTerms(terms_status  : FisherUsetermsClass){
@@ -29,10 +29,11 @@ export class FisherService {
         this.registree.assistant_agreed   = terms_status.terms_assistant_agreed;
         this.registree.DAFF_agreed        = terms_status.terms_DAFF_agreed;
         //update the registree in storage;
-        console.log("Fisher Service successfully updates terms of use");
+        //console.log("Fisher Service successfully updates terms of use");
   }
 
   fisherUpdatePersonal(personal_info : PersonalInfoClass){
+
         this.registree.surname    = personal_info.personal_surname;
         this.registree.firstname  = personal_info.personal_firstname;
         this.registree.nickname   = personal_info.personal_nickname;
@@ -41,7 +42,7 @@ export class FisherService {
         this.registree.cellNo     = personal_info.personal_cellNo;
         this.registree.password   = personal_info.personal_password1;//only use one copy of the 2 identical passwords
         //update the registree in storage;
-        console.log("Fisher Service successfully updates personal info");
+        //console.log("Fisher Service successfully updates personal info");
 
   }
 
@@ -52,8 +53,9 @@ export class FisherService {
         this.registree.IRP_selected             = community_info.comm_IRP_chosen;
         this.registree.commercial_selected      = community_info.comm_commercial_chosen;
         this.registree.recreational_selected    = community_info.comm_recreational_chosen;
+        this.registree.other_seleted            = community_info.comm_other_chosen;
         //update the registree in storage;
-        console.log("Fisher Service successfully updates community info");
+        //console.log("Fisher Service successfully updates community info");
   }
 
 
