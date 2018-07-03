@@ -5,7 +5,7 @@ export class CommunityClass{
     unique_ext_id   : string;
 
     constructor(inputName:string, inputProv: string, inputID: string){
-        this.name_eng           = inputID;
+        this.name_eng           = inputName;
         this.province_abbrev    = inputProv;
         this.unique_ext_id      = inputID;
     }//end constructor
