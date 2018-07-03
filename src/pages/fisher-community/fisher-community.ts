@@ -18,7 +18,7 @@ import {CommunityClass} from "../../classes/community_class";
 })
 export class FisherCommunityPage {
 
-        all_comms :CommunityClass[] = [];
+        all_comms        : CommunityClass[] = [];
         community_info   : CommunityInfoClass = new CommunityInfoClass();
         confirm_personal : Object = new Object();
 
@@ -27,15 +27,7 @@ export class FisherCommunityPage {
             //construct the list of all communities upon and instantiate once
             for (let i = 1;i <this.list_of_communities.length;i++){//ignore headings, start at second line
                 let line :string []= (this.list_of_communities[i]).split(",");
-                console.log("English name is");
-                console.log(line[0]);
-                console.log("Province abb is");
-                console.log(line[1]);
-                console.log("Community unique code is");
-                console.log(line[2]);
                 this.all_comms.push(new CommunityClass(line[0],line[1],line[2]));
-
-                console.log("FisherCommunityPage !!!!!!!!!!!!!!!!!!!!!!!");
             }
 
 
@@ -55,12 +47,50 @@ export class FisherCommunityPage {
       }
 
        onFisherFinishCommunity()   {
-        //TODO
-        //introduce promise here
-        this.fisherService.fisherUpdateCommunity(this.community_info);
-        this.navCtrl.push(FisherConfirmPage,this.confirm_personal);
-
+                if (this.isFisherCommunityValid()) {
+                        this.fisherService.fisherUpdateCommunity(this.community_info);
+                        this.navCtrl.push(FisherConfirmPage,this.confirm_personal);
+                }
+                else{
+                        console.log("There are issues with your community submission");
+                }
       }
+
+      //check if the information entered on the community page is valid
+      isFisherCommunityValid(): boolean {
+
+                if(this.community_info.comm_province == null){
+                        console.log("No province selected");
+                        return false;
+                }
+
+                else{// Province has been selected by user
+
+                            // No community has been selected
+                            if(this.community_info.comm_community == null){
+                                    if(!this.community_info.comm_not_listed){//no community selected BUT not indicated that community is not listed
+                                        console.log("Select community or indicate community not listed");
+                                        return false;
+                                    }
+
+                                    else{
+                                        console.log("Sorry your community is not listed");
+                                        return true;//i.e. no community selected but user indicated that community is not listed
+                                    }
+                            }
+
+                            else{// A community has been selected
+                                    if(this.community_info.comm_not_listed){//Community selected BUT still indicates that community is not listed
+                                            console.log("Your have selected a community, uncheck the not available box");
+                                            return false;
+                                    }
+
+                                    console.log("Your community selection has been noted");
+                                    return true;
+                            }
+                }
+
+      }//end method
 
 
 

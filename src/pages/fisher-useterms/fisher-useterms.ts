@@ -28,25 +28,18 @@ export class FisherUsetermsPage {
 
 
 
-        /*toggleAgree(){
-                this.terms_status.terms_use_agreed = !this.terms_status.terms_use_agreed;
-        }
-
-
-        toggleDAFF(){
-                this.terms_status.terms_DAFF_agreed = !this.terms_status.terms_DAFF_agreed;
-        }
-
-          toggleAssistant(){
-                this.terms_status.terms_assistant_agreed = !this.terms_status.terms_assistant_agreed
-        }*/
-
-
         onFisherFinishTerms(){
-              //TODO
-              //promise to update terms
-              this.fisherService.fisherUpdateTerms(this.terms_status)
-              this.navCtrl.push(FisherPersonalPage);
+            if(this.isTermsResponseValid()) {
+                this.fisherService.fisherUpdateTerms(this.terms_status)
+                this.navCtrl.push(FisherPersonalPage);
+            }
+            else{
+                console.log("You must accept the Terms Of Use");
+            }
+        }
+
+        isTermsResponseValid(): boolean {
+            return(this.terms_status.terms_use_agreed);
         }
 
 }

@@ -5,9 +5,6 @@ import {FisherUsetermsPage} from "../fisher-useterms/fisher-useterms";
 //Imported service
 import{FisherService} from "../../providers/FisherService";
 
-//Imported non-page classes
-//import{RoleInfoClass} from "../../classes/role_info_class";
-
 
 @IonicPage()
 @Component({
@@ -17,7 +14,7 @@ import{FisherService} from "../../providers/FisherService";
 export class FisherRolePage {
 
 
-        role   : string ="";// : RoleInfoClass = new RoleInfoClass ();
+        role   : string;
 
         constructor(public navCtrl: NavController, public navParams: NavParams, public fisherService: FisherService) {
 
@@ -28,11 +25,18 @@ export class FisherRolePage {
         }
 
         nextFromFisherRole(){
-          //TODO
-            //create a promise  here
-            //On success
-            this.fisherService.fisherUpdateRole(this.role);
-            this.navCtrl.push(FisherUsetermsPage);
+                if(this.isFisherRoleValid()) {
+                        this.fisherService.fisherUpdateRole(this.role);
+                        this.navCtrl.push(FisherUsetermsPage);
+                }
+                else{
+                    console.log("Role is required ");
+                }
+        }
+
+
+        isFisherRoleValid(): boolean {
+            return((this.role == "Fisher")||(this.role == "Fisher Assistant"));
         }
 
 
