@@ -2,25 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cff6d688-3c87-4286-9709-e8be1b580f3a" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/classes/communities.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.sourcemaps/main.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/.sourcemaps/main.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/communities.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/community_info_class.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/community_info_class.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/registree_class.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/registree_class.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/fisher-community/fisher-community.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/fisher-community/fisher-community.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/fisher-community/fisher-community.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/fisher-community/fisher-community.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/providers/FisherService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/providers/FisherService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/community_class.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/community_class.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/build/0.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/build/0.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/build/1.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/build/1.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/build/2.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/build/2.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/build/3.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/build/3.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/build/4.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/build/4.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/build/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/build/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/build/main.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/www/build/main.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/build/vendor.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/build/vendor.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/build/vendor.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/www/build/vendor.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/www/index.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -47,11 +40,20 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="community_class.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/classes/community_class.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="13" column="12" lean-forward="true" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="fisher-community.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/fisher-community/fisher-community.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="17" column="67" lean-forward="true" selection-start-line="17" selection-start-column="67" selection-end-line="17" selection-end-column="67" />
+            <state relative-caret-position="211">
+              <caret line="19" column="18" lean-forward="true" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -59,8 +61,8 @@
       <file leaf-file-name="fisher-community.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/fisher-community/fisher-community.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="33" column="53" selection-start-line="33" selection-start-column="53" selection-end-line="33" selection-end-column="53" />
+            <state relative-caret-position="184">
+              <caret line="35" column="45" lean-forward="true" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
               <folding>
                 <element signature="e#326#395#0" expanded="true" />
               </folding>
@@ -95,13 +97,13 @@
         <option value="$PROJECT_DIR$/src/classes/coomunities_class.ts" />
         <option value="$PROJECT_DIR$/src/classes/communities_class.ts" />
         <option value="$PROJECT_DIR$/src/classes/all_communities.ts" />
-        <option value="$PROJECT_DIR$/src/classes/community_class.ts" />
         <option value="$PROJECT_DIR$/src/classes/registree_class.ts" />
         <option value="$PROJECT_DIR$/src/providers/FisherService.ts" />
         <option value="$PROJECT_DIR$/src/classes/communities.ts" />
         <option value="$PROJECT_DIR$/src/classes/community_info_class.ts" />
         <option value="$PROJECT_DIR$/src/pages/fisher-community/fisher-community.html" />
         <option value="$PROJECT_DIR$/src/pages/fisher-community/fisher-community.ts" />
+        <option value="$PROJECT_DIR$/src/classes/community_class.ts" />
       </list>
     </option>
   </component>
@@ -123,7 +125,7 @@
     <option name="x" value="-1920" />
     <option name="y" value="-157" />
     <option name="width" value="1920" />
-    <option name="height" value="1053" />
+    <option name="height" value="977" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -152,14 +154,13 @@
               <item name="register" type="b2602c69:ProjectViewProjectNode" />
               <item name="register" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="classes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="register" type="b2602c69:ProjectViewProjectNode" />
               <item name="register" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="fisher-community" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="register" type="b2602c69:ProjectViewProjectNode" />
@@ -217,26 +218,26 @@
       <workItem from="1530509598949" duration="7048000" />
       <workItem from="1530518144072" duration="2823000" />
       <workItem from="1530521139208" duration="3298000" />
-      <workItem from="1530529391232" duration="8887000" />
+      <workItem from="1530529391232" duration="9562000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23204000" />
+    <option name="totallyTimeSpent" value="23879000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1920" y="-157" width="1920" height="1053" extended-state="6" />
+    <frame x="-1920" y="-157" width="1920" height="977" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TypeScript" order="7" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22906794" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22906794" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.21548118" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.24886364" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -449,13 +450,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/community_class.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/providers/FisherService.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="325">
@@ -467,17 +461,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/community_class.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="12" lean-forward="true" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/fisher-community/fisher-community.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="17" column="67" lean-forward="true" selection-start-line="17" selection-start-column="67" selection-end-line="17" selection-end-column="67" />
+        <state relative-caret-position="211">
+          <caret line="19" column="18" lean-forward="true" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/fisher-community/fisher-community.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="33" column="53" selection-start-line="33" selection-start-column="53" selection-end-line="33" selection-end-column="53" />
+        <state relative-caret-position="184">
+          <caret line="35" column="45" lean-forward="true" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
           <folding>
             <element signature="e#326#395#0" expanded="true" />
           </folding>
