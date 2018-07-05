@@ -5,11 +5,9 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>Abalobi Register</ion-title>
-  </ion-navbar>
-
+    <ion-navbar>
+            <ion-title>Abalobi Register</ion-title>
+    </ion-navbar>
 </ion-header>
 
 
@@ -17,68 +15,31 @@
 
     <form [formGroup] = "roleForm">
 
-    <p text-wrap style="text-align:center;padding-left:0.5em;padding-right:0.5em;background-color:#33CEFF;color:#FFFFFF;padding-left:0.5em">
-      <b>Select 'Fisher' if you are a fisher wanting to record and view your catch data using Abalobi.</b>
-    </p>
+                <p text-wrap style="text-align:center;padding-left:0.5em;padding-right:0.5em;background-color:#33CEFF;color:#FFFFFF;padding-left:0.5em">
+                        <b>Select 'Fisher' if you are a fisher wanting to record and view your catch data using Abalobi.</b>
+                </p>
 
+                <ion-list radio-group type="text" formControlName='role' (ionChange)="roleChanged()">
+                        <ion-item>
+                                <ion-label>Fisher</ion-label>
+                                <ion-radio  type="text" value ="Fisher" ></ion-radio>
+                        </ion-item>
 
+                        <ion-item>
+                                <ion-label>Fisher Assistant</ion-label>
+                                <ion-radio type="text" value ="Fisher Assistant"></ion-radio>
+                        </ion-item>
+                </ion-list>
 
+                <div style="color:red" text-wrap align="center" class="validation-errors">
+                        <ng-container *ngFor="let validation of validation_messages.role" >
+                                <div class="error-message" *ngIf="roleForm.get('role').hasError(validation.type)"> <!-- && (roleForm.get('role').dirty || roleForm.get('role').touched)"-->
+                                        {{ validation.message }}
+                                </div>
+                        </ng-container>
+                </div>
 
-
-    <!--ion-item>
-        <ion-label stacked>* Gender (Required)
-        </ion-label>
-        <ion-select formControlName="gender" (ionChange)=" genderChanged()">
-            <ion-option value = "Male">Male</ion-option>
-            <ion-option value = "Female">Female</ion-option>
-        </ion-select>
-    </ion-item>
-    <div-- class="validation-errors">
-        <ng-container *ngFor="let validation of validation_messages.gender" >
-            <div class="error-message" *ngIf="personalForm.get('gender').hasError(validation.type) && (personalForm.get('gender').dirty || personalForm.get('gender').touched)">
-                {{ validation.message }}
-            </div>
-        </ng-container>
-    </div-->
-
-<!--TODO sort the valiodation of thses radio-buttons -->
-
-    <!--ion-list type="text" formControlName="role" (ionChange)="roleChanged()">
-
-        <ion-item>
-            <ion-label>Fisher</ion-label>
-            <ion-radio  type="text" value ="Fisher" ></ion-radio>
-        </ion-item>
-
-        <ion-item>
-            <ion-label>Fisher Assistant</ion-label>
-            <ion-radio type="text" value ="Fisher Assistant"></ion-radio>
-        </ion-item>
-    </ion-list>
-    <div class="validation-errors">
-        <ng-container *ngFor="let validation of validation_messages.role" >
-            <div class="error-message" *ngIf="personalForm.get('role').hasError(validation.type) && (personalForm.get('role').dirty || personalForm.get('role').touched)">
-                {{ validation.message }}
-            </div>
-        </ng-container>
-    </div-->
-
-
-
-  <!--ion-list radio-group [(ngModel)]="role">
-
-          <ion-item>
-              <ion-label>Fisher</ion-label>
-              <ion-radio value ="Fisher" ></ion-radio>
-          </ion-item>
-
-          <ion-item>
-              <ion-label>Fisher Assistant</ion-label>
-              <ion-radio value ="Fisher Assistant"></ion-radio>
-          </ion-item>
-  </ion-list-->
-
-  <button ion-button full  (click)="nextFromFisherRole()">Next</button>
+            <button ion-button full [disabled]="!roleForm.valid" (click)="nextFromFisherRole()">Next</button>
     </form>
 
 </ion-content>

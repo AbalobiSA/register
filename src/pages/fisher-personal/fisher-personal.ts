@@ -102,6 +102,7 @@ export class FisherPersonalPage {
       }
 
         surnameChanged(){
+            this.personal_info.personal_surname = this.personalForm.get("surname").value;
         }
 
         nameChanged(){
