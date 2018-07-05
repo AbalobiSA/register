@@ -4,16 +4,15 @@
     <list default="true" id="cff6d688-3c87-4286-9709-e8be1b580f3a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.sourcemaps/main.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/.sourcemaps/main.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/community_info_class.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/community_info_class.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/fisher-confirm/fisher-confirm.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/fisher-confirm/fisher-confirm.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/fisher-useterms_class.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/fisher-useterms_class.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/fisher-community/fisher-community.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/fisher-community/fisher-community.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/fisher-community/fisher-community.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/fisher-community/fisher-community.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/fisher-personal/fisher-personal.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/fisher-personal/fisher-personal.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/fisher-personal/fisher-personal.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/fisher-personal/fisher-personal.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/fisher-role/fisher-role.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/fisher-role/fisher-role.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/fisher-role/fisher-role.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/fisher-role/fisher-role.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/build/0.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/build/0.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/build/1.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/build/1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/build/2.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/build/2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/build/3.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/build/3.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/fisher-useterms/fisher-useterms.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/fisher-useterms/fisher-useterms.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/fisher-useterms/fisher-useterms.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/fisher-useterms/fisher-useterms.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/build/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/build/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/build/main.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/www/build/main.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/build/vendor.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/build/vendor.js" afterDir="false" />
@@ -31,32 +30,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="fisher-personal.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="fisher-personal.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/fisher-personal/fisher-personal.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-212">
-              <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fisher-role.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/pages/fisher-role/fisher-role.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="667">
-              <caret line="63" column="11" selection-start-line="63" selection-start-column="11" selection-end-line="63" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fisher-role.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/fisher-role/fisher-role.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="547">
-              <caret line="59" column="7" selection-start-line="59" selection-start-column="7" selection-end-line="59" selection-end-column="7" />
+            <state relative-caret-position="640">
+              <caret line="133" column="4" selection-start-line="133" selection-start-column="4" selection-end-line="133" selection-end-column="4" />
               <folding>
-                <element signature="e#0#42#0" expanded="true" />
-                <element signature="e#203#262#0" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#form#0;n#ion-content#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#ng-container#0;n#div#1;n#form#0;n#ion-content#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#ng-container#0;n#div#2;n#form#0;n#ion-content#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#ng-container#0;n#div#3;n#form#0;n#ion-content#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#ng-container#0;n#div#4;n#form#0;n#ion-content#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#5;n#form#0;n#ion-content#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#ng-container#0;n#div#6;n#form#0;n#ion-content#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#ng-container#0;n#div#7;n#form#0;n#ion-content#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -65,11 +52,45 @@
       <file leaf-file-name="fisher-personal.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/fisher-personal/fisher-personal.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="110" column="26" lean-forward="true" selection-start-line="110" selection-start-column="26" selection-end-line="110" selection-end-column="26" />
+            <state relative-caret-position="378">
+              <caret line="104" column="47" selection-start-line="104" selection-start-column="47" selection-end-line="104" selection-end-column="47" />
               <folding>
                 <element signature="e#0#42#0" expanded="true" />
                 <element signature="e#330#401#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/home/home.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="13" column="94" selection-start-line="13" selection-start-column="94" selection-end-line="13" selection-end-column="94" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fisher-useterms.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/fisher-useterms/fisher-useterms.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+              <folding>
+                <element signature="e#318#390#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fisher-community.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/fisher-community/fisher-community.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="834">
+              <caret line="63" column="61" selection-start-line="63" selection-start-column="61" selection-end-line="63" selection-end-column="61" />
+              <folding>
+                <element signature="e#0#52#0" expanded="true" />
+                <element signature="e#326#395#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -93,7 +114,6 @@
         <option value="$PROJECT_DIR$/app.json" />
         <option value="$PROJECT_DIR$/src/classes/gender_class.ts" />
         <option value="$PROJECT_DIR$/src/classes/province_class.ts" />
-        <option value="$PROJECT_DIR$/src/classes/fisher-useterms_class.ts" />
         <option value="$PROJECT_DIR$/src/pages/fisher-confirm/fisher-confirm.html" />
         <option value="$PROJECT_DIR$/src/classes/coomunities_class.ts" />
         <option value="$PROJECT_DIR$/src/classes/communities_class.ts" />
@@ -101,16 +121,19 @@
         <option value="$PROJECT_DIR$/src/classes/registree_class.ts" />
         <option value="$PROJECT_DIR$/src/providers/FisherService.ts" />
         <option value="$PROJECT_DIR$/src/classes/communities.ts" />
-        <option value="$PROJECT_DIR$/src/pages/fisher-useterms/fisher-useterms.ts" />
-        <option value="$PROJECT_DIR$/src/pages/fisher-community/fisher-community.html" />
-        <option value="$PROJECT_DIR$/src/pages/fisher-community/fisher-community.ts" />
         <option value="$PROJECT_DIR$/src/classes/community_class.ts" />
         <option value="$PROJECT_DIR$/src/classes/community_info_class.ts" />
         <option value="$PROJECT_DIR$/src/pages/fisher-confirm/fisher-confirm.ts" />
-        <option value="$PROJECT_DIR$/src/pages/fisher-personal/fisher-personal.ts" />
-        <option value="$PROJECT_DIR$/src/pages/fisher-personal/fisher-personal.html" />
+        <option value="$PROJECT_DIR$/src/classes/fisher-useterms_class.ts" />
+        <option value="$PROJECT_DIR$/src/pages/fisher-useterms/fisher-useterms.ts" />
         <option value="$PROJECT_DIR$/src/pages/fisher-role/fisher-role.ts" />
+        <option value="$PROJECT_DIR$/src/pages/fisher-community/fisher-community.ts" />
+        <option value="$PROJECT_DIR$/src/pages/fisher-personal/fisher-personal.ts" />
+        <option value="$PROJECT_DIR$/src/pages/home/home.html" />
+        <option value="$PROJECT_DIR$/src/pages/fisher-useterms/fisher-useterms.html" />
         <option value="$PROJECT_DIR$/src/pages/fisher-role/fisher-role.html" />
+        <option value="$PROJECT_DIR$/src/pages/fisher-community/fisher-community.html" />
+        <option value="$PROJECT_DIR$/src/pages/fisher-personal/fisher-personal.html" />
       </list>
     </option>
   </component>
@@ -128,17 +151,18 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="x" value="-1920" />
-    <option name="y" value="-157" />
+    <option name="y" value="-180" />
     <option name="width" value="1920" />
-    <option name="height" value="977" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -167,7 +191,14 @@
               <item name="register" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="fisher-role" type="462c0819:PsiDirectoryNode" />
+              <item name="fisher-personal" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="register" type="b2602c69:ProjectViewProjectNode" />
+              <item name="register" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="home" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="register" type="b2602c69:ProjectViewProjectNode" />
@@ -186,7 +217,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -240,26 +270,27 @@
       <workItem from="1530693661212" duration="5119000" />
       <workItem from="1530703539009" duration="584000" />
       <workItem from="1530709770644" duration="4375000" />
-      <workItem from="1530771725725" duration="4059000" />
+      <workItem from="1530771725725" duration="4354000" />
+      <workItem from="1530783534158" duration="10732000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49699000" />
+    <option name="totallyTimeSpent" value="60726000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1920" y="-157" width="1920" height="977" extended-state="0" />
+    <frame x="-1920" y="-180" width="1920" height="1080" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TypeScript" order="7" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16979167" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15208334" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.22591361" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.19844358" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -337,13 +368,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/role_info_class.ts" />
     <entry file="file://$PROJECT_DIR$/src/classes/province_class.ts" />
-    <entry file="file://$PROJECT_DIR$/src/classes/fisher-useterms_class.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/gender_class.ts" />
     <entry file="file://$PROJECT_DIR$/src/classes/communities.csv">
       <provider selected="true" editor-type-id="text-editor">
@@ -395,24 +419,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/fisher-useterms/fisher-useterms.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" column="18" lean-forward="true" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/fisher-community/fisher-community.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="66" column="58" lean-forward="true" selection-start-line="66" selection-start-column="58" selection-end-line="66" selection-end-column="58" />
-          <folding>
-            <element signature="e#0#52#0" expanded="true" />
-            <element signature="e#326#395#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/fisher-confirm/fisher-confirm.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="620">
@@ -458,23 +464,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/fisher-useterms/fisher-useterms.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="33" column="46" lean-forward="true" selection-start-line="33" selection-start-column="46" selection-end-line="33" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/home/home.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/fisher-community/fisher-community.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-250">
-          <caret line="28" column="70" lean-forward="true" selection-start-line="28" selection-start-column="70" selection-end-line="28" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/fisher-confirm/fisher-confirm.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
@@ -489,21 +478,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/fisher-personal/fisher-personal.ts">
+    <entry file="file://$PROJECT_DIR$/src/classes/fisher-useterms_class.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="110" column="26" lean-forward="true" selection-start-line="110" selection-start-column="26" selection-end-line="110" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#42#0" expanded="true" />
-            <element signature="e#330#401#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="120">
+          <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/fisher-role/fisher-role.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="547">
-          <caret line="59" column="7" selection-start-line="59" selection-start-column="7" selection-end-line="59" selection-end-column="7" />
+        <state relative-caret-position="136">
+          <caret line="26" column="64" selection-start-line="26" selection-start-column="64" selection-end-line="26" selection-end-column="64" />
           <folding>
             <element signature="e#0#42#0" expanded="true" />
             <element signature="e#203#262#0" expanded="true" />
@@ -511,17 +496,90 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/fisher-personal/fisher-personal.html">
+    <entry file="file://$PROJECT_DIR$/src/pages/fisher-community/fisher-community.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-212">
-          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+        <state relative-caret-position="834">
+          <caret line="63" column="61" selection-start-line="63" selection-start-column="61" selection-end-line="63" selection-end-column="61" />
+          <folding>
+            <element signature="e#0#52#0" expanded="true" />
+            <element signature="e#326#395#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/fisher-personal/fisher-personal.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="104" column="47" selection-start-line="104" selection-start-column="47" selection-end-line="104" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+            <element signature="e#330#401#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/home/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="94" selection-start-line="13" selection-start-column="94" selection-end-line="13" selection-end-column="94" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/fisher-useterms/fisher-useterms.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="61">
+          <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#form#0;n#ion-content#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/fisher-role/fisher-role.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="667">
-          <caret line="63" column="11" selection-start-line="63" selection-start-column="11" selection-end-line="63" selection-end-column="11" />
+        <state relative-caret-position="345">
+          <caret line="23" column="32" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#form#0;n#ion-content#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/fisher-community/fisher-community.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1320">
+          <caret line="88" column="124" selection-start-line="88" selection-start-column="124" selection-end-line="88" selection-end-column="124" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#ng-container#0;n#div#0;n#form#0;n#ion-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#ng-container#0;n#div#1;n#form#0;n#ion-content#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/fisher-useterms/fisher-useterms.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+          <folding>
+            <element signature="e#318#390#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/fisher-personal/fisher-personal.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="640">
+          <caret line="133" column="4" selection-start-line="133" selection-start-column="4" selection-end-line="133" selection-end-column="4" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#form#0;n#ion-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#ng-container#0;n#div#1;n#form#0;n#ion-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#ng-container#0;n#div#2;n#form#0;n#ion-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#ng-container#0;n#div#3;n#form#0;n#ion-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#ng-container#0;n#div#4;n#form#0;n#ion-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#5;n#form#0;n#ion-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#ng-container#0;n#div#6;n#form#0;n#ion-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#ng-container#0;n#div#7;n#form#0;n#ion-content#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -10,6 +10,7 @@ import {FisherService} from "../../providers/FisherService";
 //Imported non-page classes
 import{CommunityInfoClass} from "../../classes/community_info_class";
 import {CommunityClass} from "../../classes/community_class";
+import {FormBuilder, Validators} from "@angular/forms";
 
 @IonicPage()
 @Component({
@@ -22,7 +23,26 @@ export class FisherCommunityPage {
         community_info   : CommunityInfoClass = new CommunityInfoClass();
         confirm_personal : Object = new Object();
 
-        constructor(public navCtrl: NavController, public navParams: NavParams, public  fisherService   : FisherService) {
+
+    public communityForm: any;
+
+    validation_messages = {
+        'province': [
+            {type: 'required', message: 'Please select a province.'}
+        ],
+
+        'community': [
+            {type: 'required', message: 'Please select a community.'}
+        ],
+    }
+
+
+    constructor (public navCtrl: NavController, public navParams: NavParams, public fisherService : FisherService, public formBuilder: FormBuilder) {
+
+        this.communityForm = this.formBuilder.group({
+            "province": ['', Validators.required],
+            "community": ['', Validators.required],
+        })
 
             //construct the list of all communities upon and instantiate once
             for (let i = 1;i <this.list_of_communities.length;i++){//ignore headings, start at second line
@@ -33,6 +53,16 @@ export class FisherCommunityPage {
 
         }
 
+
+        provinceChanged(){
+                this.community_info.comm_province = this.communityForm.get('province').value;
+        }
+
+
+    communityChanged(){
+        this.community_info.comm_community = this.communityForm.get('community').value;
+        console.log(     this.community_info.comm_community);
+    }
       ionViewDidLoad() {
 
                 console.log("ionViewDidLoad FisherCommunityPage") ;
@@ -47,13 +77,13 @@ export class FisherCommunityPage {
       }
 
        onFisherFinishCommunity()   {
-                if (this.isFisherCommunityValid()) {
+               // if (this.isFisherCommunityValid()) {
                         this.fisherService.fisherUpdateCommunity(this.community_info);
                         this.navCtrl.push(FisherConfirmPage,this.confirm_personal);
-                }
-                else{
-                        console.log("There are issues with your community submission");
-                }
+                //}
+                //else{
+                        //console.log("There are issues with your community submission");
+                //}
       }
 
       //check if the information entered on the community page is valid
@@ -125,6 +155,7 @@ export class FisherCommunityPage {
         "Bettys Bay,WC,bettysbay",
         "Pringle Bay,WC,pringlebay",
         "Cape Town,WC,capetown",
-        "Coffee Bay,KZN,coffeebay"];
+        "Coffee Bay,KZN,coffeebay",
+        "Other,Other,other"];
 
 }//end class

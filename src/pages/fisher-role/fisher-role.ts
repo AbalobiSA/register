@@ -24,7 +24,7 @@ export class FisherRolePage {
 
     validation_messages = {
         'role': [
-            {type: 'required', message: 'Role is required.'}
+            {type: 'required', message: 'Please select your role.'}
         ],
             }
 
@@ -32,7 +32,7 @@ export class FisherRolePage {
     constructor (public navCtrl: NavController, public navParams: NavParams, public fisherService : FisherService, public formBuilder: FormBuilder) {
 
         this.roleForm = this.formBuilder.group({
-            "surname": ['', Validators.required],
+            "role": ['', Validators.required],
         })
     }
 
