@@ -18,61 +18,128 @@
 <ion-content title="fisher-personal-form" id="page5">
 
 
-  <form >
+    <form [formGroup] = "personalForm">
+
           <ion-item>
                   <ion-label stacked>* Surname</ion-label>
-                  <ion-input [(ngModel)]="personal_info.personal_surname" type="text" name= "surname" placeholder="Enter your surname here"></ion-input>
+                  <ion-input type="text" formControlName="surname" placeholder="Enter your surname here"(ionChange)="surnameChanged()"></ion-input>
           </ion-item>
+            <!--Surname validation-->
+            <div class="validation-errors">
+                    <ng-container *ngFor="let validation of validation_messages.surname" >
+                        <div class="error-message" *ngIf="personalForm.get('surname').hasError(validation.type) && (personalForm.get('surname').dirty || personalForm.get('surname').touched)">
+                            {{ validation.message }}
+                        </div>
+                    </ng-container>
+            </div>
 
 
-          <ion-item>
-                  <ion-label stacked>* First Name</ion-label>
-                  <ion-input [(ngModel)]="personal_info.personal_firstname" type="text" name="first_name" placeholder="Enter your name here"></ion-input>
-          </ion-item>
+            <ion-item>
+                    <ion-label stacked>* First Name</ion-label>
+                    <ion-input type="text" formControlName="name" placeholder="Enter your name here"(ionChange)="nameChanged()"></ion-input>
+            </ion-item>
+            <!--First name validation-->
+            <div class="validation-errors">
+                <ng-container *ngFor="let validation of validation_messages.name" >
+                    <div class="error-message" *ngIf="personalForm.get('name').hasError(validation.type) && (personalForm.get('name').dirty || personalForm.get('name').touched)">
+                        {{ validation.message }}
+                    </div>
+                </ng-container>
+            </div>
 
 
-          <ion-item>
-                  <ion-label stacked>* Nickname</ion-label>
-                  <ion-input [(ngModel)]="personal_info.personal_nickname" type="text" name ="nickname" placeholder="What do people usually call you?"></ion-input>
-          </ion-item>
+            <ion-item>
+                <ion-label stacked>* Nickname</ion-label>
+                <ion-input type="text" formControlName="nickname" placeholder="What do people usually call you?"(ionChange)="nickNameChanged()"></ion-input>
+            </ion-item>
+            <!--Nickname validation-->
+            <div class="validation-errors">
+                <ng-container *ngFor="let validation of validation_messages.nickname" >
+                    <div class="error-message" *ngIf="personalForm.get('nickname').hasError(validation.type) && (personalForm.get('nickname').dirty || personalForm.get('nickname').touched)">
+                        {{ validation.message }}
+                    </div>
+                </ng-container>
+                </div>
+
+
 
 
           <ion-item>
                   <ion-label stacked>* Gender (Required)
                   </ion-label>
-                        <ion-select [(ngModel)]="personal_info.personal_gender" [ngModelOptions]="{standalone:true}">
-                                  <ion-option>Male</ion-option>
-                                  <ion-option>Female</ion-option>
+                        <ion-select formControlName="gender" (ionChange)=" genderChanged()">
+                                  <ion-option value = "Male">Male</ion-option>
+                                  <ion-option value = "Female">Female</ion-option>
                         </ion-select>
           </ion-item>
+            <div class="validation-errors">
+                <ng-container *ngFor="let validation of validation_messages.gender" >
+                    <div class="error-message" *ngIf="personalForm.get('gender').hasError(validation.type) && (personalForm.get('gender').dirty || personalForm.get('gender').touched)">
+                        {{ validation.message }}
+                    </div>
+                </ng-container>
+            </div>
+
 
 
           <ion-item>
                       <ion-label stacked>* ID Number</ion-label>
-                      <ion-input [(ngModel)]="personal_info.personal_IDnum" type="text" name="id_num" placeholder="Enter your ID Number here"></ion-input>
+                      <ion-input formControlName="ID"  type="text"  placeholder="Enter your ID Number here"(ionChange)="IDchanged()"></ion-input>
           </ion-item>
+            <div class="validation-errors">
+                <ng-container *ngFor="let validation of validation_messages.ID" >
+                    <div class="error-message" *ngIf="personalForm.get('ID').hasError(validation.type) && (personalForm.get('ID').dirty || personalForm.get('ID').touched)">
+                        {{ validation.message }}
+                    </div>
+                </ng-container>
+            </div>
 
 
-          <ion-item>
-                      <ion-label stacked>* Personal Cellphone Number</ion-label>
-                      <ion-input [(ngModel)]="personal_info.personal_cellNo" type="tel" name="cellNo" placeholder="Enter your cell number here"></ion-input>
-          </ion-item>
+            <ion-item>
+                    <ion-label text-wrap stacked>* Personal Cellphone Number</ion-label>
+                        <ion-input formControlName="cell"  type="text"   placeholder="Enter your cell number here"(ionChange)="cellChanged()"></ion-input>
+            </ion-item>
+                                <div class="validation-errors">
+                                        <ng-container *ngFor="let validation of validation_messages.cell" >
+                                            <div class="error-message" *ngIf="personalForm.get('cell').hasError(validation.type) && (personalForm.get('cell').dirty || personalForm.get('cell').touched)">
+                                                {{ validation.message }}
+                                            </div>
+                                        </ng-container>
+                                </div>
 
 
-          <ion-item>
-                      <ion-label stacked>* Password</ion-label>
-                      <ion-input [(ngModel)]="personal_info.personal_password1" type="password" name="password1" placeholder="Please choose a password"></ion-input>
-          </ion-item>
+
+      <ion-item>
+          <ion-label stacked>* Password</ion-label>
+          <ion-input type="text" formControlName="password1" placeholder="Please choose a password"(ionChange)="password1Changed()"></ion-input>
+      </ion-item>
+      <!--First name validation-->
+      <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages.password1" >
+              <div class="error-message" *ngIf="personalForm.get('password1').hasError(validation.type) && (personalForm.get('password1').dirty || personalForm.get('password1').touched)">
+                  {{ validation.message }}
+              </div>
+          </ng-container>
+      </div>
 
 
-          <ion-item>
-                      <ion-label stacked>* Re-type password</ion-label>
-                      <ion-input [(ngModel)]="personal_info.personal_password2" type="password" name="password2" placeholder="Please re-type password"></ion-input>
-          </ion-item>
+      <ion-item>
+          <ion-label stacked>* Retype password</ion-label>
+          <ion-input type="text" formControlName="password2" placeholder="Please re-type password"(ionChange)="password2Changed()"></ion-input>
+      </ion-item>
+      <!--Nickname validation-->
+      <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages.password2" >
+              <div class="error-message" *ngIf="personalForm.get('password2').hasError(validation.type) && (personalForm.get('password2').dirty || personalForm.get('password2').touched)">
+                  {{ validation.message }}
+              </div>
+          </ng-container>
+      </div>
+
 
   </form>
 
 
 
-  <button ion-button full  (click)="onFisherFinishPersonal()">Next</button>
+  <button ion-button type="submit"  full  (click)="onFisherFinishPersonal()">Next</button>
 </ion-content>
