@@ -17,7 +17,6 @@ import {PersonalInfoClass} from "../../classes/personal_info_class";
               //passed as navParams upon opening a new page
               public confirm_info : PersonalInfoClass = new PersonalInfoClass();
 
-
               constructor(public navCtrl: NavController, public navParams: NavParams, public fisherService: FisherService ) {
               }
 
@@ -30,26 +29,7 @@ import {PersonalInfoClass} from "../../classes/personal_info_class";
               }
 
               onFisherSubmit(){
-                //TODO
-                //create a promise here
                         this.fisherService.fisherSubmitRegistration();
               }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     }//end class
