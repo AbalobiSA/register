@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 //Imported services
 import{FisherService} from "../../providers/FisherService";
 import {PersonalInfoClass} from "../../classes/personal_info_class";
+import {AfterRegisterPage} from "../after-register/after-register";
 
 @IonicPage()
     @Component({
@@ -30,6 +31,7 @@ import {PersonalInfoClass} from "../../classes/personal_info_class";
 
               onFisherSubmit(){
                         this.fisherService.fisherSubmitRegistration();
+                        this.navCtrl.push(AfterRegisterPage);//navigate to blank page after registration attemp, whether successful or not
               }
 
     }//end class

@@ -136,6 +136,7 @@ var FisherCommunityPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_FisherService__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__classes_personal_info_class__ = __webpack_require__(166);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__after_register_after_register__ = __webpack_require__(213);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -148,6 +149,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 //Imported services
+
 
 
 var FisherConfirmPage = /** @class */ (function () {
@@ -168,6 +170,7 @@ var FisherConfirmPage = /** @class */ (function () {
     };
     FisherConfirmPage.prototype.onFisherSubmit = function () {
         this.fisherService.fisherSubmitRegistration();
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__after_register_after_register__["a" /* AfterRegisterPage */]); //navigate to blank page after registration attemp, whether successful or not
     };
     FisherConfirmPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -1258,19 +1261,15 @@ var FisherService = /** @class */ (function () {
     function FisherService(http, registree) {
         this.http = http;
         this.registree = registree;
+        this.POSTBIN_URL = "hhhh";
     }
-    //all these functions must return a promise to attempt to update the info
     FisherService.prototype.fisherUpdateRole = function (role_info) {
         this.registree.role = role_info;
-        //update the registree in storage;--return a promise
-        //console.log("Fisher Service successfully updates role");
     };
     FisherService.prototype.fisherUpdateTerms = function (terms_status) {
         this.registree.terms_agreed = terms_status.terms_use_agreed;
         this.registree.assistant_agreed = terms_status.terms_assistant_agreed;
         this.registree.DAFF_agreed = terms_status.terms_DAFF_agreed;
-        //update the registree in storage;
-        //console.log("Fisher Service successfully updates terms of use");
     };
     FisherService.prototype.fisherUpdatePersonal = function (personal_info) {
         this.registree.surname = personal_info.personal_surname;
@@ -1280,8 +1279,6 @@ var FisherService = /** @class */ (function () {
         this.registree.IDnum = personal_info.personal_IDnum;
         this.registree.cellNo = personal_info.personal_cellNo;
         this.registree.password = personal_info.personal_password1; //only use one copy of the 2 identical passwords
-        //update the registree in storage;
-        //console.log("Fisher Service successfully updates personal info");
     };
     FisherService.prototype.fisherUpdateCommunity = function (community_info) {
         this.registree.province = community_info.comm_province;
@@ -1291,19 +1288,53 @@ var FisherService = /** @class */ (function () {
         this.registree.commercial_selected = community_info.comm_commercial_chosen;
         this.registree.recreational_selected = community_info.comm_recreational_chosen;
         this.registree.other_seleted = community_info.comm_other_chosen;
-        //update the registree in storage;
-        //console.log("Fisher Service successfully updates community info");
     };
     //Submit the registree for registration, check if the registration doesn't exist already
     FisherService.prototype.fisherSubmitRegistration = function () {
         console.log("Fisher Service Printing Entered Data !!");
         console.log(this.registree);
+        //Reset the registree fields after attempted registration
+        //Role details
+        /* this.registree.role  = "";
+   
+         //Terms of use details
+         this.registree.terms_agreed      =false;
+         this.registree.assistant_agreed  =false;
+         this.registree.DAFF_agreed       =false;
+   
+         //Personal details
+         this.registree.surname    = "";
+         this.registree.firstname  = "";
+         this.registree.nickname   = "";
+         this.registree.gender     = "";
+         this.registree.IDnum      = "";
+         this.registree.cellNo     = "";
+         this.registree.password   = "";
+   
+         //Community details
+         this.registree.province              ="";
+         this.registree.community             ="";
+         this.registree.comm_not_listed       =false;
+         this.registree.IRP_selected          =false;
+         this.registree.commercial_selected   =false;
+         this.registree.recreational_selected =false;
+         this.registree.other_seleted         =false;
+   */
+    };
+    //Check if user with th proposed username doesnt exist already
+    FisherService.prototype.checkIfFisherAlreadyExists = function (username) {
+        return this.http.get(this.POSTBIN_URL + "/api/users/find/?username=" + username).toPromise();
+    };
+    //Go ahead and actually try to register the user
+    FisherService.prototype.registerFisher = function (user) {
+        return this.http.post(this.POSTBIN_URL + "/api/users/create/", user).toPromise();
     };
     FisherService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2__classes_registree_class__["a" /* Registree */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__classes_registree_class__["a" /* Registree */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__classes_registree_class__["a" /* Registree */]) === "function" && _b || Object])
     ], FisherService);
     return FisherService;
+    var _a, _b;
 }()); //end class
 
 //# sourceMappingURL=FisherService.js.map
