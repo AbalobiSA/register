@@ -121,7 +121,7 @@
                     </ng-container>
             </div>
 
-            <span style="color:red" text-wrap align="center" class="validation-errors" *ngIf="personalForm.hasError('mismatchedPasswords')">Passwords do not match.</span>
+            <span style="color:red" text-wrap align="center" class="validation-errors" *ngIf="(personalForm.get('password1').value.length >= 1)&&(personalForm.get('password2').value.length >= 1)&&personalForm.hasError('mismatchedPasswords')">Passwords do not match.</span>
             <!--span style="color:red" text-wrap align="center" class="help-block" *ngIf="personalForm.get('password2').touched && personalForm.get('password2').errors?.notEqual"> Passwords do not match</span-->
             <!--span style="color:red" text-wrap align="center" class="validation-error" *ngIf="personalForm.get('password2').touched && personalForm.get('password2').errors?.notEqual"> Passwords do not match</span-->
 
