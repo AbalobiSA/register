@@ -101,11 +101,11 @@
 
 
 
+            <!--Password 1-->
             <ion-item>
                     <ion-label stacked>* Password</ion-label>
-                    <ion-input type="text" formControlName="password1" placeholder="Please choose a password"(ionChange)="password1Changed()"></ion-input>
+                    <ion-input type="text" appConfirmEqualValidator="password2" formControlName="password1" placeholder="Please choose a password"(ionChange)="password1Changed()"></ion-input>
             </ion-item>
-            <!--First name validation-->
             <div class="validation-errors">
                     <ng-container *ngFor="let validation of validation_messages.password1" >
                             <div style="color:red" text-wrap align="center" class="error-message" *ngIf="personalForm.get('password1').hasError(validation.type) && (personalForm.get('password1').dirty || personalForm.get('password1').touched)">
@@ -113,20 +113,25 @@
                             </div>
                     </ng-container>
             </div>
+            <span style="color:red" text-wrap align="center" class="help-block" *ngIf="(personalForm.get('password2').value.length > 0) &&  personalForm.get('password1').touched && personalForm.get('password1').errors?.notEqual"> Passwords do not match</span>
 
 
+            <!--Password 2-->
             <ion-item>
                     <ion-label stacked>* Retype password</ion-label>
-                    <ion-input type="text" formControlName="password2" placeholder="Please re-type password"(ionChange)="password2Changed()"></ion-input>
+                    <ion-input type="text" appConfirmEqualValidator="password1" formControlName="password2" placeholder="Please re-type password"(ionChange)="password2Changed()"></ion-input>
             </ion-item>
-            <!--Nickname validation-->
+
+            <!--Password 2 validation-->
             <div class="validation-errors">
-                        <ng-container *ngFor="let validation of validation_messages.password2" >
-                                <div style="color:red" text-wrap align="center" class="error-message" *ngIf="personalForm.get('password2').hasError(validation.type) && (personalForm.get('password2').dirty || personalForm.get('password2').touched)">
-                                    {{ validation.message }}
-                                </div>
-                        </ng-container>
+                    <ng-container *ngFor="let validation of validation_messages.password2" >
+                            <div style="color:red" text-wrap align="center" class="error-message" *ngIf="personalForm.get('password2').hasError(validation.type) && (personalForm.get('password2').dirty || personalForm.get('password2').touched)">
+                                {{ validation.message }}
+                            </div>
+                    </ng-container>
             </div>
+
+            <span style="color:red" text-wrap align="center" class="help-block" *ngIf="personalForm.get('password2').touched && personalForm.get('password2').errors?.notEqual"> Passwords do not match</span>
 
 
             <button ion-button type="submit"  [disabled]="!personalForm.valid" full  (click)="onFisherFinishPersonal()">Next</button>

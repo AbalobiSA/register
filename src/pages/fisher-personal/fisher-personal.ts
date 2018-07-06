@@ -12,6 +12,9 @@ import {PersonalInfoClass}    from "../../classes/personal_info_class";
 
 import{FormBuilder, FormGroup, Validators} from "@angular/forms";
 
+import{confirmEqualValidatorsDirective} from "../../classes/confirm-password-validator-directive";
+
+
 @IonicPage()
 @Component({
       selector: 'page-fisher-personal',
