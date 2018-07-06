@@ -26,6 +26,8 @@ import {MarketplaceService}     from "../providers/MarketplaceService";
 import{FisherService}           from "../providers/FisherService";
 import{Registree}               from "../classes/registree_class";
 
+import{confirmEqualValidatorsDirective} from "../classes/confirm-password-validator-directive";
+
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import{Registree}               from "../classes/registree_class";
     FisherRolePage,
     FisherUsetermsPage,
     MarketplaceHome,
-    AfterRegisterPage
+    AfterRegisterPage,
+      confirmEqualValidatorsDirective
   ],
   imports: [
     BrowserModule,

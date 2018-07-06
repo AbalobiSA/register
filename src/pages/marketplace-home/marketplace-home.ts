@@ -172,7 +172,7 @@ export class MarketplaceHome {
 
       // check that the user does not already exist
       this.marketplaceService.checkIfUserAlreadyExists(this.email).then((user) => {
-
+``
         if(user[0]) {
           reject("This username is already taken");
         } else {
