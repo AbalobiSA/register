@@ -19,62 +19,30 @@ import {FormBuilder, Validators} from "@angular/forms";
 export class FisherUsetermsPage {
 
         terms_status    : FisherUsetermsClass = new FisherUsetermsClass ();
+        termsForm:any;
+        validation_messages = {
+            'agree': [
+                {type: 'required', message: 'Check "*I Agree" to accept the terms above.'},
+            ],
+        }
 
 
-    public termsForm: any;
-
-    validation_messages = {
-        'agree': [
-            {type: 'requiredTrue', message: 'Check "*I Agree" to accept the terms above.'}
-        ],
-    }
-
-
-
-    constructor (public navCtrl: NavController, public navParams: NavParams, public fisherService : FisherService, public formBuilder: FormBuilder) {
-
-        this.termsForm = this.formBuilder.group({
-            "agree": ['', Validators.requiredTrue],
-        })
-
-        //console.log("The boolean for terms in constructor is");
-       // console.log(this.terms_status.terms_use_agreed);
-
-    }
+        constructor (public navCtrl: NavController, public navParams: NavParams, public fisherService : FisherService, public formBuilder: FormBuilder) {
+                this.termsForm = this.formBuilder.group({
+                        'agree': ['', Validators.required],
+                })
+                this.termsForm.reset('agree');//reset the checkbox upon creation
+        }
 
         ionViewDidLoad() {
-              console.log('ionViewDidLoad FisherUsetermsPage');
-
-            console.log("The boolean for terms on Load is");
-            console.log(this.terms_status.terms_use_agreed);
         }
-
-
 
         onFisherFinishTerms(){
-            //if(this.isTermsResponseValid()) {
                 this.fisherService.fisherUpdateTerms(this.terms_status)
                 this.navCtrl.push(FisherPersonalPage);
-           // }
-            //else{
-                //console.log("You must accept the Terms Of Use");
-            //}
         }
 
-        isTermsResponseValid(): boolean {
-            return(this.terms_status.terms_use_agreed);
+        termsChanged(){
+                this.terms_status.terms_use_agreed = this.termsForm.get('agree').value;
         }
-
-    termsChanged(){
-
-        //console.log("The boolean for terms  on entering termsChanged is");
-        //console.log(this.terms_status.terms_use_agreed);
-
-        this.terms_status.terms_use_agreed = this.termsForm.get('agree').value;
-        //console.log(this.terms_status.terms_use_agreed);
-
-        //console.log("The boolean for terms  on exiting termsChanged is");
-        //console.log(this.terms_status.terms_use_agreed);
-    }
-
-}
+}//end class
