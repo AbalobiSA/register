@@ -53,8 +53,20 @@ export class FisherCommunityPage {
 
 
         communityChanged(){
-                this.community_info.comm_community = this.communityForm.get('community').value;
-                console.log(     this.community_info.comm_community);
+                this.community_info.comm_community = this.parseCommunity(this.communityForm.get('community').value);
+                //console.log(     this.community_info.comm_community);
+        }
+
+        parseCommunity (name_eng : string ): string {
+                let comm_ID :string ="";
+                for(let i = 0; i < this.all_comms.length;i++){
+                        if(this.all_comms[i].name_eng == name_eng){
+                                comm_ID = this.all_comms[i].unique_ext_id;
+                                break;//we found the desired community, abort the loop through all communities
+                        }
+                }
+
+                return comm_ID;
         }
 
         ionViewDidLoad() {
