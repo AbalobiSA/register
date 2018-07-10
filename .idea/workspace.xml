@@ -2,13 +2,105 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cff6d688-3c87-4286-9709-e8be1b580f3a" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/node_modules/@ionic-native/device/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@ionic-native/device/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@ionic-native/device/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@ionic-native/device/index.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@ionic-native/device/index.metadata.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/@ionic-native/device/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/.appveyor.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/.eslintrc.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/.github/PULL_REQUEST_TEMPLATE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/.npmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/.travis.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/CONTRIBUTING.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/NOTICE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/RELEASENOTES.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/doc/de/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/doc/de/index.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/doc/es/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/doc/es/index.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/doc/fr/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/doc/fr/index.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/doc/it/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/doc/it/index.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/doc/ja/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/doc/ja/index.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/doc/ko/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/doc/ko/index.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/doc/pl/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/doc/pl/index.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/doc/ru/index.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/doc/zh/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/doc/zh/index.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/plugin.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/src/android/Device.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/src/browser/DeviceProxy.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/src/ios/CDVDevice.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/src/ios/CDVDevice.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/src/osx/CDVDevice.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/src/osx/CDVDevice.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/src/windows/DeviceProxy.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/tests/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/tests/plugin.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/tests/tests.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/types/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/cordova-plugin-device/www/device.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/cordova-plugin-device/CONTRIBUTING.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/cordova-plugin-device/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/cordova-plugin-device/NOTICE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/cordova-plugin-device/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/cordova-plugin-device/RELEASENOTES.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/cordova-plugin-device/doc/de/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/cordova-plugin-device/doc/de/index.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/cordova-plugin-device/doc/es/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/cordova-plugin-device/doc/es/index.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/cordova-plugin-device/doc/fr/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/cordova-plugin-device/doc/fr/index.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/cordova-plugin-device/doc/it/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/cordova-plugin-device/doc/it/index.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/cordova-plugin-device/doc/ja/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/cordova-plugin-device/doc/ja/index.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/cordova-plugin-device/doc/ko/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/cordova-plugin-device/doc/ko/index.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/cordova-plugin-device/doc/pl/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/cordova-plugin-device/doc/pl/index.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/cordova-plugin-device/doc/ru/index.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/cordova-plugin-device/doc/zh/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/cordova-plugin-device/doc/zh/index.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/cordova-plugin-device/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/cordova-plugin-device/plugin.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/cordova-plugin-device/src/android/Device.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/cordova-plugin-device/src/browser/DeviceProxy.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/cordova-plugin-device/src/ios/CDVDevice.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/cordova-plugin-device/src/ios/CDVDevice.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/cordova-plugin-device/src/osx/CDVDevice.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/cordova-plugin-device/src/osx/CDVDevice.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/cordova-plugin-device/src/windows/DeviceProxy.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/cordova-plugin-device/tests/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/cordova-plugin-device/tests/plugin.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/cordova-plugin-device/tests/tests.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/cordova-plugin-device/types/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/cordova-plugin-device/www/device.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/fetch.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/classes/fisher-class.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.sourcemaps/main.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/.sourcemaps/main.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/community_info_class.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/community_info_class.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/registree_class.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/registree_class.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/fisher-community/fisher-community.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/fisher-community/fisher-community.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/fisher-community/fisher-community.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/fisher-community/fisher-community.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/fisher-personal/fisher-personal.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/fisher-personal/fisher-personal.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/fisher-role/fisher-role.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/fisher-role/fisher-role.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/home/home.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/home/home.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/providers/FisherService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/providers/FisherService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/providers/MarketplaceService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/providers/MarketplaceService.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/build/0.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/build/0.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/build/1.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/build/1.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/build/2.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/build/2.js" afterDir="false" />
@@ -32,14 +124,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="fisher-confirm.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/fisher-confirm/fisher-confirm.ts">
+      <file leaf-file-name="home.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/home/home.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+            <state relative-caret-position="255">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
               <folding>
-                <element signature="e#0#52#0" expanded="true" />
-                <element signature="e#143#202#0" expanded="true" />
+                <element signature="e#0#41#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -48,12 +139,42 @@
       <file leaf-file-name="FisherService.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/providers/FisherService.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="107">
-              <caret line="133" lean-forward="true" selection-start-line="133" selection-end-line="133" />
+            <state relative-caret-position="156">
+              <caret line="62" column="1" lean-forward="true" selection-start-line="62" selection-start-column="1" selection-end-line="62" selection-end-column="29" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
-                <element signature="e#120#186#0" expanded="true" />
+                <element signature="e#132#198#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="marketplace-home.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/marketplace-home/marketplace-home.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="214" column="45" selection-start-line="214" selection-start-column="35" selection-end-line="214" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MarketplaceService.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/providers/MarketplaceService.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="18" column="60" selection-start-line="18" selection-start-column="60" selection-end-line="18" selection-end-column="60" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fisher-class.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/classes/fisher-class.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="305">
+              <caret line="33" column="45" lean-forward="true" selection-start-line="33" selection-start-column="45" selection-end-line="33" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -66,6 +187,12 @@
         <option value="TypeScript File" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>isher</find>
+      <find>registerUs</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -80,10 +207,8 @@
         <option value="$PROJECT_DIR$/src/classes/coomunities_class.ts" />
         <option value="$PROJECT_DIR$/src/classes/communities_class.ts" />
         <option value="$PROJECT_DIR$/src/classes/all_communities.ts" />
-        <option value="$PROJECT_DIR$/src/classes/registree_class.ts" />
         <option value="$PROJECT_DIR$/src/classes/communities.ts" />
         <option value="$PROJECT_DIR$/src/classes/community_class.ts" />
-        <option value="$PROJECT_DIR$/src/classes/community_info_class.ts" />
         <option value="$PROJECT_DIR$/src/classes/fisher-useterms_class.ts" />
         <option value="$PROJECT_DIR$/src/pages/marketplace-home/marketplace-home.ts" />
         <option value="$PROJECT_DIR$/src/classes/confirm-password-validator-directive.ts" />
@@ -92,14 +217,20 @@
         <option value="$PROJECT_DIR$/src/pages/fisher-useterms/fisher-useterms.html" />
         <option value="$PROJECT_DIR$/src/pages/fisher-useterms/fisher-useterms.ts" />
         <option value="$PROJECT_DIR$/src/pages/fisher-role/fisher-role.ts" />
-        <option value="$PROJECT_DIR$/src/pages/home/home.ts" />
         <option value="$PROJECT_DIR$/src/pages/home/home.html" />
         <option value="$PROJECT_DIR$/src/pages/fisher-personal/fisher-personal.ts" />
         <option value="$PROJECT_DIR$/src/pages/fisher-confirm/fisher-confirm.ts" />
+        <option value="$PROJECT_DIR$/www/secrets.ts" />
+        <option value="$PROJECT_DIR$/src/providers/MarketplaceService.ts" />
         <option value="$PROJECT_DIR$/src/pages/fisher-role/fisher-role.html" />
         <option value="$PROJECT_DIR$/src/pages/fisher-personal/fisher-personal.html" />
         <option value="$PROJECT_DIR$/src/pages/fisher-community/fisher-community.html" />
         <option value="$PROJECT_DIR$/src/pages/fisher-community/fisher-community.ts" />
+        <option value="$PROJECT_DIR$/src/classes/registree_class.ts" />
+        <option value="$PROJECT_DIR$/src/classes/community_info_class.ts" />
+        <option value="$PROJECT_DIR$/src/classes/fisher-class.ts" />
+        <option value="$PROJECT_DIR$/src/pages/home/home.ts" />
+        <option value="$PROJECT_DIR$/secrets.ts" />
         <option value="$PROJECT_DIR$/src/providers/FisherService.ts" />
       </list>
     </option>
@@ -116,31 +247,27 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths>
       <path value="$PROJECT_DIR$/package.json" />
+      <path value="$PROJECT_DIR$/plugins/cordova-plugin-device/package.json" />
+      <path value="$PROJECT_DIR$/plugins/cordova-plugin-device/tests/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="-1879" />
-    <option name="y" value="-105" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-1920" />
+    <option name="y" value="-157" />
     <option name="width" value="1920" />
-    <option name="height" value="877" />
+    <option name="height" value="1057" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="register" type="b2602c69:ProjectViewProjectNode" />
               <item name="register" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="register" type="b2602c69:ProjectViewProjectNode" />
-              <item name="register" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="register" type="b2602c69:ProjectViewProjectNode" />
@@ -171,7 +298,7 @@
               <item name="register" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="fisher-role" type="462c0819:PsiDirectoryNode" />
+              <item name="home" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="register" type="b2602c69:ProjectViewProjectNode" />
@@ -186,14 +313,20 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="providers" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="register" type="b2602c69:ProjectViewProjectNode" />
+              <item name="register" type="462c0819:PsiDirectoryNode" />
+              <item name="www" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="standalone&#9;null&#9;null&#10;province&#9;null&#9;null&#10;gith&#9;FILE&#9;file:///Users/techairos/JOSHUA_WORK/register/node_modules/ionicons/dist/svg/logo-github.svg&#10;marketplace-register&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="ignore&#9;FILE&#9;file:///Users/techairos/JOSHUA_WORK/register/node_modules/rxjs/operators/ignoreElements.js&#10;standalone&#9;null&#9;null&#10;province&#9;null&#9;null&#10;gith&#9;FILE&#9;file:///Users/techairos/JOSHUA_WORK/register/node_modules/ionicons/dist/svg/logo-github.svg&#10;marketplace-register&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -201,12 +334,13 @@
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/classes" />
-      <recent name="$PROJECT_DIR$/resources" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/classes" />
+      <recent name="$PROJECT_DIR$/resources" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -247,28 +381,30 @@
       <workItem from="1530783534158" duration="11848000" />
       <workItem from="1530858481220" duration="20961000" />
       <workItem from="1531119922003" duration="190000" />
-      <workItem from="1531124411191" duration="5367000" />
+      <workItem from="1531124411191" duration="24282000" />
+      <workItem from="1531217519769" duration="3125000" />
+      <workItem from="1531224343383" duration="1222000" />
+      <workItem from="1531225926576" duration="5531000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="88360000" />
+    <option name="totallyTimeSpent" value="117153000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1920" y="-180" width="1920" height="1080" extended-state="0" />
-    <editor active="true" />
+    <frame x="-1920" y="-157" width="1920" height="1057" extended-state="0" />
     <layout>
       <window_info anchor="bottom" id="TypeScript" order="7" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.08478146" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27698788" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.053731345" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.403125" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -278,10 +414,10 @@
       <window_info anchor="bottom" id="Find" order="1" />
     </layout>
     <layout-to-restore>
+      <window_info anchor="bottom" id="Version Control" order="11" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21770833" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -289,12 +425,12 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="TypeScript" order="8" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.19844358" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="11" />
-      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Favorites" order="2" side_tool="true" />
     </layout-to-restore>
   </component>
@@ -311,7 +447,7 @@
           <caret line="36" column="67" selection-start-line="36" selection-start-column="67" selection-end-line="36" selection-end-column="67" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
-            <element signature="e#120#186#0" expanded="true" />
+            <element signature="e#132#198#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -390,13 +526,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/community_info_class.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/@angular/forms/src/directives/ng_model.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -422,9 +551,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="22" column="15" lean-forward="true" selection-start-line="22" selection-start-column="15" selection-end-line="22" selection-end-column="15" />
-          <folding>
-            <element signature="e#0#56#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -477,86 +603,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/fisher-personal/fisher-personal.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1112">
-          <caret line="15" column="56" lean-forward="true" selection-start-line="15" selection-start-column="56" selection-end-line="15" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/home/home.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="27" lean-forward="true" selection-start-line="19" selection-end-line="20" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/providers/MarketplaceService.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/registree_class.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/fisher-confirm/fisher-confirm.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="222">
           <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/marketplace-home/marketplace-home.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1027">
-          <caret line="192" column="2" selection-start-line="192" selection-start-column="2" selection-end-line="192" selection-end-column="2" />
-          <folding>
-            <element signature="e#175#224#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/fisher-role/fisher-role.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/fisher-personal/fisher-personal.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="870">
-          <caret line="58" column="56" selection-start-line="58" selection-start-column="56" selection-end-line="58" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/fisher-community/fisher-community.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="62" column="67" lean-forward="true" selection-start-line="62" selection-start-column="67" selection-end-line="62" selection-end-column="67" />
-          <folding>
-            <element signature="e#0#52#0" expanded="true" />
-            <element signature="e#326#395#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/fisher-community/fisher-community.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
         </state>
       </provider>
     </entry>
@@ -567,10 +617,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/rxjs/operators/ignoreElements.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/fisher-confirm/fisher-confirm.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+        <state relative-caret-position="540">
+          <caret line="36" column="16" lean-forward="true" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="16" />
           <folding>
             <element signature="e#0#52#0" expanded="true" />
             <element signature="e#143#202#0" expanded="true" />
@@ -578,13 +631,110 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/providers/FisherService.ts">
+    <entry file="file://$PROJECT_DIR$/src/pages/fisher-role/fisher-role.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="133" lean-forward="true" selection-start-line="133" selection-end-line="133" />
+        <state>
+          <caret lean-forward="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/fisher-personal/fisher-personal.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="1" lean-forward="true" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/fisher-personal/fisher-personal.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="925">
+          <caret line="120" column="35" lean-forward="true" selection-start-line="120" selection-start-column="35" selection-end-line="120" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/registree_class.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="30" lean-forward="true" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/community_info_class.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="39" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/fisher-community/fisher-community.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="861">
+          <caret line="72" column="27" selection-start-line="72" selection-start-column="27" selection-end-line="72" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#52#0" expanded="true" />
+            <element signature="e#326#395#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/fisher-community/fisher-community.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="619">
+          <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/home/home.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
-            <element signature="e#120#186#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/fisher-class.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="33" column="45" lean-forward="true" selection-start-line="33" selection-start-column="45" selection-end-line="33" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/providers/MarketplaceService.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="60" selection-start-line="18" selection-start-column="60" selection-end-line="18" selection-end-column="60" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/marketplace-home/marketplace-home.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="214" column="45" selection-start-line="214" selection-start-column="35" selection-end-line="214" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/secrets.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="36" lean-forward="true" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/providers/FisherService.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="62" column="1" lean-forward="true" selection-start-line="62" selection-start-column="1" selection-end-line="62" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#132#198#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -1,5 +1,6 @@
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient,HttpParams} from "@angular/common/http";
+
 
 //Imported non-page classes
 import {Registree}              from "../classes/registree_class";
@@ -7,12 +8,15 @@ import{FisherUsetermsClass}     from "../classes/fisher-useterms_class";
 import {PersonalInfoClass}      from "../classes/personal_info_class";
 import {CommunityInfoClass}     from "../classes/community_info_class";
 
+import{Fisher} from "../classes/fisher-class";
+
+import{Secrets} from "../../secrets";
+
+
 @Injectable()
 export class FisherService {
 
-
-    REGISTRATION_URL = "";//place a postbin url here first, then replace with actual, then do secret file
-    CHECK_USER_URL = "";//place a postbin url here first, then replace with actual, then do secret file
+    secrets:Secrets = new Secrets();
 
 
     constructor(private http: HttpClient, public registree: Registree) {
@@ -45,6 +49,7 @@ export class FisherService {
   fisherUpdateCommunity(community_info: CommunityInfoClass){
         this.registree.province                 = community_info.comm_province;
         this.registree.community                = community_info.comm_community;
+        this.registree.custom_community         = community_info.custom_community;
         this.registree.comm_not_listed          = community_info.comm_not_listed;
         this.registree.IRP_selected             = community_info.comm_IRP_chosen;
         this.registree.commercial_selected      = community_info.comm_commercial_chosen;
@@ -55,78 +60,72 @@ export class FisherService {
 
 
     //Attempt to register the fisher
-    fisherSubmitRegistration(){
-        let fisher = this.parseFisher();//user object to be posted
-        console.log ("This fisher has been created");
-        console.log (fisher);
+   fisherSubmitRegistration() {
+        let fisher = new Fisher();
+        this.parseFisher(fisher);
+        console.log("This fisher has been created");
+        console.log(fisher);
 
-    }
+
+        //Attempt a better implementation of registration
+      this.checkIfFisherAlreadyExists(fisher.id)//first promise check if the ID number has already been taken
+        .then((response)=>{//ID found, not unique
+            alert(JSON.stringify(response));
+            //alert('ID number already exists');
+        })
+         .catch((error)=>{//ID number is unique
+             alert(JSON.stringify(error));
+             //Go ahead and attempt to register unique fisher
+            /* alert('ID number is unique');
+             this.registerFisher(fisher)//upon success i.e. second promise attempts to register user
+                 .then ((reply)=> {
+                     alert('User registration successful');
+                 })
+                 .catch( ()=>{//failure to register , but ID is unique
+                     alert('User registration failed');
+                 })*/
+         })
+
+
+       //The implementation below works but has the issue that the registration is executed in an error clause of the first promise
+        /*this.checkIfFisherAlreadyExists(fisher.id)//first promise check if the ID number has already been taken
+           .then((response)=>{//ID found, not unique
+               alert('ID number already exists');
+           })
+            .catch(()=>{//ID number is unique
+
+                //Go ahead and attempt to register unique fisher
+                alert('ID number is unique');
+                this.registerFisher(fisher)//upon success i.e. second promise attempts to register user
+                    .then ((reply)=> {
+                        alert('User registration successful');
+                    })
+                    .catch( ()=>{//failure to register , but ID is unique
+                        alert('User registration failed');
+                    })
+            })*/
+
+        this.fisherClearDetails();//clear the recently entered details(confirm page will push a blank white page thereafter
+    }//end SubmitRegistration
 
 
     //parse fisher data to a format congruent to what the backend expects
-    parseFisher(): Object {
+    parseFisher(fisher: Fisher)  {
 
-   let parsedFisher = {
-        //Fields currently populated
-        "name"                          : this.registree.firstname,
-        "surname"                       : this.registree.surname,
-        "nickname"                      : this.registree.nickname,
-        "password"                      : this.registree.password,
-        "cell"                          : this.registree.cellNo,
-        "gender"                        : this.registree.gender,
-        "id"                            : this.registree.IDnum,
-        "usertype"                      : this.registree.role,
-        "landingsite"                   : this.registree.community,
-        "fisher_license_irp"            : this.registree.IRP_selected,
-        "fisher_license_recreational"   : this.registree.recreational_selected,
-        "permission_local_implementer"  : this.registree.assistant_agreed,
-        "permission_daff"               : this.registree.DAFF_agreed,
-        "preferred_language"            : "English",//is this okay?
-
-
-        //Unpopulated fieilds
-       // "permission_local_implementer": true,
-       /* "__query_params": {},
-        //"fisher_license_irp": true,
-        "boat_engine_hp": 450,
-        "fisher_boat_type": "Bakkie",
-        "device_version": "4.4.2",
-        "device_uuid": "42a469ece0aef206",
-        "birth_date": "2009-07-06T00:00:00.000Z",
-        "boat_name": "Jjjjj",
-        "boat_reg": "55555",
-        //"preferred_language": "English",
-        "device_model": "GT-I9190",
-        //"gender": "male",
-        "email": "tt@test.com",
-        "boat_own": true,
-        "boat_expDate": "2020-07-06T00:00:00.000Z",
-        "fisher_boat": true,
-        "community_not_specified": true,
-        //"password": "abbababa",
-        //"surname": "Test surname",
-        //"name": "Joshua",
-        "filter": "abalobi_registration",
-        //"usertype": "fisher",
-        "uuid_timestamp": "2018-07-06T14:37:30.684Z",
-        "device_manufacturer": "samsung",
-        "boat_has_engine": true,
-        "fisher_shore": true,
-        "device_platform": "Android",
-        //"permission_daff": true,
-        "boat_engine_cc": 45,
-        //"nickname": "Tatenda",
-        //"fisher_license_recreational": false,
-        //"cell": "0123456789",
-        "app_version": "0.5.5",
-        //"id": "1234567890123",
-        "fisher_licence_irp_number": "Haai",
-        "email_is_my_own": true,
-        "landingsite_custom": "testcom",
-        "device_serial": "002ff2ed"*/
-    }//end method parseUser
-
-    return parsedFisher;//return the user in a format ready for posting
+        fisher.name                             =   this.registree.firstname;
+        fisher.surname                          =   this.registree.surname;
+        fisher.nickname                         =   this.registree.nickname;
+        fisher.password                         =   this.registree.password;
+        fisher.cell                             =   this.registree.cellNo;
+        fisher.gender                           =   this.registree.gender;
+        fisher.id                               =   this.registree.IDnum;
+        fisher.usertype                         =   this.registree.role;
+        fisher.landingsite                      =   this.registree.community;
+        fisher.landingsite_custom               =   this.registree.custom_community;
+        fisher.fisher_license_irp               =   this.registree.IRP_selected;
+        fisher.fisher_license_recreational      =   this.registree.recreational_selected;
+        fisher.permission_local_implementer     =   this.registree.assistant_agreed;
+        fisher.permission_daff                  =   this.registree.DAFF_agreed;
 
 }
 
@@ -155,6 +154,7 @@ export class FisherService {
       //Community details
       this.registree.province              ="";
       this.registree.community             ="";
+      this.registree.custom_community      = "";
       this.registree.comm_not_listed       =false;
       this.registree.IRP_selected          =false;
       this.registree.commercial_selected   =false;
@@ -164,14 +164,16 @@ export class FisherService {
       console.log("........Fisher Service Cleared User Details........");
   }
 
-  //Check if fisher with th proposed username doesnt exist already
+  //Check if fisher with the proposed ID doesn't exist already
   checkIfFisherAlreadyExists(ID: string): Promise<any> {
-        return this.http.get(this.CHECK_USER_URL + ID).toPromise();
+        return this.http.get(this.secrets.fisherCheckUserIDurl + ID).toPromise();
   }
+
 
   //Go ahead and actually try to register the fisher
   registerFisher(fisher): Promise<any> {
-        return this.http.post(this. REGISTRATION_URL, fisher).toPromise();
+        console.log("Posting fisher registration")
+      return this.http.post(this.secrets.fisherAddUserURL, fisher).toPromise();
   }
 
 
