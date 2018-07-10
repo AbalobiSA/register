@@ -10,7 +10,24 @@ import {FisherService} from "../../providers/FisherService";
 //Imported non-page classes
 import{CommunityInfoClass} from "../../classes/community_info_class";
 import {CommunityClass} from "../../classes/community_class";
-import {FormBuilder, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+
+
+
+//Function to check that custom community has been entered
+function customCommEntered(selectedCommKey: string, customCommKey: string) {
+    return (group: FormGroup): {[key: string]: any} => {
+        let selectedComm  = group.controls[selectedCommKey];
+        let customComm    = group.controls[customCommKey];
+
+        if ((selectedComm.value == 'Other')&&( !customComm.value)) {
+            return {
+                missingCustomComm: true
+            };
+        }
+    }
+}
+
 
 @IonicPage()
 @Component({
@@ -36,9 +53,10 @@ export class FisherCommunityPage {
 
         constructor (public navCtrl: NavController, public navParams: NavParams, public fisherService : FisherService, public formBuilder: FormBuilder) {
                 this.communityForm = this.formBuilder.group({
-                    "province": ['', Validators.required],
-                    "community": ['', Validators.required],
-                })
+                    "province"  : ['', Validators.required],
+                    "community" : ['', Validators.required],
+                    "custom"    : [null,null],
+                }, {validator: customCommEntered('community', 'custom')} )
 
                 //construct the list of all communities upon and instantiate once
                 for (let i = 1;i <this.list_of_communities.length;i++){//ignore headings, start at second line
@@ -54,7 +72,13 @@ export class FisherCommunityPage {
 
         communityChanged(){
                 this.community_info.comm_community = this.parseCommunity(this.communityForm.get('community').value);
-                //console.log(     this.community_info.comm_community);
+        }
+
+
+        customCommunityEntered(){
+            if(this.community_info.comm_community == 'other') {
+                this.community_info.custom_community= this.communityForm.get('custom').value;
+            }
         }
 
         parseCommunity (name_eng : string ): string {
@@ -62,7 +86,7 @@ export class FisherCommunityPage {
                 for(let i = 0; i < this.all_comms.length;i++){
                         if(this.all_comms[i].name_eng == name_eng){
                                 comm_ID = this.all_comms[i].unique_ext_id;
-                                break;//we found the desired community, abort the loop through all communities
+                                break;//we found the desired community, abort the search loop
                         }
                 }
 
