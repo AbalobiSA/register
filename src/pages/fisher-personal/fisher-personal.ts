@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import{FormBuilder, FormGroup, Validators, FormControl} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators, FormControl, AbstractControl} from "@angular/forms";
 
 //Imported page classes
 import {FisherCommunityPage}  from "../fisher-community/fisher-community";
@@ -11,19 +11,107 @@ import{FisherService}         from "../../providers/FisherService";
 //Imported non-page classes
 import {PersonalInfoClass}    from "../../classes/personal_info_class";
 
+
+
 //Function to check for matching passwords
-function matchingPasswords(passwordKey: string, confirmPasswordKey: string) {
+function goodPasswords(passwordKey: string, confirmPasswordKey: string) {
     return (group: FormGroup): {[key: string]: any} => {
         let password = group.controls[passwordKey];
         let confirmPassword = group.controls[confirmPasswordKey];
 
-        if (password.value !== confirmPassword.value) {
+        //Passwords mismatch
+        if (password.value !== confirmPassword.value) {//passwords do not match
             return {
                 mismatchedPasswords: true
             };
         }
+
+        //Passwords match, perform further checks
+        else{
+            //passwords too short
+            if (password.value.length < 6) {
+                return {
+                    badPasswords: true
+                };
+            }
+
+            //passwords have sufficient length,check representation of each of CAPS,small letters,
+            else{
+
+                if(!hasUpperCase(password.value)){//discovered that there are no CAPS in password
+                    return {
+                        noUpperCase: true
+                    };
+                }
+
+                else if(!hasLowerCase(password.value)){
+                    return {
+                        noLowerCase: true
+                    };
+                }
+
+                else if(!hasNum(password.value)){
+                    return {
+                        noNum: true
+                    };
+                }
+
+
+            }
+
+        }
     }
 }
+
+
+function hasUpperCase(password: string): boolean {//check if the given string has at least one Uppercase Letter
+    if(password.length < 1){//safety check string is not empty
+        return false;
+    }
+
+    else{
+            for(let i = 0;i<password.length;i++){
+                let char = password.charAt(i);
+                if(/[A-Z]/.test(char)){
+                    return true;
+                }
+            }
+        return false;
+    }
+}
+
+function hasLowerCase(password: string): boolean {//return true if a Lowercase has been found
+    if(password.length < 1){//safety check string is not empty
+        return false;
+    }
+
+    else {
+        for (let i = 0; i < password.length; i++) {
+            let char = password.charAt(i);
+            if(/[a-z]/.test(char)){
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
+function hasNum(password: string): boolean {//return true if a digit has been found
+    if(password.length < 1){//safety check string is not empty
+        return false;
+    }
+
+    else {
+        for (let i = 0; i < password.length; i++) {
+            let char = password.charAt(i);
+            if(/^\d+$/.test(char)){
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
 
 
 
@@ -91,7 +179,7 @@ export class FisherPersonalPage {
                         "cell":     ['', Validators.compose([Validators.required, Validators.pattern('^[0-9]+$'), Validators.minLength(10), Validators.maxLength(10)])],
                         "password1":['', Validators.required],
                         "password2":['', Validators.required]
-                    } , {validator: matchingPasswords('password1', 'password2')} )
+                    } , {validator: goodPasswords('password1', 'password2')})
             }
 
 

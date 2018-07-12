@@ -14,6 +14,35 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 
 
+function isInThisProvince(comms: CommunityClass, provinceFull : string){
+    return  this.province_abbrev == getProvinceAbbrev(provinceFull);
+}
+
+function getProvinceAbbrev(province: string): string {
+
+    switch(province){
+
+        case "Western Cape":{
+            return "WC";
+        }
+
+        case "KwaZulu-Natal":{
+            return "KZN";
+        }
+        case "Northern Cape":{
+            return "NC";
+        }
+
+        //add more cases as they arise
+        default :{
+            return "abbrev not found";
+        }
+
+    }//end switch
+
+}
+
+
 //Function to check that custom community has been entered
 function customCommEntered(selectedCommKey: string, customCommKey: string) {
     return (group: FormGroup): {[key: string]: any} => {
@@ -36,9 +65,11 @@ function customCommEntered(selectedCommKey: string, customCommKey: string) {
 })
 export class FisherCommunityPage {
         all_comms               : CommunityClass[] = [];
+        filtered_comms          :CommunityClass[] = [];//communities filtered according to province selected
         community_info          : CommunityInfoClass = new CommunityInfoClass();
         confirm_personal        : Object = new Object();
         public communityForm    : any;
+        public hideCustomComm   : boolean = true;//hide the option to enter a custom community on DOM
 
         validation_messages = {
                 'province': [
@@ -58,7 +89,7 @@ export class FisherCommunityPage {
                     "custom"    : [null,null],
                 }, {validator: customCommEntered('community', 'custom')} )
 
-                //construct the list of all communities upon and instantiate once
+                //construct the list of all communities upon and creation instantiate once
                 for (let i = 1;i <this.list_of_communities.length;i++){//ignore headings, start at second line
                     let line :string []= (this.list_of_communities[i]).split(",");
                     this.all_comms.push(new CommunityClass(line[0],line[1],line[2]));
@@ -67,25 +98,34 @@ export class FisherCommunityPage {
 
         provinceChanged(){
                 this.community_info.comm_province = this.communityForm.get('province').value;
+                this.filtered_comms = this.filterComms(this.all_comms,this.community_info.comm_province);//generate trhe filtered comms based on province selection
         }
 
 
         communityChanged(){
-                this.community_info.comm_community = this.parseCommunity(this.communityForm.get('community').value);
-        }
+            let selectedCommunity: string = this.communityForm.get('community').value;
+            if(selectedCommunity !== 'Other') {
+                this.hideCustomComm = true;
+                this.community_info.comm_community = this.parseCommunity(selectedCommunity);
+            }
 
-
-        customCommunityEntered(){
-            if(this.community_info.comm_community == 'other') {
-                this.community_info.custom_community= this.communityForm.get('custom').value;
+            else{//show the custom community imput box
+                this.community_info.comm_community = 'other';
+                this.hideCustomComm = false;
             }
         }
 
-        parseCommunity (name_eng : string ): string {
+
+        //Record the name of the enetered custom community
+        customCommunityEntered(){
+            this.community_info.custom_community= this.communityForm.get('custom').value;
+        }
+
+        parseCommunity (name_Eng : string ): string {
                 let comm_ID :string ="";
                 for(let i = 0; i < this.all_comms.length;i++){
-                        if(this.all_comms[i].name_eng == name_eng){
-                                comm_ID = this.all_comms[i].unique_ext_id;
+                        if(this.all_comms[i].name_Eng == name_Eng){
+                                comm_ID = this.all_comms[i].name_key;
                                 break;//we found the desired community, abort the search loop
                         }
                 }
@@ -111,35 +151,48 @@ export class FisherCommunityPage {
 
         //TODO -- improve this to read these communities from a csv file/from an API call
         private list_of_communities = [
-                "name_eng__c,province_abbreviation__c,unique_ext_id__c",
-                "Ocean View,WC,ocean_view",
-                "Lamberts Bay,WC,lambertsbaai",
-                "Struis Bay,WC,struisbaai",
-                "Kleinmond,WC,kleinmond",
-                "Port Nolloth,NC,portnolloth",
-                "Hondeklip Bay,NC,hondeklipbaai",
-                "Saint Helena,WC,sainthelena",
-                "Doring Bay,WC,doringbaai",
-                "Olifants,WC,olifants",
-                "Elands Bay,WC,elandsbaai",
-                "Demo Community,WC,democommunity",
-                "Muizenberg,WC,muizenberg",
-                "Bellville,WC,bellville",
-                "Hermanus,WC,hermanus",
-                "Kalk Bay,WC,kalk_bay",
-                "Grassy Park,WC,grassy_park",
-                "Strand,WC,strand",
-                "Strandfontein (False Bay),WC,strandfontein_falsebay",
-                "Hout Bay,WC,hout_bay",
-                "Simon's Town,WC,simonstown",
-                "Gordon's Bay,WC,gordons_bay",
-                "Arniston,WC,arniston",
-                "St Helena Island,SHI,sainthelenaisland",
-                "Langebaan,WC,langebaan",
-                "Paternoster,WC,paternoster",
-                "Bettys Bay,WC,bettysbay",
-                "Pringle Bay,WC,pringlebay",
-                "Cape Town,WC,capetown",
-                "Coffee Bay,KZN,coffeebay",
-                "Other,Other,other"];
+            "name_key,province,name_Eng,name_Afr,region",
+            "arniston,WC,Arniston,Waenhuiskrans,west_coast",
+            "bellville,WC,Bellville,Bellville,west_coast",
+            "bettysbay,WC,Bettys Bay,Bettysbaai,west_coast",
+            "capetown,WC,Cape Town,Cape Town,west_coast",
+            "coffeebay,KZN,Coffee Bay,Koffiebaai,kwazulunatal eastern_cape",
+            "democommunity,WC,Demo Community,Demo Gemeenskap,west_coast",
+            "doringbaai,WC,Doring Bay,Doringbaai,west_coast",
+            "elandsbaai,WC,Elands Bay,Elandsbaai,west_coast",
+            "gordons_bay,WC,Gordon's Bay,Gordonsbaai,west_coast",
+            "grassy_park,WC,Grassy Park,Grassy Park,west_coast",
+            "hermanus,WC,Hermanus,Hermanus,west_coast",
+            "hondeklipbaai,NC,Hondeklip Bay,Hondeklipbaai,west_coast",
+            "hout_bay,WC,Hout Bay,Houtbaai,west_coast",
+            "kalk_bay,WC,Kalk Bay,Kalkbaai,west_coast",
+            "kleinmond,WC,Kleinmond,Kleinmond,west_coast",
+            "lambertsbaai,WC,Lamberts Bay,Lambertsbaai,west_coast",
+            "langebaan,WC,Langebaan,Langebaan,west_coast",
+            "muizenberg,WC,Muizenberg,Muizenberg,west_coast",
+            "ocean_view,WC,Ocean View,Ocean View,west_coast",
+            "olifants,WC,Olifants,Olifants,west_coast",
+            "paternoster,WC,Paternoster,Paternoster,west_coast",
+            "portnolloth,NC,Port Nolloth,Port Nolloth,west_coast",
+            "pringlebay,WC,Pringle Bay,Pringlebaai,west_coast",
+            "sainthelena,WC,Saint Helena,Saint Helena,west_coast",
+            "simonstown,WC,Simon's Town,Simonstad,west_coast",
+            "sainthelenaisland,SHI,St Helena Island,St Helena Eiland,saint_helena_island",
+            "strand,WC,Strand,Strand,west_coast",
+            "strandfontein_falsebay,WC,Strandfontein (False Bay),Strandfontein (Valsbaai),west_coast",
+            "struisbaai,WC,Struis Bay,Struisbaai,west_coast",
+];
+
+
+    //Can be implemented more elegantly with filter() function, just havent figure out how yet
+     filterComms(comms: CommunityClass[], provinceFull :string): CommunityClass [] {
+        let filtered :  CommunityClass []= [];
+        for(let i =0;i< comms.length;i++){
+            if( getProvinceAbbrev(provinceFull) == comms[i].province_abbrev){
+                filtered.push(comms[i]);
+            }
+        }
+        return filtered;
+    }
+
 }//end class

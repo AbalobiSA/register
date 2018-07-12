@@ -29,7 +29,7 @@ export class FisherUsetermsPage {
 
         constructor (public navCtrl: NavController, public navParams: NavParams, public fisherService : FisherService, public formBuilder: FormBuilder) {
                 this.termsForm = this.formBuilder.group({
-                        'agree': ['', Validators.required],
+                        'agree': ['', Validators.requiredTrue],
                 })
                 this.termsForm.reset('agree');//reset the checkbox upon creation
         }

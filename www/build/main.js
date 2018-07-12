@@ -31,6 +31,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+function isInThisProvince(comms, provinceFull) {
+    return this.province_abbrev == getProvinceAbbrev(provinceFull);
+}
+function getProvinceAbbrev(province) {
+    switch (province) {
+        case "Western Cape": {
+            return "WC";
+        }
+        case "KwaZulu-Natal": {
+            return "KZN";
+        }
+        case "Northern Cape": {
+            return "NC";
+        }
+        //add more cases as they arise
+        default: {
+            return "abbrev not found";
+        }
+    } //end switch
+}
 //Function to check that custom community has been entered
 function customCommEntered(selectedCommKey, customCommKey) {
     return function (group) {
@@ -50,8 +70,10 @@ var FisherCommunityPage = /** @class */ (function () {
         this.fisherService = fisherService;
         this.formBuilder = formBuilder;
         this.all_comms = [];
+        this.filtered_comms = []; //communities filtered according to province selected
         this.community_info = new __WEBPACK_IMPORTED_MODULE_4__classes_community_info_class__["a" /* CommunityInfoClass */]();
         this.confirm_personal = new Object();
+        this.hideCustomComm = true; //hide the option to enter a custom community on DOM
         this.validation_messages = {
             'province': [
                 { type: 'required', message: 'Please select a province.' }
@@ -62,44 +84,43 @@ var FisherCommunityPage = /** @class */ (function () {
         };
         //TODO -- improve this to read these communities from a csv file/from an API call
         this.list_of_communities = [
-            "name_eng__c,province_abbreviation__c,unique_ext_id__c",
-            "Ocean View,WC,ocean_view",
-            "Lamberts Bay,WC,lambertsbaai",
-            "Struis Bay,WC,struisbaai",
-            "Kleinmond,WC,kleinmond",
-            "Port Nolloth,NC,portnolloth",
-            "Hondeklip Bay,NC,hondeklipbaai",
-            "Saint Helena,WC,sainthelena",
-            "Doring Bay,WC,doringbaai",
-            "Olifants,WC,olifants",
-            "Elands Bay,WC,elandsbaai",
-            "Demo Community,WC,democommunity",
-            "Muizenberg,WC,muizenberg",
-            "Bellville,WC,bellville",
-            "Hermanus,WC,hermanus",
-            "Kalk Bay,WC,kalk_bay",
-            "Grassy Park,WC,grassy_park",
-            "Strand,WC,strand",
-            "Strandfontein (False Bay),WC,strandfontein_falsebay",
-            "Hout Bay,WC,hout_bay",
-            "Simon's Town,WC,simonstown",
-            "Gordon's Bay,WC,gordons_bay",
-            "Arniston,WC,arniston",
-            "St Helena Island,SHI,sainthelenaisland",
-            "Langebaan,WC,langebaan",
-            "Paternoster,WC,paternoster",
-            "Bettys Bay,WC,bettysbay",
-            "Pringle Bay,WC,pringlebay",
-            "Cape Town,WC,capetown",
-            "Coffee Bay,KZN,coffeebay",
-            "Other,Other,other"
+            "name_key,province,name_Eng,name_Afr,region",
+            "arniston,WC,Arniston,Waenhuiskrans,west_coast",
+            "bellville,WC,Bellville,Bellville,west_coast",
+            "bettysbay,WC,Bettys Bay,Bettysbaai,west_coast",
+            "capetown,WC,Cape Town,Cape Town,west_coast",
+            "coffeebay,KZN,Coffee Bay,Koffiebaai,kwazulunatal eastern_cape",
+            "democommunity,WC,Demo Community,Demo Gemeenskap,west_coast",
+            "doringbaai,WC,Doring Bay,Doringbaai,west_coast",
+            "elandsbaai,WC,Elands Bay,Elandsbaai,west_coast",
+            "gordons_bay,WC,Gordon's Bay,Gordonsbaai,west_coast",
+            "grassy_park,WC,Grassy Park,Grassy Park,west_coast",
+            "hermanus,WC,Hermanus,Hermanus,west_coast",
+            "hondeklipbaai,NC,Hondeklip Bay,Hondeklipbaai,west_coast",
+            "hout_bay,WC,Hout Bay,Houtbaai,west_coast",
+            "kalk_bay,WC,Kalk Bay,Kalkbaai,west_coast",
+            "kleinmond,WC,Kleinmond,Kleinmond,west_coast",
+            "lambertsbaai,WC,Lamberts Bay,Lambertsbaai,west_coast",
+            "langebaan,WC,Langebaan,Langebaan,west_coast",
+            "muizenberg,WC,Muizenberg,Muizenberg,west_coast",
+            "ocean_view,WC,Ocean View,Ocean View,west_coast",
+            "olifants,WC,Olifants,Olifants,west_coast",
+            "paternoster,WC,Paternoster,Paternoster,west_coast",
+            "portnolloth,NC,Port Nolloth,Port Nolloth,west_coast",
+            "pringlebay,WC,Pringle Bay,Pringlebaai,west_coast",
+            "sainthelena,WC,Saint Helena,Saint Helena,west_coast",
+            "simonstown,WC,Simon's Town,Simonstad,west_coast",
+            "sainthelenaisland,SHI,St Helena Island,St Helena Eiland,saint_helena_island",
+            "strand,WC,Strand,Strand,west_coast",
+            "strandfontein_falsebay,WC,Strandfontein (False Bay),Strandfontein (Valsbaai),west_coast",
+            "struisbaai,WC,Struis Bay,Struisbaai,west_coast",
         ];
         this.communityForm = this.formBuilder.group({
             "province": ['', __WEBPACK_IMPORTED_MODULE_6__angular_forms__["f" /* Validators */].required],
             "community": ['', __WEBPACK_IMPORTED_MODULE_6__angular_forms__["f" /* Validators */].required],
             "custom": [null, null],
         }, { validator: customCommEntered('community', 'custom') });
-        //construct the list of all communities upon and instantiate once
+        //construct the list of all communities upon and creation instantiate once
         for (var i = 1; i < this.list_of_communities.length; i++) {
             var line = (this.list_of_communities[i]).split(",");
             this.all_comms.push(new __WEBPACK_IMPORTED_MODULE_5__classes_community_class__["a" /* CommunityClass */](line[0], line[1], line[2]));
@@ -107,20 +128,28 @@ var FisherCommunityPage = /** @class */ (function () {
     }
     FisherCommunityPage.prototype.provinceChanged = function () {
         this.community_info.comm_province = this.communityForm.get('province').value;
+        this.filtered_comms = this.filterComms(this.all_comms, this.community_info.comm_province); //generate trhe filtered comms based on province selection
     };
     FisherCommunityPage.prototype.communityChanged = function () {
-        this.community_info.comm_community = this.parseCommunity(this.communityForm.get('community').value);
-    };
-    FisherCommunityPage.prototype.customCommunityEntered = function () {
-        if (this.community_info.comm_community == 'other') {
-            this.community_info.custom_community = this.communityForm.get('custom').value;
+        var selectedCommunity = this.communityForm.get('community').value;
+        if (selectedCommunity !== 'Other') {
+            this.hideCustomComm = true;
+            this.community_info.comm_community = this.parseCommunity(selectedCommunity);
+        }
+        else {
+            this.community_info.comm_community = 'other';
+            this.hideCustomComm = false;
         }
     };
-    FisherCommunityPage.prototype.parseCommunity = function (name_eng) {
+    //Record the name of the enetered custom community
+    FisherCommunityPage.prototype.customCommunityEntered = function () {
+        this.community_info.custom_community = this.communityForm.get('custom').value;
+    };
+    FisherCommunityPage.prototype.parseCommunity = function (name_Eng) {
         var comm_ID = "";
         for (var i = 0; i < this.all_comms.length; i++) {
-            if (this.all_comms[i].name_eng == name_eng) {
-                comm_ID = this.all_comms[i].unique_ext_id;
+            if (this.all_comms[i].name_Eng == name_Eng) {
+                comm_ID = this.all_comms[i].name_key;
                 break; //we found the desired community, abort the search loop
             }
         }
@@ -140,13 +169,24 @@ var FisherCommunityPage = /** @class */ (function () {
         this.fisherService.fisherUpdateCommunity(this.community_info);
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__fisher_confirm_fisher_confirm__["a" /* FisherConfirmPage */], this.confirm_personal);
     };
+    //Can be implemented more elegantly with filter() function, just havent figure out how yet
+    FisherCommunityPage.prototype.filterComms = function (comms, provinceFull) {
+        var filtered = [];
+        for (var i = 0; i < comms.length; i++) {
+            if (getProvinceAbbrev(provinceFull) == comms[i].province_abbrev) {
+                filtered.push(comms[i]);
+            }
+        }
+        return filtered;
+    };
     FisherCommunityPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-fisher-community',template:/*ion-inline-start:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-community/fisher-community.html"*/'<!--\n  Generated template for the FisherCommunityPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n        <ion-navbar>\n              <ion-title>Abalobi Register</ion-title>\n        </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n        <form [formGroup] = "communityForm">\n\n\n                <p style="text-align:center"><b>Community / Landing</b></p>\n\n                <ion-item>\n                        <ion-label text-wrap>Please select  your province\n                        </ion-label>\n                                <ion-select text-wrap formControlName="province" (ionChange)=" provinceChanged()">\n                                        <ion-option value="Western Cape">Western Cape</ion-option>\n                                        <ion-option value="Northern Cape">Northern Cape</ion-option>\n                                        <ion-option value="Eastern Cape">Eastern Cape</ion-option>\n                                        <ion-option value="North West"> North West</ion-option>\n                                        <ion-option value="Mpumalanga">Mpumalanga</ion-option>\n                                        <ion-option value="Limpopo">Limpopo</ion-option>\n                                        <ion-option value="Gauteng">Gauteng</ion-option>\n                                        <ion-option value="Free State">Free State</ion-option>\n                                        <ion-option value="KwaZulu-Natal">KwaZulu-Natal</ion-option>\n                                </ion-select>\n                </ion-item>\n\n                <div class="validation-errors">\n                        <ng-container *ngFor="let validation of validation_messages.province" >\n                                <div style="color:red" text-wrap align="center" class="error-message" *ngIf="communityForm.get(\'province\').hasError(validation.type) && (communityForm.get(\'province\').dirty || communityForm.get(\'province\').touched)">\n                                        {{ validation.message }}\n                                </div>\n                        </ng-container>\n                </div>\n\n\n                <ion-item>\n                            <ion-label text-wrap>Please select  your community\n                            </ion-label>\n                                        <ion-select text-wrap formControlName="community" (ionChange)=" communityChanged()">\n                                                <ion-option  text-wrap *ngFor="let c of all_comms">{{c.name_eng}}</ion-option>\n                                        </ion-select>\n                </ion-item>\n\n                <div class="validation-errors">\n                        <ng-container *ngFor="let validation of validation_messages.community" >\n                                 <div style="color:red" text-wrap align="center" class="error-message" *ngIf="communityForm.get(\'community\').hasError(validation.type) && (communityForm.get(\'community\').dirty || communityForm.get(\'community\').touched)">\n                                        {{ validation.message }}\n                                 </div>\n                        </ng-container>\n                </div>\n\n\n\n                <ion-item >\n                        <ion-label text-wrap stacked>Please enter your community if not on the list</ion-label>\n                        <ion-input  type="text" formControlName="custom" placeholder="Enter your community here" (ionChange)="customCommunityEntered()"></ion-input>\n                </ion-item>\n\n                <span style="color:red" text-wrap align="center" class="validation-errors" *ngIf="communityForm.hasError(\'missingCustomComm\')">Custom community required.</span>\n\n\n\n\n\n                <p style="text-align:center"><b>Do you have a fishing permit ?</b></p>\n\n\n                <ion-list >\n                        <ion-item>\n                                <ion-label> IRP / Exemption</ion-label>\n                                <ion-checkbox [(ngModel)]="community_info.comm_IRP_chosen" [ngModelOptions]="{standalone: true}"></ion-checkbox>\n                        </ion-item>\n\n                        <ion-item>\n                                <ion-label> Commercial</ion-label>\n                                <ion-checkbox [(ngModel)]="community_info.comm_commercial_chosen" [ngModelOptions]="{standalone: true}"></ion-checkbox>\n                        </ion-item>\n\n                        <ion-item>\n                                <ion-label> Recreational</ion-label>\n                                <ion-checkbox [(ngModel)]="community_info.comm_recreational_chosen" [ngModelOptions]="{standalone: true}"></ion-checkbox>\n                        </ion-item>\n\n                        <ion-item>\n                                <ion-label> Other</ion-label>\n                                <ion-checkbox [(ngModel)]="community_info.comm_other_chosen" [ngModelOptions]="{standalone: true}"></ion-checkbox>\n                        </ion-item>\n\n                </ion-list>\n\n                <button ion-button full  [disabled]="!communityForm.valid" (click)="onFisherFinishCommunity()">Next</button>\n        </form>\n\n</ion-content>\n'/*ion-inline-end:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-community/fisher-community.html"*/,
+            selector: 'page-fisher-community',template:/*ion-inline-start:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-community/fisher-community.html"*/'<!--\n  Generated template for the FisherCommunityPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n        <ion-navbar>\n              <ion-title>Abalobi Register</ion-title>\n        </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n        <form [formGroup] = "communityForm">\n\n\n                <p style="text-align:center"><b>Community / Landing</b></p>\n\n                <ion-item>\n                        <ion-label text-wrap>Please select  your province\n                        </ion-label>\n                                <ion-select text-wrap formControlName="province" (ionChange)=" provinceChanged()">\n                                        <ion-option value="Western Cape">Western Cape</ion-option>\n                                        <ion-option value="Northern Cape">Northern Cape</ion-option>\n                                        <ion-option value="Eastern Cape">Eastern Cape</ion-option>\n                                        <ion-option value="North West"> North West</ion-option>\n                                        <ion-option value="Mpumalanga">Mpumalanga</ion-option>\n                                        <ion-option value="Limpopo">Limpopo</ion-option>\n                                        <ion-option value="Gauteng">Gauteng</ion-option>\n                                        <ion-option value="Free State">Free State</ion-option>\n                                        <ion-option value="KwaZulu-Natal">KwaZulu-Natal</ion-option>\n                                </ion-select>\n                </ion-item>\n\n                <div class="validation-errors">\n                        <ng-container *ngFor="let validation of validation_messages.province" >\n                                <div style="color:red" text-wrap align="center" class="error-message" *ngIf="communityForm.get(\'province\').hasError(validation.type) && (communityForm.get(\'province\').dirty || communityForm.get(\'province\').touched)">\n                                        {{ validation.message }}\n                                </div>\n                        </ng-container>\n                </div>\n\n\n                <ion-item >\n                            <ion-label text-wrap>Please select  your community\n                            </ion-label>\n                                        <ion-select text-wrap formControlName="community" (ionChange)=" communityChanged()">\n                                                <ion-option  text-wrap *ngFor="let c of filterComms(all_comms, communityForm.get(\'province\').value)">{{c.name_Eng}}</ion-option>\n                                                <ion-option  text-wrap value="Other">Other</ion-option>\n                                        </ion-select>\n                </ion-item>\n\n\n                <div class="validation-errors">\n                        <ng-container *ngFor="let validation of validation_messages.community" >\n                                 <div style="color:red" text-wrap align="center" class="error-message" *ngIf="communityForm.get(\'community\').hasError(validation.type) && (communityForm.get(\'community\').dirty || communityForm.get(\'community\').touched)">\n                                        {{ validation.message }}\n                                 </div>\n                        </ng-container>\n                </div>\n\n\n\n                <ion-item [hidden]="hideCustomComm">\n                        <ion-label text-wrap stacked>Please enter your community</ion-label>\n                        <ion-input  type="text" formControlName="custom" placeholder="Enter your community here" (ionChange)="customCommunityEntered()"></ion-input>\n                </ion-item>\n\n                <span style="color:red" text-wrap align="center" class="validation-errors" *ngIf="communityForm.hasError(\'missingCustomComm\')">Custom community required.</span>\n\n\n\n\n\n                <p style="text-align:center"><b>Do you have a fishing permit ?</b></p>\n\n\n                <ion-list >\n                        <ion-item>\n                                <ion-label> IRP / Exemption</ion-label>\n                                <ion-checkbox [(ngModel)]="community_info.comm_IRP_chosen" [ngModelOptions]="{standalone: true}"></ion-checkbox>\n                        </ion-item>\n\n                        <ion-item>\n                                <ion-label> Commercial</ion-label>\n                                <ion-checkbox [(ngModel)]="community_info.comm_commercial_chosen" [ngModelOptions]="{standalone: true}"></ion-checkbox>\n                        </ion-item>\n\n                        <ion-item>\n                                <ion-label> Recreational</ion-label>\n                                <ion-checkbox [(ngModel)]="community_info.comm_recreational_chosen" [ngModelOptions]="{standalone: true}"></ion-checkbox>\n                        </ion-item>\n\n                        <ion-item>\n                                <ion-label> Other</ion-label>\n                                <ion-checkbox [(ngModel)]="community_info.comm_other_chosen" [ngModelOptions]="{standalone: true}"></ion-checkbox>\n                        </ion-item>\n\n                </ion-list>\n\n                <button ion-button full  [disabled]="!communityForm.valid" (click)="onFisherFinishCommunity()">Next</button>\n        </form>\n\n</ion-content>\n'/*ion-inline-end:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-community/fisher-community.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_FisherService__["a" /* FisherService */], __WEBPACK_IMPORTED_MODULE_6__angular_forms__["a" /* FormBuilder */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__providers_FisherService__["a" /* FisherService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_FisherService__["a" /* FisherService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_6__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__angular_forms__["a" /* FormBuilder */]) === "function" && _d || Object])
     ], FisherCommunityPage);
     return FisherCommunityPage;
+    var _a, _b, _c, _d;
 }()); //end class
 
 //# sourceMappingURL=fisher-community.js.map
@@ -200,7 +240,7 @@ var FisherConfirmPage = /** @class */ (function () {
     };
     FisherConfirmPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-fisher-confirm',template:/*ion-inline-start:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-confirm/fisher-confirm.html"*/'<!--\n  Generated template for the FisherConfirmPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n\n\n<ion-header>\n          <ion-navbar>\n                  <ion-title>Abalobi Register</ion-title>\n          </ion-navbar>\n</ion-header>\n\n\n<ion-content title="Abalobi Register-confirm" id="fisher-register-confirm">\n\n          <p text-wrap style="text-align:center;padding-left:0.5em;padding-right:0.5em">\n                    If everything is correct please press the Register button below. Otherwise please go back and correct the info.\n          </p>\n\n          <form text-wrap>\n                    <ion-item>\n                          <ion-label>Name: {{confirm_info.personal_firstname}}</ion-label>\n                          <ion-input placeholder=""></ion-input>\n                    </ion-item>\n\n\n                    <ion-item>\n                          <ion-label>Surname: {{confirm_info.personal_surname}}</ion-label>\n                          <ion-input placeholder=""></ion-input>\n                    </ion-item>\n\n\n                    <ion-item>\n                          <ion-label>ID Number: {{confirm_info.personal_IDnum}} </ion-label>\n                          <ion-input placeholder=""></ion-input>\n                    </ion-item>\n\n\n                    <ion-item>\n                          <ion-label>Cell Number:{{confirm_info.personal_cellNo}} </ion-label>\n                          <ion-input placeholder=""></ion-input>\n                    </ion-item>\n          </form>\n\n\n    <button ion-button full  (click)="onFisherSubmit()">Register</button>\n</ion-content>\n'/*ion-inline-end:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-confirm/fisher-confirm.html"*/,
+            selector: 'page-fisher-confirm',template:/*ion-inline-start:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-confirm/fisher-confirm.html"*/'<!--\n  Generated template for the FisherConfirmPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n\n\n<ion-header>\n          <ion-navbar>\n                  <ion-title>Abalobi Register</ion-title>\n          </ion-navbar>\n</ion-header>\n\n\n<ion-content padding title="Abalobi Register-confirm" id="fisher-register-confirm">\n\n          <p text-wrap style="text-align:center;padding-left:0.5em;padding-right:0.5em">\n                    If everything is correct please press the Register button below. Otherwise please go back and correct the info.\n          </p>\n\n          <form text-wrap>\n                    <ion-item>\n                          <ion-label>Name: {{confirm_info.personal_firstname}}</ion-label>\n                          <ion-input placeholder=""></ion-input>\n                    </ion-item>\n\n\n                    <ion-item>\n                          <ion-label>Surname: {{confirm_info.personal_surname}}</ion-label>\n                          <ion-input placeholder=""></ion-input>\n                    </ion-item>\n\n\n                    <ion-item>\n                          <ion-label>ID Number: {{confirm_info.personal_IDnum}} </ion-label>\n                          <ion-input placeholder=""></ion-input>\n                    </ion-item>\n\n\n                    <ion-item>\n                          <ion-label>Cell Number:{{confirm_info.personal_cellNo}} </ion-label>\n                          <ion-input placeholder=""></ion-input>\n                    </ion-item>\n          </form>\n\n\n    <button ion-button full  (click)="onFisherSubmit()">Register</button>\n</ion-content>\n'/*ion-inline-end:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-confirm/fisher-confirm.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_FisherService__["a" /* FisherService */]])
     ], FisherConfirmPage);
@@ -241,16 +281,84 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 //Imported non-page classes
 
 //Function to check for matching passwords
-function matchingPasswords(passwordKey, confirmPasswordKey) {
+function goodPasswords(passwordKey, confirmPasswordKey) {
     return function (group) {
         var password = group.controls[passwordKey];
         var confirmPassword = group.controls[confirmPasswordKey];
+        //Passwords mismatch
         if (password.value !== confirmPassword.value) {
             return {
                 mismatchedPasswords: true
             };
         }
+        else {
+            //passwords too short
+            if (password.value.length < 6) {
+                return {
+                    badPasswords: true
+                };
+            }
+            else {
+                if (!hasUpperCase(password.value)) {
+                    return {
+                        noUpperCase: true
+                    };
+                }
+                else if (!hasLowerCase(password.value)) {
+                    return {
+                        noLowerCase: true
+                    };
+                }
+                else if (!hasNum(password.value)) {
+                    return {
+                        noNum: true
+                    };
+                }
+            }
+        }
     };
+}
+function hasUpperCase(password) {
+    if (password.length < 1) {
+        return false;
+    }
+    else {
+        for (var i = 0; i < password.length; i++) {
+            var char = password.charAt(i);
+            if (/[A-Z]/.test(char)) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+function hasLowerCase(password) {
+    if (password.length < 1) {
+        return false;
+    }
+    else {
+        for (var i = 0; i < password.length; i++) {
+            var char = password.charAt(i);
+            if (/[a-z]/.test(char)) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+function hasNum(password) {
+    if (password.length < 1) {
+        return false;
+    }
+    else {
+        for (var i = 0; i < password.length; i++) {
+            var char = password.charAt(i);
+            if (/^\d+$/.test(char)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
 var FisherPersonalPage = /** @class */ (function () {
     function FisherPersonalPage(navCtrl, navParams, fisherService, formBuilder) {
@@ -304,7 +412,7 @@ var FisherPersonalPage = /** @class */ (function () {
             "cell": ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].pattern('^[0-9]+$'), __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].minLength(10), __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].maxLength(10)])],
             "password1": ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required],
             "password2": ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required]
-        }, { validator: matchingPasswords('password1', 'password2') });
+        }, { validator: goodPasswords('password1', 'password2') });
     }
     FisherPersonalPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad FisherPersonalPage');
@@ -339,11 +447,12 @@ var FisherPersonalPage = /** @class */ (function () {
     };
     FisherPersonalPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-fisher-personal',template:/*ion-inline-start:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-personal/fisher-personal.html"*/'<ion-header>\n        <ion-navbar>\n                <ion-title>Abalobi Register</ion-title>\n        </ion-navbar>\n</ion-header>\n\n\n\n<ion-content title="fisher-personal-form" id="page5">\n\n    <form [formGroup] = "personalForm">\n            <ion-item>\n                      <ion-label stacked>* Surname</ion-label>\n                    <ion-input type="text" formControlName="surname" placeholder="Enter your surname here"(ionChange)="surnameChanged()"></ion-input>\n            </ion-item>\n\n            <div style="color:red" text-wrap align="center" class="validation-errors">\n                        <ng-container *ngFor="let validation of validation_messages.surname" >\n                                <div class="error-message" *ngIf="personalForm.get(\'surname\').hasError(validation.type) && (personalForm.get(\'surname\').dirty || personalForm.get(\'surname\').touched)">\n                                    {{ validation.message }}\n                                </div>\n                        </ng-container>\n            </div>\n\n\n            <ion-item>\n                        <ion-label stacked>* First Name</ion-label>\n                        <ion-input type="text" formControlName="name" placeholder="Enter your name here"(ionChange)="nameChanged()"></ion-input>\n            </ion-item>\n\n            <div class="validation-errors">\n                        <ng-container *ngFor="let validation of validation_messages.name" >\n                                <div style="color:red" text-wrap align="center" class="error-message" *ngIf="personalForm.get(\'name\').hasError(validation.type) && (personalForm.get(\'name\').dirty || personalForm.get(\'name\').touched)">\n                                        {{ validation.message }}\n                                </div>\n                        </ng-container>\n            </div>\n\n\n            <ion-item>\n                        <ion-label stacked>* Nickname</ion-label>\n                        <ion-input type="text" formControlName="nickname" placeholder="What do people usually call you?"(ionChange)="nickNameChanged()"></ion-input>\n            </ion-item>\n\n            <div class="validation-errors">\n                        <ng-container *ngFor="let validation of validation_messages.nickname" >\n                                    <div style="color:red" text-wrap align="center" class="error-message" *ngIf="personalForm.get(\'nickname\').hasError(validation.type) && (personalForm.get(\'nickname\').dirty || personalForm.get(\'nickname\').touched)">\n                                            {{ validation.message }}\n                                    </div>\n                        </ng-container>\n            </div>\n\n\n            <ion-item>\n                    <ion-label stacked>* Gender (Required)\n                    </ion-label>\n                        <ion-select formControlName="gender" (ionChange)=" genderChanged()">\n                                  <ion-option value = "male">Male</ion-option>\n                                  <ion-option value = "female">Female</ion-option>\n                        </ion-select>\n            </ion-item>\n            <div class="validation-errors">\n                    <ng-container *ngFor="let validation of validation_messages.gender" >\n                            <div style="color:red" text-wrap align="center" class="error-message" *ngIf="personalForm.get(\'gender\').hasError(validation.type) && (personalForm.get(\'gender\').dirty || personalForm.get(\'gender\').touched)">\n                                    {{ validation.message }}\n                            </div>\n                    </ng-container>\n            </div>\n\n\n            <ion-item>\n                      <ion-label stacked>* ID Number</ion-label>\n                      <ion-input formControlName="ID"  type="text"  placeholder="Enter your ID Number here"(ionChange)="IDchanged()"></ion-input>\n            </ion-item>\n            <div class="validation-errors">\n                        <ng-container *ngFor="let validation of validation_messages.ID" >\n                                <div style="color:red" text-wrap align="center" class="error-message" *ngIf="personalForm.get(\'ID\').hasError(validation.type) && (personalForm.get(\'ID\').dirty || personalForm.get(\'ID\').touched)">\n                                    {{ validation.message }}\n                                </div>\n                        </ng-container>\n            </div>\n\n\n            <ion-item>\n                        <ion-label text-wrap stacked>* Personal Cellphone Number</ion-label>\n                        <ion-input formControlName="cell"  type="text"   placeholder="Enter your cell number here"(ionChange)="cellChanged()"></ion-input>\n            </ion-item>\n            <div style="color:red" text-wrap align="center" class="validation-errors">\n                    <ng-container *ngFor="let validation of validation_messages.cell" >\n                            <div class="error-message" *ngIf="personalForm.get(\'cell\').hasError(validation.type) && (personalForm.get(\'cell\').dirty || personalForm.get(\'cell\').touched)">\n                                    {{ validation.message }}\n                            </div>\n                    </ng-container>\n            </div>\n\n\n            <!--Password 1-->\n            <ion-item>\n                    <ion-label stacked>* Password</ion-label>\n                    <ion-input  type="text"  formControlName="password1" placeholder="Please choose a password"(ionChange)="password1Changed()"></ion-input>\n            </ion-item>\n            <div class="validation-errors">\n                    <ng-container *ngFor="let validation of validation_messages.password1" >\n                            <div style="color:red" text-wrap align="center" class="error-message" *ngIf="personalForm.get(\'password1\').hasError(validation.type) && (personalForm.get(\'password1\').dirty || personalForm.get(\'password1\').touched)">\n                                    {{ validation.message }}\n                            </div>\n                    </ng-container>\n            </div>\n            <!--span style="color:red" text-wrap align="center" class="validation-error" *ngIf="personalForm.get(\'password1\').touched && personalForm.get(\'password1\').errors?.notEqual"> Passwords do not match</span-->\n\n            <!--Password 2-->\n            <ion-item>\n                    <ion-label stacked>* Retype password</ion-label>\n                    <ion-input  type="text"  formControlName="password2" placeholder="Please re-type password"(ionChange)="password2Changed()"></ion-input>\n            </ion-item>\n            <div class="validation-errors">\n                    <ng-container *ngFor="let validation of validation_messages.password2" >\n                            <div style="color:red" text-wrap align="center" class="error-message" *ngIf="personalForm.get(\'password2\').hasError(validation.type) && (personalForm.get(\'password2\').dirty || personalForm.get(\'password2\').touched)">\n                                {{ validation.message }}\n                            </div>\n                    </ng-container>\n            </div>\n\n            <span style="color:red" text-wrap align="center" class="validation-errors" *ngIf="(personalForm.get(\'password1\').value.length >= 1)&&(personalForm.get(\'password2\').value.length >= 1)&&personalForm.hasError(\'mismatchedPasswords\')">Passwords do not match.</span>\n\n\n            <button ion-button type="submit"  [disabled]="!personalForm.valid" full  (click)="onFisherFinishPersonal()">Next</button>\n    </form>\n\n</ion-content>\n'/*ion-inline-end:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-personal/fisher-personal.html"*/,
+            selector: 'page-fisher-personal',template:/*ion-inline-start:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-personal/fisher-personal.html"*/'<ion-header>\n        <ion-navbar>\n                <ion-title>Abalobi Register</ion-title>\n        </ion-navbar>\n</ion-header>\n\n\n\n<ion-content padding title="fisher-personal-form" id="page5">\n\n    <form [formGroup] = "personalForm">\n            <ion-item>\n                      <ion-label stacked>* Surname</ion-label>\n                    <ion-input type="text" formControlName="surname" placeholder="Enter your surname here"(ionChange)="surnameChanged()"></ion-input>\n            </ion-item>\n\n            <div style="color:red" text-wrap align="center" class="validation-errors">\n                        <ng-container *ngFor="let validation of validation_messages.surname" >\n                                <div class="error-message" *ngIf="personalForm.get(\'surname\').hasError(validation.type) && (personalForm.get(\'surname\').dirty || personalForm.get(\'surname\').touched)">\n                                    {{ validation.message }}\n                                </div>\n                        </ng-container>\n            </div>\n\n\n            <ion-item>\n                        <ion-label stacked>* First Name</ion-label>\n                        <ion-input type="text" formControlName="name" placeholder="Enter your name here"(ionChange)="nameChanged()"></ion-input>\n            </ion-item>\n\n            <div class="validation-errors">\n                        <ng-container *ngFor="let validation of validation_messages.name" >\n                                <div style="color:red" text-wrap align="center" class="error-message" *ngIf="personalForm.get(\'name\').hasError(validation.type) && (personalForm.get(\'name\').dirty || personalForm.get(\'name\').touched)">\n                                        {{ validation.message }}\n                                </div>\n                        </ng-container>\n            </div>\n\n\n            <ion-item>\n                        <ion-label stacked>* Nickname</ion-label>\n                        <ion-input type="text" formControlName="nickname" placeholder="What do people usually call you?"(ionChange)="nickNameChanged()"></ion-input>\n            </ion-item>\n\n            <div class="validation-errors">\n                        <ng-container *ngFor="let validation of validation_messages.nickname" >\n                                    <div style="color:red" text-wrap align="center" class="error-message" *ngIf="personalForm.get(\'nickname\').hasError(validation.type) && (personalForm.get(\'nickname\').dirty || personalForm.get(\'nickname\').touched)">\n                                            {{ validation.message }}\n                                    </div>\n                        </ng-container>\n            </div>\n\n\n            <ion-item>\n                    <ion-label stacked>* Gender (Required)\n                    </ion-label>\n                        <ion-select formControlName="gender" (ionChange)=" genderChanged()">\n                                  <ion-option value = "male">Male</ion-option>\n                                  <ion-option value = "female">Female</ion-option>\n                        </ion-select>\n            </ion-item>\n            <div class="validation-errors">\n                    <ng-container *ngFor="let validation of validation_messages.gender" >\n                            <div style="color:red" text-wrap align="center" class="error-message" *ngIf="personalForm.get(\'gender\').hasError(validation.type) && (personalForm.get(\'gender\').dirty || personalForm.get(\'gender\').touched)">\n                                    {{ validation.message }}\n                            </div>\n                    </ng-container>\n            </div>\n\n\n            <ion-item>\n                      <ion-label stacked>* ID Number</ion-label>\n                      <ion-input formControlName="ID"  type="text"  placeholder="Enter your ID Number here"(ionChange)="IDchanged()"></ion-input>\n            </ion-item>\n            <div class="validation-errors">\n                        <ng-container *ngFor="let validation of validation_messages.ID" >\n                                <div style="color:red" text-wrap align="center" class="error-message" *ngIf="personalForm.get(\'ID\').hasError(validation.type) && (personalForm.get(\'ID\').dirty || personalForm.get(\'ID\').touched)">\n                                    {{ validation.message }}\n                                </div>\n                        </ng-container>\n            </div>\n\n\n            <ion-item>\n                        <ion-label text-wrap stacked>* Personal Cellphone Number</ion-label>\n                        <ion-input formControlName="cell"  type="text"   placeholder="Enter your cell number here"(ionChange)="cellChanged()"></ion-input>\n            </ion-item>\n            <div style="color:red" text-wrap align="center" class="validation-errors">\n                    <ng-container *ngFor="let validation of validation_messages.cell" >\n                            <div class="error-message" *ngIf="personalForm.get(\'cell\').hasError(validation.type) && (personalForm.get(\'cell\').dirty || personalForm.get(\'cell\').touched)">\n                                    {{ validation.message }}\n                            </div>\n                    </ng-container>\n            </div>\n\n\n            <!--Password 1-->\n            <ion-item>\n                    <ion-label stacked>* Password</ion-label>\n                    <ion-input  type="text"  formControlName="password1" placeholder="Please choose a password"(ionChange)="password1Changed()"></ion-input>\n            </ion-item>\n            <div class="validation-errors">\n                    <ng-container *ngFor="let validation of validation_messages.password1" >\n                            <div style="color:red" text-wrap align="center" class="error-message" *ngIf="personalForm.get(\'password1\').hasError(validation.type) && (personalForm.get(\'password1\').dirty || personalForm.get(\'password1\').touched)">\n                                    {{ validation.message }}\n                            </div>\n                    </ng-container>\n            </div>\n            <!--span style="color:red" text-wrap align="center" class="validation-error" *ngIf="personalForm.get(\'password1\').touched && personalForm.get(\'password1\').errors?.notEqual"> Passwords do not match</span-->\n\n            <!--Password 2-->\n            <ion-item>\n                    <ion-label stacked>* Retype password</ion-label>\n                    <ion-input  type="text"  formControlName="password2" placeholder="Please re-type password"(ionChange)="password2Changed()"></ion-input>\n            </ion-item>\n            <div class="validation-errors">\n                    <ng-container *ngFor="let validation of validation_messages.password2" >\n                            <div style="color:red" text-wrap align="center" class="error-message" *ngIf="personalForm.get(\'password2\').hasError(validation.type) && (personalForm.get(\'password2\').dirty || personalForm.get(\'password2\').touched)">\n                                {{ validation.message }}\n                            </div>\n                    </ng-container>\n            </div>\n\n            <span style="color:red" text-wrap align="center" class="validation-errors" *ngIf="(personalForm.get(\'password1\').value.length >= 1)&&(personalForm.get(\'password2\').value.length >= 1)&& personalForm.hasError(\'mismatchedPasswords\')">Passwords do not match.</span>\n            <!--span style="color:red" text-wrap align="center" class="validation-errors" *ngIf="(personalForm.get(\'password1\').value.length >= 1)&&!personalForm.hasError(\'mismatchedPasswords\')&& personalForm.hasError(\'badPasswords\')">Passwords must have at least 6 characters.</span-->\n        <span style="color:red" text-wrap align="center" class="validation-errors" *ngIf="(personalForm.get(\'password1\').value.length >= 1)&&!personalForm.hasError(\'mismatchedPasswords\')&& personalForm.hasError(\'badPasswords\')">Passwords must have at least 6 characters and contain at least one UPPERCASE and one lowercase 1 digit.</span>\n        <span style="color:red" text-wrap align="center" class="validation-errors" *ngIf="(personalForm.get(\'password1\').value.length >= 1)&&!personalForm.hasError(\'mismatchedPasswords\')&& personalForm.hasError(\'noUpperCase\')">Password must contain at least one uppercase letter.</span>\n        <span style="color:red" text-wrap align="center" class="validation-errors" *ngIf="(personalForm.get(\'password1\').value.length >= 1)&&!personalForm.hasError(\'mismatchedPasswords\')&& personalForm.hasError(\'noLowerCase\')">Password must contain at least one lower case letter.</span>\n        <span style="color:red" text-wrap align="center" class="validation-errors" *ngIf="(personalForm.get(\'password1\').value.length >= 1)&&!personalForm.hasError(\'mismatchedPasswords\')&& personalForm.hasError(\'noNum\')">Password must contain at least one digit.</span>\n\n\n            <button ion-button type="submit"  [disabled]="!personalForm.valid" full  (click)="onFisherFinishPersonal()">Next</button>\n    </form>\n\n</ion-content>\n'/*ion-inline-end:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-personal/fisher-personal.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4__providers_FisherService__["a" /* FisherService */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__providers_FisherService__["a" /* FisherService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_FisherService__["a" /* FisherService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */]) === "function" && _d || Object])
     ], FisherPersonalPage);
     return FisherPersonalPage;
+    var _a, _b, _c, _d;
 }()); //end class
 
 //# sourceMappingURL=fisher-personal.js.map
@@ -402,7 +511,7 @@ var FisherRolePage = /** @class */ (function () {
     };
     FisherRolePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-fisher-role',template:/*ion-inline-start:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-role/fisher-role.html"*/'\n<ion-header>\n    <ion-navbar>\n            <ion-title>Abalobi Register</ion-title>\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content title="Abalobi Register-role" id="fisher-role-form">\n\n    <form [formGroup] = "roleForm">\n\n                <p text-wrap style="text-align:center;padding-left:0.5em;padding-right:0.5em;background-color:#33CEFF;color:#FFFFFF;padding-left:0.5em">\n                        <b>Select \'Fisher\' if you are a fisher wanting to record and view your catch data using Abalobi.</b>\n                </p>\n\n                <ion-list radio-group type="text" formControlName=\'role\' (ionChange)="roleChanged()">\n                        <ion-item>\n                                <ion-label text-wrap>Fisher</ion-label>\n                                <ion-radio  type="text" value ="fisher" ></ion-radio>\n                        </ion-item>\n\n                        <ion-item>\n                                <ion-label text-wrap>Fisher Assistant</ion-label>\n                                <ion-radio type="text" value ="fisher_manager"></ion-radio>\n                        </ion-item>\n\n\n                        <ion-item>\n                                <ion-label text-wrap>Local Assistant AND fisher (will be logging own catch)</ion-label>\n                                <ion-radio type="text" value ="fisher,fisher_manager"></ion-radio>\n                        </ion-item>\n                </ion-list>\n\n                <div style="color:red" text-wrap align="center" class="validation-errors">\n                        <ng-container *ngFor="let validation of validation_messages.role" >\n                                <div class="error-message" *ngIf="roleForm.get(\'role\').hasError(validation.type)"> <!-- && (roleForm.get(\'role\').dirty || roleForm.get(\'role\').touched)"-->\n                                        {{ validation.message }}\n                                </div>\n                        </ng-container>\n                </div>\n\n            <button ion-button full [disabled]="!roleForm.valid" (click)="nextFromFisherRole()">Next</button>\n    </form>\n\n</ion-content>\n'/*ion-inline-end:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-role/fisher-role.html"*/,
+            selector: 'page-fisher-role',template:/*ion-inline-start:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-role/fisher-role.html"*/'\n<ion-header>\n    <ion-navbar>\n            <ion-title>Abalobi Register</ion-title>\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content padding title="Abalobi Register-role" id="fisher-role-form">\n    <img id="banner-img" src="https://res.cloudinary.com/techairos/image/upload/v1523889571/QR_app_Banner_ylefpe.png" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />\n\n    <form [formGroup] = "roleForm">\n\n                <div id="page-markdown1" class="show-list-numbers-and-dots">\n                        <p id="header-text" style="color:#000000;">\n                            Complete this form if you&#39;d like to be able to\n                            <strong>\n                                LOG YOUR CATCH\n                            </strong>\n                            on the ABALOBI Fisher app.\n                        </p>\n                        <hr>\n                </div>\n\n                <ion-list radio-group type="text" formControlName=\'role\' (ionChange)="roleChanged()">\n                        <ion-item>\n                                <ion-label text-wrap>Fisher</ion-label>\n                                <ion-radio  type="text" value ="fisher" ></ion-radio>\n                        </ion-item>\n\n                        <ion-item>\n                                <ion-label text-wrap>Local Fisher Assistant</ion-label>\n                                <ion-radio type="text" value ="fisher_manager"></ion-radio>\n                        </ion-item>\n\n\n                        <ion-item>\n                                <ion-label text-wrap>Local Assistant AND Fisher (I will be logging my own catch)</ion-label>\n                                <ion-radio type="text" value ="fisher,fisher_manager"></ion-radio>\n                        </ion-item>\n                </ion-list>\n\n                <div style="color:red" text-wrap align="center" class="validation-errors">\n                        <ng-container *ngFor="let validation of validation_messages.role" >\n                                <div class="error-message" *ngIf="roleForm.get(\'role\').hasError(validation.type)"> <!-- && (roleForm.get(\'role\').dirty || roleForm.get(\'role\').touched)"-->\n                                        {{ validation.message }}\n                                </div>\n                        </ng-container>\n                </div>\n\n            <button ion-button full [disabled]="!roleForm.valid" (click)="nextFromFisherRole()">Next</button>\n    </form>\n\n</ion-content>\n'/*ion-inline-end:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-role/fisher-role.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_FisherService__["a" /* FisherService */], __WEBPACK_IMPORTED_MODULE_4__angular_forms__["a" /* FormBuilder */]])
     ], FisherRolePage);
@@ -455,7 +564,7 @@ var FisherUsetermsPage = /** @class */ (function () {
             ],
         };
         this.termsForm = this.formBuilder.group({
-            'agree': ['', __WEBPACK_IMPORTED_MODULE_5__angular_forms__["f" /* Validators */].required],
+            'agree': ['', __WEBPACK_IMPORTED_MODULE_5__angular_forms__["f" /* Validators */].requiredTrue],
         });
         this.termsForm.reset('agree'); //reset the checkbox upon creation
     }
@@ -470,11 +579,12 @@ var FisherUsetermsPage = /** @class */ (function () {
     };
     FisherUsetermsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-fisher-useterms',template:/*ion-inline-start:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-useterms/fisher-useterms.html"*/'<!--\n  Generated template for the FisherUsetermsPage page.\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n\n<ion-header>\n        <ion-navbar>\n                <ion-title>Terms of Use</ion-title>\n        </ion-navbar>\n</ion-header>\n\n\n<ion-content title="Terms of Use" id="fisher-terms-form">\n\n            <form [formGroup] = "termsForm">\n\n                        <p text-wrap style="text-align:center;padding-left:0.5em;padding-right:0.5em"><!--style="padding-left:0.5em;padding-right:0.5em;text-align: center"-->\n                                <b>In order to maintain the Abalobi system it is possible for the core Abalobi team to access all data, however all data submitted will be treated with the utmost privacy. No individual fisher data will be shared with 3rd parties without express consent\n                                    of the fisher, however aggregated catch data for all fishers together may be published. (e.g. Total kg Snoek catch recorded in South Africa in Nov 2016.) If you allocate some of your catch to the co-op, the co-op will be able to receive that information.\n                                    You will always be able to access your own data on the Abalobi system.\n                                </b>\n                        </p>\n\n\n                        <ion-item>\n                                <ion-label>* I Agree</ion-label>\n                                <ion-checkbox formControlName=\'agree\' (ionChange)="termsChanged()"></ion-checkbox>\n                        </ion-item>\n\n                        <div style="color:red" text-wrap align="center" class="validation-errors">\n                            <ng-container *ngFor="let validation of validation_messages.agree" >\n                                    <div class="error-message" *ngIf="!termsForm.get(\'agree\').value"><!-- && ( termsForm.get(\'agree\').dirty || termsForm.get(\'agree\')).touched"-->\n                                                {{ validation.message }}\n                                    </div>\n                            </ng-container>\n                        </div>\n\n\n                        <p text-wrap style="text-align:center;padding-left:0.5em;padding-right:0.5em">\n                                <b> I further consent to share my data with the following parties (tick where applicable):</b>\n                        </p>\n\n\n                        <ion-list text-wrap id="termsOfUse-list2">\n                                <ion-item>\n                                        <ion-label> Abalobi Local Fisher Assistant</ion-label>\n                                        <ion-checkbox [(ngModel)]="terms_status.terms_assistant_agreed" [ngModelOptions]="{standalone: true}"></ion-checkbox>\n                                </ion-item>\n\n\n                                <ion-item>\n                                        <ion-label > DAFF (Department of Agriculture, Forestry and Fisheries)</ion-label>\n                                        <ion-checkbox [(ngModel)]="terms_status.terms_DAFF_agreed" [ngModelOptions]="{standalone: true}"></ion-checkbox>\n                                </ion-item>\n                        </ion-list>\n\n                        <button ion-button full  [disabled]="!termsForm.valid" (click)="onFisherFinishTerms()">Next</button>\n\n            </form>\n\n</ion-content>\n'/*ion-inline-end:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-useterms/fisher-useterms.html"*/,
+            selector: 'page-fisher-useterms',template:/*ion-inline-start:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-useterms/fisher-useterms.html"*/'<!--\n  Generated template for the FisherUsetermsPage page.\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n\n<ion-header>\n        <ion-navbar>\n                <ion-title>Terms of Use</ion-title>\n        </ion-navbar>\n</ion-header>\n\n\n<ion-content padding="true" title="Terms of Use" id="fisher-terms-form">\n\n            <form [formGroup] = "termsForm">\n\n                        <p text-wrap style="text-align:center;padding-left:0.5em;padding-right:0.5em"><!--style="padding-left:0.5em;padding-right:0.5em;text-align: center"-->\n                                <b>Your data belongs to you. In order to maintain the Abalobi system it is possible for the core Abalobi team to access all data, however all data submitted will be treated with the utmost privacy. No individual fisher data will be shared with 3rd parties without express consent\n                                    of the fisher, however aggregated catch data for all fishers together may be published. (e.g. Total kg Snoek catch recorded in South Africa in Nov 2016.) If you allocate some of your catch to the co-op, the co-op will be able to receive that information.\n                                    You will always be able to access your own data on the Abalobi system.\n                                </b>\n                        </p>\n\n\n                        <ion-item>\n                                <ion-label>* I Agree</ion-label>\n                                <ion-checkbox formControlName=\'agree\' (ionChange)="termsChanged()"></ion-checkbox>\n                        </ion-item>\n\n                        <div style="color:red" text-wrap align="center" class="validation-errors">\n                            <ng-container *ngFor="let validation of validation_messages.agree" >\n                                    <div class="error-message" *ngIf="!termsForm.get(\'agree\').value"><!-- && ( termsForm.get(\'agree\').dirty || termsForm.get(\'agree\')).touched"-->\n                                                {{ validation.message }}\n                                    </div>\n                            </ng-container>\n                        </div>\n\n\n                        <p text-wrap style="text-align:center;padding-left:0.5em;padding-right:0.5em">\n                                <b> I further consent to share my data with the following parties (tick where applicable):</b>\n                        </p>\n\n\n                        <ion-list text-wrap id="termsOfUse-list2">\n                                <ion-item>\n                                        <ion-label> Abalobi Local Fisher Assistant</ion-label>\n                                        <ion-checkbox [(ngModel)]="terms_status.terms_assistant_agreed" [ngModelOptions]="{standalone: true}"></ion-checkbox>\n                                </ion-item>\n\n\n                                <ion-item>\n                                        <ion-label > DAFF (Department of Agriculture, Forestry and Fisheries)</ion-label>\n                                        <ion-checkbox [(ngModel)]="terms_status.terms_DAFF_agreed" [ngModelOptions]="{standalone: true}"></ion-checkbox>\n                                </ion-item>\n                        </ion-list>\n\n                        <button ion-button full  [disabled]="!termsForm.valid" (click)="onFisherFinishTerms()">Next</button>\n\n            </form>\n\n</ion-content>\n'/*ion-inline-end:"/Users/techairos/JOSHUA_WORK/register/src/pages/fisher-useterms/fisher-useterms.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_FisherService__["a" /* FisherService */], __WEBPACK_IMPORTED_MODULE_5__angular_forms__["a" /* FormBuilder */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__providers_FisherService__["a" /* FisherService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_FisherService__["a" /* FisherService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_forms__["a" /* FormBuilder */]) === "function" && _d || Object])
     ], FisherUsetermsPage);
     return FisherUsetermsPage;
+    var _a, _b, _c, _d;
 }()); //end class
 
 //# sourceMappingURL=fisher-useterms.js.map
@@ -674,7 +784,7 @@ var HomePage = /** @class */ (function () {
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/techairos/JOSHUA_WORK/register/src/pages/home/home.html"*/'<ion-header>\n        <ion-navbar>\n              <ion-title>\n                Abalobi Register\n              </ion-title>\n        </ion-navbar>\n</ion-header>\n\n\n\n<ion-content padding="true"  padding id="page1">\n  <img id="banner-img" src="https://res.cloudinary.com/techairos/image/upload/v1523889571/QR_app_Banner_ylefpe.png" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;">\n  <button ion-button full (click)="onSelectFisherRegistration()">Register As A Fisher</button>\n    <br>\n  <button ion-button full  (click)="onSelectMarketplaceRegistration()">Register For Marketplace</button>\n</ion-content>\n\n\n\n\n'/*ion-inline-end:"/Users/techairos/JOSHUA_WORK/register/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/Users/techairos/JOSHUA_WORK/register/src/pages/home/home.html"*/'<ion-header>\n        <ion-navbar>\n              <ion-title>\n                Abalobi Register\n              </ion-title>\n        </ion-navbar>\n</ion-header>\n\n\n\n<ion-content padding="true"  padding id="page1">\n  <img id="banner-img" src="https://res.cloudinary.com/techairos/image/upload/v1523889571/QR_app_Banner_ylefpe.png" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;">\n    <br>\n  <button text-wrap ion-button full (click)="onSelectFisherRegistration()">Register to use Fisher Logbook</button>\n    <br>\n  <button text-wrap ion-button full  (click)="onSelectMarketplaceRegistration()">Register to buy on Marketplace</button>\n</ion-content>\n\n\n\n\n'/*ion-inline-end:"/Users/techairos/JOSHUA_WORK/register/src/pages/home/home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]])
     ], HomePage);
@@ -1153,10 +1263,10 @@ var CommunityInfoClass = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CommunityClass; });
 var CommunityClass = /** @class */ (function () {
-    function CommunityClass(inputName, inputProv, inputID) {
-        this.name_eng = inputName;
-        this.province_abbrev = inputProv;
-        this.unique_ext_id = inputID;
+    function CommunityClass(name_key, province_abbrev, name_Eng) {
+        this.name_key = name_key;
+        this.province_abbrev = province_abbrev;
+        this.name_Eng = name_Eng;
     } //end constructor
     return CommunityClass;
 }()); //end class

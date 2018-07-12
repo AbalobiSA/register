@@ -6,13 +6,21 @@
 </ion-header>
 
 
-<ion-content title="Abalobi Register-role" id="fisher-role-form">
+<ion-content padding title="Abalobi Register-role" id="fisher-role-form">
+    <img id="banner-img" src="https://res.cloudinary.com/techairos/image/upload/v1523889571/QR_app_Banner_ylefpe.png" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />
 
     <form [formGroup] = "roleForm">
 
-                <p text-wrap style="text-align:center;padding-left:0.5em;padding-right:0.5em;background-color:#33CEFF;color:#FFFFFF;padding-left:0.5em">
-                        <b>Select 'Fisher' if you are a fisher wanting to record and view your catch data using Abalobi.</b>
-                </p>
+                <div id="page-markdown1" class="show-list-numbers-and-dots">
+                        <p id="header-text" style="color:#000000;">
+                            Complete this form if you&#39;d like to be able to
+                            <strong>
+                                LOG YOUR CATCH
+                            </strong>
+                            on the ABALOBI Fisher app.
+                        </p>
+                        <hr>
+                </div>
 
                 <ion-list radio-group type="text" formControlName='role' (ionChange)="roleChanged()">
                         <ion-item>
@@ -21,13 +29,13 @@
                         </ion-item>
 
                         <ion-item>
-                                <ion-label text-wrap>Fisher Assistant</ion-label>
+                                <ion-label text-wrap>Local Fisher Assistant</ion-label>
                                 <ion-radio type="text" value ="fisher_manager"></ion-radio>
                         </ion-item>
 
 
                         <ion-item>
-                                <ion-label text-wrap>Local Assistant AND fisher (will be logging own catch)</ion-label>
+                                <ion-label text-wrap>Local Assistant AND Fisher (I will be logging my own catch)</ion-label>
                                 <ion-radio type="text" value ="fisher,fisher_manager"></ion-radio>
                         </ion-item>
                 </ion-list>
