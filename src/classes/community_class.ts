@@ -1,13 +1,13 @@
 export class CommunityClass{
     //the blue-print of a community
-    name_eng        : string;
+    name_key        : string;
     province_abbrev : string;
-    unique_ext_id   : string;
+    name_Eng        : string;
 
-    constructor(inputName:string, inputProv: string, inputID: string){
-        this.name_eng           = inputName;
-        this.province_abbrev    = inputProv;
-        this.unique_ext_id      = inputID;
+    constructor(name_key:string, province_abbrev: string, name_Eng: string){
+        this.name_key           = name_key;
+        this.province_abbrev    = province_abbrev;
+        this.name_Eng           = name_Eng;
     }//end constructor
 
 

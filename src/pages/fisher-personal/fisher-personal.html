@@ -6,7 +6,7 @@
 
 
 
-<ion-content title="fisher-personal-form" id="page5">
+<ion-content padding title="fisher-personal-form" id="page5">
 
     <form [formGroup] = "personalForm">
             <ion-item>
@@ -121,7 +121,12 @@
                     </ng-container>
             </div>
 
-            <span style="color:red" text-wrap align="center" class="validation-errors" *ngIf="(personalForm.get('password1').value.length >= 1)&&(personalForm.get('password2').value.length >= 1)&&personalForm.hasError('mismatchedPasswords')">Passwords do not match.</span>
+            <span style="color:red" text-wrap align="center" class="validation-errors" *ngIf="(personalForm.get('password1').value.length >= 1)&&(personalForm.get('password2').value.length >= 1)&& personalForm.hasError('mismatchedPasswords')">Passwords do not match.</span>
+            <!--span style="color:red" text-wrap align="center" class="validation-errors" *ngIf="(personalForm.get('password1').value.length >= 1)&&!personalForm.hasError('mismatchedPasswords')&& personalForm.hasError('badPasswords')">Passwords must have at least 6 characters.</span-->
+        <span style="color:red" text-wrap align="center" class="validation-errors" *ngIf="(personalForm.get('password1').value.length >= 1)&&!personalForm.hasError('mismatchedPasswords')&& personalForm.hasError('badPasswords')">Passwords must have at least 6 characters and contain at least one UPPERCASE and one lowercase 1 digit.</span>
+        <span style="color:red" text-wrap align="center" class="validation-errors" *ngIf="(personalForm.get('password1').value.length >= 1)&&!personalForm.hasError('mismatchedPasswords')&& personalForm.hasError('noUpperCase')">Password must contain at least one uppercase letter.</span>
+        <span style="color:red" text-wrap align="center" class="validation-errors" *ngIf="(personalForm.get('password1').value.length >= 1)&&!personalForm.hasError('mismatchedPasswords')&& personalForm.hasError('noLowerCase')">Password must contain at least one lower case letter.</span>
+        <span style="color:red" text-wrap align="center" class="validation-errors" *ngIf="(personalForm.get('password1').value.length >= 1)&&!personalForm.hasError('mismatchedPasswords')&& personalForm.hasError('noNum')">Password must contain at least one digit.</span>
 
 
             <button ion-button type="submit"  [disabled]="!personalForm.valid" full  (click)="onFisherFinishPersonal()">Next</button>
