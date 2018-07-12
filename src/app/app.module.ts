@@ -19,14 +19,14 @@ import { FisherRolePage }       from '../pages/fisher-role/fisher-role';
 import { FisherUsetermsPage }   from '../pages/fisher-useterms/fisher-useterms';
 //Marketplace registration pages
 import { MarketplaceHome }      from '../pages/marketplace-home/marketplace-home';
-import {AfterRegisterPage}      from "../pages/after-register/after-register";
+import { AfterRegisterPage}      from "../pages/after-register/after-register";
 
 //Imported services
 import {MarketplaceService}     from "../providers/MarketplaceService";
 import{FisherService}           from "../providers/FisherService";
 import{Registree}               from "../classes/registree_class";
+import {Device} from "@ionic-native/device";
 
-import{confirmEqualValidatorsDirective} from "../classes/confirm-password-validator-directive";
 
 
 @NgModule({
@@ -39,8 +39,7 @@ import{confirmEqualValidatorsDirective} from "../classes/confirm-password-valida
     FisherRolePage,
     FisherUsetermsPage,
     MarketplaceHome,
-    AfterRegisterPage,
-      confirmEqualValidatorsDirective
+    AfterRegisterPage
   ],
   imports: [
     BrowserModule,
@@ -66,6 +65,7 @@ import{confirmEqualValidatorsDirective} from "../classes/confirm-password-valida
     MarketplaceService,
     FisherService,
     Registree,
+      Device,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

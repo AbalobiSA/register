@@ -9,8 +9,7 @@ import {PersonalInfoClass}      from "../classes/personal_info_class";
 import {CommunityInfoClass}     from "../classes/community_info_class";
 
 import{Fisher} from "../classes/fisher-class";
-
-import{Secrets} from "../../secrets";
+import {Secrets} from "../classes/secrets";
 
 
 @Injectable()
@@ -66,44 +65,22 @@ export class FisherService {
         console.log("This fisher has been created");
         console.log(fisher);
 
-
-        //Attempt a better implementation of registration
-      this.checkIfFisherAlreadyExists(fisher.id)//first promise check if the ID number has already been taken
-        .then((response)=>{//ID found, not unique
-            alert(JSON.stringify(response));
-            //alert('ID number already exists');
-        })
-         .catch((error)=>{//ID number is unique
-             alert(JSON.stringify(error));
-             //Go ahead and attempt to register unique fisher
-            /* alert('ID number is unique');
-             this.registerFisher(fisher)//upon success i.e. second promise attempts to register user
-                 .then ((reply)=> {
-                     alert('User registration successful');
-                 })
-                 .catch( ()=>{//failure to register , but ID is unique
-                     alert('User registration failed');
-                 })*/
-         })
-
-
        //The implementation below works but has the issue that the registration is executed in an error clause of the first promise
-        /*this.checkIfFisherAlreadyExists(fisher.id)//first promise check if the ID number has already been taken
-           .then((response)=>{//ID found, not unique
-               alert('ID number already exists');
+        this.checkIfFisherAlreadyExists(fisher.id)//first promise check if the ID number has already been taken
+           .then(()=>{//ID is unique
+               //Go ahead and attempt to register unique fisher
+               alert('ID number is unique');
+               this.registerFisher(fisher)//attempts to register user
+                   .then (()=> {
+                       alert('User registration successful');
+                   })
+                   .catch( ()=>{//failure to register , but ID is unique
+                       alert('User registration failed');
+                   })
            })
-            .catch(()=>{//ID number is unique
-
-                //Go ahead and attempt to register unique fisher
-                alert('ID number is unique');
-                this.registerFisher(fisher)//upon success i.e. second promise attempts to register user
-                    .then ((reply)=> {
-                        alert('User registration successful');
-                    })
-                    .catch( ()=>{//failure to register , but ID is unique
-                        alert('User registration failed');
-                    })
-            })*/
+            .catch(()=>{//ID number already taken
+                alert('ID number already exists');
+            })
 
         this.fisherClearDetails();//clear the recently entered details(confirm page will push a blank white page thereafter
     }//end SubmitRegistration
@@ -166,7 +143,16 @@ export class FisherService {
 
   //Check if fisher with the proposed ID doesn't exist already
   checkIfFisherAlreadyExists(ID: string): Promise<any> {
-        return this.http.get(this.secrets.fisherCheckUserIDurl + ID).toPromise();
+
+      return new Promise((resolve, reject) => {
+              this.http.get(this.secrets.fisherCheckUserIDurl + ID).toPromise()
+                  .then(() => {
+                      reject();
+                  })
+                  .catch(() => {
+                      resolve();
+                  })
+      })
   }
 
 
