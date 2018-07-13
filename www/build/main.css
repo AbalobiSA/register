@@ -25678,8 +25678,9 @@ ion-navbar.toolbar {
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
 
-#content {
-  text-align: center;
+page-fisher-not-unique .toolbar-title {
+  text-overflow: unset;
+  white-space: unset;
 }
 
 #banner-img {

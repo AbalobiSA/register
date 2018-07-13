@@ -35,8 +35,8 @@ function goodPasswords(passwordKey: string, confirmPasswordKey: string) {
                 };
             }
 
-            //passwords have sufficient length,check representation of each of CAPS,small letters,
-            else{
+            //passwords have sufficient length,check representation of each of CAPS,small letters,---These password requirements have been shelved for now
+            /*else{
 
                 if(!hasUpperCase(password.value)){//discovered that there are no CAPS in password
                     return {
@@ -57,7 +57,7 @@ function goodPasswords(passwordKey: string, confirmPasswordKey: string) {
                 }
 
 
-            }
+            }*/
 
         }
     }

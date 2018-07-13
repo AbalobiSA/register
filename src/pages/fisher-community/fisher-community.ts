@@ -116,7 +116,7 @@ export class FisherCommunityPage {
         }
 
 
-        //Record the name of the enetered custom community
+        //Record the name of the entered custom community
         customCommunityEntered(){
             this.community_info.custom_community= this.communityForm.get('custom').value;
         }
