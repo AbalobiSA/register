@@ -35,3 +35,11 @@ Removing the `/www` folder from `.gitignore` has a few adverse effects. When ser
 folder is locked. But since git is now also tracking any changes to the `/www` folder some strange and interesting things can happen when we
 try to switch branches while the app is being served. Usually files in `/www` folder is deleted. **This can be avoided by simply ensuring that
 you are not running the app in the command line before switching branches in git**
+
+
+## Possible Improvements
+- Detailed improvement suggestions are provided in the source code marked TODO
+- Retrieve communities from API instead of hardcoding.
+- Spinner on loading controller for fisher registration is currently not spinning.
+- Persist user input so they can choose to come back and continue later.
+- In addition to filtering communities based on province, go ahead and sort the communities in alphabetical order.
