@@ -1,7 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient,HttpParams} from "@angular/common/http";
 
-
 //Imported non-page classes
 import {Registree}              from "../classes/registree_class";
 import{FisherUsetermsClass}     from "../classes/fisher-useterms_class";
@@ -18,7 +17,7 @@ export class FisherService {
     secrets:Secrets = new Secrets();
 
 
-    constructor(private http: HttpClient, public registree: Registree) {
+    constructor(private http: HttpClient, public registree: Registree ) {
 
   }
 
@@ -58,31 +57,13 @@ export class FisherService {
 
 
 
-    //Attempt to register the fisher
-   fisherSubmitRegistration() {
+    //Build the fisher object
+   fisherBuild() : Fisher{
         let fisher = new Fisher();
         this.parseFisher(fisher);
-        console.log("This fisher has been created");
+        console.log("Service says 'This fisher has been created'");
         console.log(fisher);
-
-       //The implementation below works but has the issue that the registration is executed in an error clause of the first promise
-        this.checkIfFisherAlreadyExists(fisher.id)//first promise check if the ID number has already been taken
-           .then(()=>{//ID is unique
-               //Go ahead and attempt to register unique fisher
-               alert('ID number is unique');
-               this.registerFisher(fisher)//attempts to register user
-                   .then (()=> {
-                       alert('User registration successful');
-                   })
-                   .catch( ()=>{//failure to register , but ID is unique
-                       alert('User registration failed');
-                   })
-           })
-            .catch(()=>{//ID number already taken
-                alert('ID number already exists');
-            })
-
-        this.fisherClearDetails();//clear the recently entered details(confirm page will push a blank white page thereafter
+        return fisher;
     }//end SubmitRegistration
 
 
@@ -138,7 +119,7 @@ export class FisherService {
       this.registree.recreational_selected =false;
       this.registree.other_seleted         =false;
 
-      console.log("........Fisher Service Cleared User Details........");
+      //console.log("........Fisher Service Cleared User Details........");
   }
 
   //Check if fisher with the proposed ID doesn't exist already
@@ -158,9 +139,8 @@ export class FisherService {
 
   //Go ahead and actually try to register the fisher
   registerFisher(fisher): Promise<any> {
-        console.log("Posting fisher registration")
+        //console.log("Posting fisher registration")
       return this.http.post(this.secrets.fisherAddUserURL, fisher).toPromise();
   }
-
 
 }//end class

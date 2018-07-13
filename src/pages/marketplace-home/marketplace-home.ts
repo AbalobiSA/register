@@ -8,7 +8,7 @@
 import {Component, NgZone } from '@angular/core';
 import {LoadingController, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {MarketplaceService} from "../../providers/MarketplaceService";
-import {AfterRegisterPage} from "../after-register/after-register";
+//import {AfterRegisterPage} from "../after-register/after-register";
 import {HttpClient } from '@angular/common/http';
 
 @Component({
@@ -77,7 +77,7 @@ export class MarketplaceHome {
       this.extra_email_5 = null;
 
       // navigate to the successful sign up page
-      this.navCtrl.push(AfterRegisterPage);
+      //this.navCtrl.push(AfterRegisterPage);
 
       this.dismissLoader();
 
