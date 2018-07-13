@@ -18,6 +18,7 @@ function isInThisProvince(comms: CommunityClass, provinceFull : string){
     return  this.province_abbrev == getProvinceAbbrev(provinceFull);
 }
 
+//TODO- provinces would have to be added as they arise
 function getProvinceAbbrev(province: string): string {
 
     switch(province){
@@ -184,7 +185,8 @@ export class FisherCommunityPage {
 ];
 
 
-    //Can be implemented more elegantly with filter() function, just havent figure out how yet
+    //TODO - improve this implementation to use the fiter() function
+    //TODO - there may be need to sort the list as well, for now the list happens to be sorted already.
      filterComms(comms: CommunityClass[], provinceFull :string): CommunityClass [] {
         let filtered :  CommunityClass []= [];
         for(let i =0;i< comms.length;i++){

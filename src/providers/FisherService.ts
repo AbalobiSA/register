@@ -61,8 +61,8 @@ export class FisherService {
    fisherBuild() : Fisher{
         let fisher = new Fisher();
         this.parseFisher(fisher);
-        console.log("Service says 'This fisher has been created'");
-        console.log(fisher);
+        //console.log("Service says 'This fisher has been created'");
+        //console.log(fisher);
         return fisher;
     }//end SubmitRegistration
 
