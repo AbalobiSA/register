@@ -3,7 +3,6 @@ import {HttpClient,HttpParams} from "@angular/common/http";
 
 //Imported non-page classes
 import {Registree}              from "../classes/registree_class";
-import {RoleInfoClass}          from "../classes/role_info_class";
 import{FisherUsetermsClass}     from "../classes/fisher-useterms_class";
 import {PersonalInfoClass}      from "../classes/personal_info_class";
 import {CommunityInfoClass}     from "../classes/community_info_class";

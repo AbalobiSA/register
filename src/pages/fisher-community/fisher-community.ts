@@ -82,8 +82,6 @@ export class FisherCommunityPage {
                 ],
         }
 
-      }
-
         constructor (public navCtrl: NavController, public navParams: NavParams, public fisherService : FisherService, public formBuilder: FormBuilder) {
                 this.communityForm = this.formBuilder.group({
                     "province"  : ['', Validators.required],
